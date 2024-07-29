@@ -13,3 +13,4 @@ $conn = new mysqli($server, $username, $password, $dbname);
 	}
 	echo "Connection Success"; 
     ?>
+    ajajja
