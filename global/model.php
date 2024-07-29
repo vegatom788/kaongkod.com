@@ -1,7 +1,7 @@
 <?php
 
-	date_default_timezone_set('Asia/Manila');
-	Class Model {
+	// date_default_timezone_set('Asia/Manila');
+	// Class Model {
 		$server = "127.0.0.1:3306";
 	    $username = "u510162695_kaongkod";
 	    $password = "1Kaongkod";
@@ -11,7 +11,13 @@
 		$conn = new mysqli($server, $username, $password, $dbname);
 		if  ($conn ->connect_error) {
 			die("Connection failed: " . $conn ->connect_error );
+			echo "connection failed"
 		}
+		echo "connection succes";
+
+		?>
+	
+
 
 		// public function __construct() {
 		// 	try {
