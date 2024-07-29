@@ -14,6 +14,7 @@
 			} catch (Exception $e) {
 				echo "Connection failed" . $e->getMessage();
 			}
+			echo "connection success";
 		}
 
 
