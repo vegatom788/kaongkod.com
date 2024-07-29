@@ -1,32 +1,21 @@
 <?php
 
-	// date_default_timezone_set('Asia/Manila');
-	// Class Model {
-		$server = "127.0.0.1:3306";
-	    $username = "u510162695_kaongkod";
-	    $password = "1Kaongkod";
-	    $dbname =    "u510162695_kaongkod";
-	    $conn;
+	date_default_timezone_set('Asia/Manila');
+	Class Model {
+		private $server = "127.0.0.1:3306";
+		private $username = "u510162695_kaongkod";
+		private $password = "1Kaongkod";
+		private $dbname =    "u510162695_kaongkod";
+		// private $conn;
 
-		$conn = new mysqli($server, $username, $password, $dbname);
-		if  ($conn ->connect_error) {
-			die("Connection failed: " . $conn ->connect_error );
-			echo "connection failed"
+		public function __construct() {
+			try {
+				$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);	
+			} catch (Exception $e) {
+				echo "Connection failed" . $e->getMessage();
+			}
+			echo "connection succes";
 		}
-		echo "connection succes";
-
-		?>
-	
-
-
-		// public function __construct() {
-		// 	try {
-		// 		$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);	
-		// 	} catch (Exception $e) {
-		// 		echo "Connection failed" . $e->getMessage();
-		// 	}
-		// 	echo "connection succes";
-		// }
 
 
 		
