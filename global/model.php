@@ -1,31 +1,20 @@
 <?php
 
 	date_default_timezone_set('Asia/Manila');
-	class Model {
+	Class Model {
 		private $server = "127.0.0.1:3306";
 		private $username = "u510162695_kaongkod";
 		private $password = "1Kaongkod";
 		private $dbname =  "u510162695_kaongkod";
 		private $conn;
-	
+
 		public function __construct() {
-			// Establishing a connection
-			$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);
-			
-			// Check if the connection was successful
-			if ($this->conn->connect_error) {
-				die("Connection failed: " . $this->conn->connect_error);
+			try {
+				$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);	
+			} catch (Exception $e) {
+				echo "Connection failed" . $e->getMessage();
 			}
 		}
-		
-		// Optionally, you may want to add a method to close the connection
-		public function __destruct() {
-			if ($this->conn) {
-				$this->conn->close();
-			}
-		}
-	}
-	
 
 
 		
