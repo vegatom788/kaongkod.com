@@ -2,11 +2,11 @@
 
 	date_default_timezone_set('Asia/Manila');
 	Class Model {
-		public $server = "127.0.0.1:3306";
-		public $username = "u510162695_kaongkod";
-		public $password = "1Kaongkod";
-		public $dbname = "u510162695_kaongkod.com";
-		public $conn;
+		private $server = "127.0.0.1:3306";
+		private $username = "u510162695_kaongkod";
+		private $password = "1Kaongkod";
+		private $dbname ="u510162695_kaongkod";
+		private $conn;
 
 		public function __construct() {
 			try {
@@ -16,7 +16,6 @@
 			}
 			echo "connection succes";
 		}
-	}
 
 
 		
