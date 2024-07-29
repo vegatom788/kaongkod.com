@@ -3,7 +3,7 @@
 	date_default_timezone_set('Asia/Manila');
 	Class Model {
 		private $server = "127.0.0.1:3306";
-		private $username = "u510162695_kaongkod";
+		private $username = "u510162695_brgy_salvacion";
 		private $password = "1Kaongkod";
 		private $dbname =  "u510162695_brgy_salvacion";
 		private $conn;
