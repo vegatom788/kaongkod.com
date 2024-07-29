@@ -2,20 +2,25 @@
 
 	date_default_timezone_set('Asia/Manila');
 	Class Model {
-		private $server = "127.0.0.1:3306";
-		private $username = "u510162695_kaongkod";
-		private $password = "1Kaongkod";
-		private $dbname ="u510162695_kaongkod";
-		private $conn;
+		$server = "127.0.0.1:3306";
+	    $username = "u510162695_kaongkod";
+	    $password = "1Kaongkod";
+	    $dbname =    "u510162695_kaongkod";
+	    $conn;
 
-		public function __construct() {
-			try {
-				$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);	
-			} catch (Exception $e) {
-				echo "Connection failed" . $e->getMessage();
-			}
-			echo "connection succes";
+		$conn = new mysqli($server, $username, $password, $dbname);
+		if  ($conn ->connect_error) {
+			die("Connection failed: " . $conn ->connect_error );
 		}
+
+		// public function __construct() {
+		// 	try {
+		// 		$this->conn = new mysqli($this->server, $this->username, $this->password, $this->dbname);	
+		// 	} catch (Exception $e) {
+		// 		echo "Connection failed" . $e->getMessage();
+		// 	}
+		// 	echo "connection succes";
+		// }
 
 
 		
