@@ -107,7 +107,8 @@
 							<table id="table" class="table hover" style="width:100%">
 								<thead>
 									<tr>
-										<th>Name</th>
+										<th>name</th>
+										<th>name</th>
 										<th>Request Type</th>
 										<th>Purpose</th>
 										<th>Date Request</th>
