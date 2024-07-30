@@ -1,5 +1,4 @@
 <?php
-echo"conneceted";
 	ob_start(); 
 	session_start(); 
 	include('../global/model.php');
@@ -111,7 +110,7 @@ echo"conneceted";
 												<th>Block</th>
 												<th>Lot</th>
 												<th width="100">Status</th>
-												<th width="100">Action</th>
+												<th width="100">Actionhahha</th>
 											</tr>
 										</thead>
 										<tbody>
