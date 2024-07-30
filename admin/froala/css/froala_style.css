@@ -1,7 +1,7 @@
 /*!
- * froala_editor v4.2.1 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.6-1 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2024 Froala Labs
+ * Copyright 2014-2021 Froala Labs
  */
 
 .fr-clearfix::after {
@@ -46,17 +46,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-.fr-view li img.fr-dii.fr-fil {
-  margin-right: 20px; }
-
 .fr-view {
   word-wrap: break-word; }
   .fr-view span[style~="color:"] a {
     color: inherit; }
   .fr-view strong {
     font-weight: 700; }
-  .fr-view table[border='0'] td:not([class]), .fr-view table[border='0'] th:not([class]), .fr-view table[border='0'] td[class=""], .fr-view table[border='0'] th[class=""] {
-    border-width: 0px; }
   .fr-view table {
     border: none;
     border-collapse: collapse;
@@ -77,8 +72,6 @@
       .fr-view table td.fr-thick, .fr-view table th.fr-thick {
         border-width: 2px; }
     .fr-view table th {
-      background: #ececec; }
-    .fr-view table tfoot td {
       background: #ececec; }
   .fr-view hr {
     clear: both;
@@ -182,18 +175,15 @@
       vertical-align: bottom;
       margin-left: 5px;
       margin-right: 5px;
-      max-width: calc(100% - (2 * 5px));
-      min-width: 10px; }
+      max-width: calc(100% - (2 * 5px)); }
       .fr-view img.fr-dii.fr-fil {
         float: left;
         margin: 5px 5px 5px 0;
-        max-width: calc(100% - 5px);
-        min-width: 5px; }
+        max-width: calc(100% - 5px); }
       .fr-view img.fr-dii.fr-fir {
         float: right;
         margin: 5px 0 5px 5px;
-        max-width: calc(100% - 5px);
-        min-width: 5px; }
+        max-width: calc(100% - 5px); }
   .fr-view span.fr-img-caption {
     position: relative;
     max-width: 100%; }
@@ -214,18 +204,15 @@
       vertical-align: bottom;
       margin-left: 5px;
       margin-right: 5px;
-      max-width: calc(100% - (2 * 5px));
-      min-width: 10px; }
+      max-width: calc(100% - (2 * 5px)); }
       .fr-view span.fr-img-caption.fr-dii.fr-fil {
         float: left;
         margin: 5px 5px 5px 0;
-        max-width: calc(100% - 5px);
-        min-width: 5px; }
+        max-width: calc(100% - 5px); }
       .fr-view span.fr-img-caption.fr-dii.fr-fir {
         float: right;
         margin: 5px 0 5px 5px;
-        max-width: calc(100% - 5px);
-        min-width: 5px; }
+        max-width: calc(100% - 5px); }
   .fr-view .fr-video {
     text-align: center;
     position: relative; }
@@ -300,10 +287,8 @@
     background-clip: padding-box; }
   .fr-view button.fr-large, .fr-view input.fr-large, .fr-view textarea.fr-large {
     font-size: 24px; }
-
-.fr-view span.fr-img-caption.fr-dii.fr-fil,
-.fr-view p img.fr-dii.fr-fil {
-  margin-right: 15px; }
+  .fr-view ul, .fr-view ol {
+    list-style-position: inside; }
 
 /**
  * Image style.
@@ -336,18 +321,15 @@ img.fr-view {
     vertical-align: bottom;
     margin-left: 5px;
     margin-right: 5px;
-    max-width: calc(100% - (2 * 5px));
-    min-width: 10px; }
+    max-width: calc(100% - (2 * 5px)); }
     img.fr-view.fr-dii.fr-fil {
       float: left;
       margin: 5px 5px 5px 0;
-      max-width: calc(100% - 5px);
-      min-width: 5px; }
+      max-width: calc(100% - 5px); }
     img.fr-view.fr-dii.fr-fir {
       float: right;
       margin: 5px 0 5px 5px;
-      max-width: calc(100% - 5px);
-      min-width: 5px; }
+      max-width: calc(100% - 5px); }
 
 span.fr-img-caption.fr-view {
   position: relative;
@@ -369,15 +351,12 @@ span.fr-img-caption.fr-view {
     vertical-align: bottom;
     margin-left: 5px;
     margin-right: 5px;
-    max-width: calc(100% - (2 * 5px));
-    min-width: 10px; }
+    max-width: calc(100% - (2 * 5px)); }
     span.fr-img-caption.fr-view.fr-dii.fr-fil {
       float: left;
       margin: 5px 5px 5px 0;
-      max-width: calc(100% - 5px);
-      min-width: 5px; }
+      max-width: calc(100% - 5px); }
     span.fr-img-caption.fr-view.fr-dii.fr-fir {
       float: right;
       margin: 5px 0 5px 5px;
-      max-width: calc(100% - 5px);
-      min-width: 5px; }
+      max-width: calc(100% - 5px); }
