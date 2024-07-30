@@ -40,7 +40,7 @@
         <div class="page-banner ovbl-dark" style="background-image:url(assets/images/m.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Barangay Announcements</h1>
+                    <h1 class="text-white">Barangay AnnouncementsTom</h1>
 				 </div>
             </div>
         </div>
