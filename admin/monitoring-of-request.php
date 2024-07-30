@@ -108,7 +108,6 @@
 								<thead>
 									<tr>
 										<th>Name</th>
-										<th>Name</th>
 										<th>Request Type</th>
 										<th>Purpose</th>
 										<th>Date Request</th>
