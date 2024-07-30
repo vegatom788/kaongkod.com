@@ -65,7 +65,7 @@
 							<img src="assets/images/3.png" alt="">
 						</div>
                         <ul class="nav navbar-nav">	
-							<li><a href="index">Home</a></li>
+							<li><a href="index">Homee</a></li>
 							<li><a href="all-announcements">Announcements</a></li>
 							<li><a href="officials">Officials</a></li>
 							<li><a href="services">Documents</a></li>
