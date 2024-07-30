@@ -181,7 +181,7 @@
 											<?php
 												try {
 													// Assuming you have a PDO connection established, create a Model instance
-													$pdo = new PDO('mysql:host=localhost;dbname=brgy_salvacion', 'root', '');
+													$pdo = new PDO('mysql:host=127.0.0.1:3306;dbname=brgy_salvacion', 'u510162695_kaongkod', '1Kaongkod');
 													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
 													$model = new Model($pdo);
 
