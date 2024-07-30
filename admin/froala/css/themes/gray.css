@@ -1,7 +1,7 @@
 /*!
- * froala_editor v3.2.6-1 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v4.2.1 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2021 Froala Labs
+ * Copyright 2014-2024 Froala Labs
  */
 
 .fr-clearfix::after {
@@ -119,10 +119,10 @@
   left: 0;
   right: 0; }
 .gray-theme .fr-wrapper ::-moz-selection {
-  background: #b5d6fd;
+  background: rgba(181, 214, 253, 0.8);
   color: #000; }
 .gray-theme .fr-wrapper ::selection {
-  background: #b5d6fd;
+  background: rgba(181, 214, 253, 0.8);
   color: #000; }
 .gray-theme.fr-box.fr-basic .fr-wrapper {
   background: #FFF;
@@ -164,6 +164,9 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0; }
+.gray-theme .fr-track-hide-mobile {
+  width: 0;
+  height: 0; }
 .gray-theme .fr-opacity-0 {
   -webkit-opacity: 0;
   -moz-opacity: 0;
@@ -472,13 +475,13 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
 .gray-theme .fr-icons {
   padding: 10px 20px 0; }
-.gray-theme .half-circle {
+.gray-theme .fr-half-circle {
   border-bottom: 0; }
-.gray-theme .checkbox-container input {
+.gray-theme .fr-checkbox-container input {
   opacity: 0;
   height: 0;
   width: 0; }
-.gray-theme .checkmark {
+.gray-theme .fr-checkmark {
   top: 0;
   left: 0; }
 .gray-theme .fr-cloud-icon {
@@ -579,9 +582,9 @@
   font-weight: 200; }
 .gray-theme .fr-autoplay-checkbox-label {
   margin: 0; }
-.gray-theme .checkbox-container .checkmark:after {
+.gray-theme .fr-container .fr-checkmark:after {
   border-width: 0 3px 3px 0; }
-.gray-theme .file-item-details .file-description {
+.gray-theme .fr-file-item-details .file-description {
   font-weight: 300; }
 .gray-theme #myprogressBar {
   background-color: #4CAF50; }
@@ -594,6 +597,8 @@
   left: 0;
   bottom: 0;
   right: 0; }
+  .gray-theme.fr-box.fr-fullscreen .fr-wrapper {
+    background-color: #FFF; }
   .gray-theme.fr-box.fr-fullscreen.fr-basic.fr-top .fr-wrapper {
     border-radius: 0;
     -moz-border-radius: 0;
@@ -899,6 +904,27 @@
       margin: 8px;
       height: 24px;
       width: 24px; }
+.gray-theme .fr-markdown-view {
+  box-sizing: inherit; }
+.gray-theme .fr-markdown-editor {
+  box-sizing: inherit; }
+.gray-theme .fr-markdown-editor > p {
+  margin: 0; }
+.gray-theme .fr-markdown-view > p {
+  margin-top: 0; }
+.gray-theme .fr-markdown-view > dl {
+  margin-top: 0; }
+.gray-theme .fr-markdown-view > dt {
+  font-weight: 700; }
+.gray-theme .fr-markdown-view > dd {
+  margin-left: 0; }
+.gray-theme .fr-markdown-view > pre code {
+  border: 0;
+  padding: 0; }
+.gray-theme .fr-markdown-view > hr {
+  border: 0; }
+.gray-theme .fr-markdown-view > table {
+  border-spacing: 0; }
 .gray-theme .fr-quick-insert {
   padding-right: 10px;
   -webkit-box-sizing: content-box;
@@ -950,13 +976,6 @@
     width: 368px; } }
 .gray-theme .fr-element table td.fr-selected-cell, .gray-theme .fr-element table th.fr-selected-cell {
   border: 1px double #0097A7; }
-.gray-theme .fr-element table tr {
-  user-select: none;
-  -o-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none; }
 .gray-theme .fr-element table td, .gray-theme .fr-element table th {
   user-select: text;
   -o-user-select: text;
@@ -1158,6 +1177,8 @@
   border: 1px solid #DDD; }
 .gray-theme .fr-view table th {
   background: #ececec; }
+.gray-theme .fr-view table tfoot td {
+  background: #ececec; }
 .gray-theme .fr-view hr {
   user-select: none;
   -o-user-select: none;
@@ -1208,13 +1229,16 @@
 .gray-theme .fr-view img.fr-dii {
   margin-left: 5px;
   margin-right: 5px;
-  max-width: calc(100% - (2 * 5px)); }
+  max-width: calc(100% - (2 * 5px));
+  min-width: 10px; }
   .gray-theme .fr-view img.fr-dii.fr-fil {
     margin: 5px 5px 5px 0;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
   .gray-theme .fr-view img.fr-dii.fr-fir {
     margin: 5px 0 5px 5px;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
 .gray-theme .fr-view span.fr-img-caption.fr-dib {
   margin: 5px auto; }
   .gray-theme .fr-view span.fr-img-caption.fr-dib.fr-fil {
@@ -1224,13 +1248,16 @@
 .gray-theme .fr-view span.fr-img-caption.fr-dii {
   margin-left: 5px;
   margin-right: 5px;
-  max-width: calc(100% - (2 * 5px)); }
+  max-width: calc(100% - (2 * 5px));
+  min-width: 10px; }
   .gray-theme .fr-view span.fr-img-caption.fr-dii.fr-fil {
     margin: 5px 5px 5px 0;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
   .gray-theme .fr-view span.fr-img-caption.fr-dii.fr-fir {
     margin: 5px 0 5px 5px;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
 .gray-theme .fr-view .fr-video.fr-rv {
   height: 0; }
   .gray-theme .fr-view .fr-video.fr-rv > iframe, .gray-theme .fr-view .fr-video.fr-rv object, .gray-theme .fr-view .fr-video.fr-rv embed {
@@ -1274,13 +1301,16 @@
 .gray-theme img.fr-view.fr-dii {
   margin-left: 5px;
   margin-right: 5px;
-  max-width: calc(100% - (2 * 5px)); }
+  max-width: calc(100% - (2 * 5px));
+  min-width: 10px; }
   .gray-theme img.fr-view.fr-dii.fr-fil {
     margin: 5px 5px 5px 0;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
   .gray-theme img.fr-view.fr-dii.fr-fir {
     margin: 5px 0 5px 5px;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
 .gray-theme span.fr-img-caption.fr-view.fr-dib {
   margin: 5px auto; }
   .gray-theme span.fr-img-caption.fr-view.fr-dib.fr-fil {
@@ -1290,13 +1320,16 @@
 .gray-theme span.fr-img-caption.fr-view.fr-dii {
   margin-left: 5px;
   margin-right: 5px;
-  max-width: calc(100% - (2 * 5px)); }
+  max-width: calc(100% - (2 * 5px));
+  min-width: 10px; }
   .gray-theme span.fr-img-caption.fr-view.fr-dii.fr-fil {
     margin: 5px 5px 5px 0;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
   .gray-theme span.fr-img-caption.fr-view.fr-dii.fr-fir {
     margin: 5px 0 5px 5px;
-    max-width: calc(100% - 5px); }
+    max-width: calc(100% - 5px);
+    min-width: 5px; }
 .gray-theme .fr-element .fr-embedly {
   user-select: none;
   -o-user-select: none;
@@ -1794,14 +1827,9 @@
     background: #ebebeb; }
   .gray-theme.fr-popup.fr-above {
     border-top: 0; }
-  .gray-theme.fr-popup.fr-hidden {
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
   .gray-theme.fr-popup .fr-input-line {
     padding: 15px 0; }
-    .gray-theme.fr-popup .fr-input-line input[type="text"], .gray-theme.fr-popup .fr-input-line textarea {
+    .gray-theme.fr-popup .fr-input-line input[type="text"], .gray-theme.fr-popup .fr-input-line input[type="number"], .gray-theme.fr-popup .fr-input-line textarea {
       margin-bottom: 1px;
       border-radius: 2px;
       -moz-border-radius: 2px;
@@ -1821,12 +1849,12 @@
       -moz-transition: border 0.5s, padding 0.5s;
       -ms-transition: border 0.5s, padding 0.5s;
       -o-transition: border 0.5s, padding 0.5s; }
-      .gray-theme.fr-popup .fr-input-line input[type="text"]:hover, .gray-theme.fr-popup .fr-input-line textarea:hover {
+      .gray-theme.fr-popup .fr-input-line input[type="text"]:hover, .gray-theme.fr-popup .fr-input-line input[type="number"]:hover, .gray-theme.fr-popup .fr-input-line textarea:hover {
         border: solid 1px #515151; }
-      .gray-theme.fr-popup .fr-input-line input[type="text"]:focus, .gray-theme.fr-popup .fr-input-line textarea:focus {
+      .gray-theme.fr-popup .fr-input-line input[type="text"]:focus, .gray-theme.fr-popup .fr-input-line input[type="number"]:focus, .gray-theme.fr-popup .fr-input-line textarea:focus {
         border: solid 2px #0097A7;
         padding: 3px 11px; }
-    .gray-theme.fr-popup .fr-input-line input[type="text"] {
+    .gray-theme.fr-popup .fr-input-line input[type="text"], .gray-theme.fr-popup .fr-input-line input[type="number"] {
       height: 46px; }
     .gray-theme.fr-popup .fr-input-line input + label, .gray-theme.fr-popup .fr-input-line textarea + label {
       top: 29px;
@@ -2025,10 +2053,8 @@
     -moz-transition: height 0.5s;
     -ms-transition: height 0.5s;
     -o-transition: height 0.5s; }
-  .gray-theme.fr-toolbar.fr-toolbar-open {
-    padding-bottom: 48px; }
-    .gray-theme.fr-toolbar.fr-toolbar-open .fr-newline {
-      height: 0; }
+  .gray-theme.fr-toolbar.fr-toolbar-open .fr-newline {
+    height: 0; }
   .gray-theme.fr-toolbar .fr-more-toolbar {
     border-radius: 0;
     -moz-border-radius: 0;
