@@ -110,7 +110,7 @@
 												<th>Block</th>
 												<th>Lot</th>
 												<th width="100">Status</th>
-												<th width="100">Actionhahha</th>
+												<th width="100">Action</th>
 											</tr>
 										</thead>
 										<tbody>
