@@ -1,4 +1,5 @@
 <?php
+echo"conneceted";
 	ob_start(); 
 	session_start(); 
 	include('../global/model.php');
@@ -179,17 +180,9 @@
 												</form>
 											</div>
 											<?php
-											$server = "127.0.0.1";
-											$port = "3306";
-											$username = "u510162695_kaongkod";
-											$password = "1Kaongkod";
-											$dbname =  "u510162695_kaongkod";
-
-											$dsn = "mysql:host=$server;port=$port;dbname=$dbname";
-
 												try {
 													// Assuming you have a PDO connection established, create a Model instance
-													$pdo = new PDO($dsn, $username, $password);
+													$pdo = new PDO('mysql:host=localhost;dbname=brgy_salvacion', 'root', '');
 													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
 													$model = new Model($pdo);
 
