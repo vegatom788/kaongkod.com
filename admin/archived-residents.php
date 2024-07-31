@@ -104,7 +104,7 @@
 									<table id="table" class="table hover" style="width:100%">
 										<thead>
 											<tr>
-												<th>ID Number11111</th>
+												<th>ID Number</th>
 												<th>Name</th>
 												<th>Contact</th>
 												<th>Block</th>
