@@ -32,7 +32,7 @@
 		$pdf->SetXY(118, 122);
 		$pdf->Write(0, $_POST['purpose']);
 		$pdf->SetXY(118, 138);
-		$pdf->Write(0, date('M. d, Y', strtotime($_POST['date_issued'])));
+		
 		ob_end_clean();
 		$pdf->Output('I', 'Brgy Victoria Reyes.pdf');
 	}
