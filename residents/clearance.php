@@ -150,6 +150,7 @@
 					<div class="col-lg-7 m-b30">
 					<?php
 if (isset($_POST['post_msg'])) {
+    $resident_id = $_SESSION['sess2']; 
     $request_type = 1;
     $purpose = $_POST['message'];
     $payment_method = $_POST['payment_method'];
