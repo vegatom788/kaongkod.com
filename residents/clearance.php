@@ -376,7 +376,7 @@ if (isset($_POST['post_msg'])) {
                 <tr>
                     <td><center><a href="" class="btn blue" style="width: 50px; height: 37px;" data-toggle="modal" data-target="#view-<?php echo $row['id']; ?>"><div data-toggle="tooltip" title="View Details"><i class="ti-search" style="font-size: 12px;"></i></div></a></center></td>
                     <td><?php echo htmlspecialchars($row['purpose']); ?></td>
-                    
+                    <td style="font-size: 14px;"><?php echo date('M. d, Y', strtotime($row['date_issued'])); ?></td>
 					<td><?php echo htmlspecialchars($row['payment_method']); ?></td>
                     <td><?php echo htmlspecialchars($row['reference_number']); ?></td>
                     <td>
