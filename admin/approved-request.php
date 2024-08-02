@@ -44,7 +44,7 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(116.3, 146.7);
-		$pdf->Write(0, "2");
+		$pdf->Write(0, "4");
 
 		ob_end_clean();
 		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
