@@ -47,7 +47,7 @@
 		$pdf->Write(0, "4");
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 
 	if(isset($_POST["residency"])) { 
@@ -81,7 +81,7 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(101.5, 170);
-		$pdf->Write(0, "2022");
+		$pdf->Write(0, "2024");
 
 		$pdf->SetXY(65, 116.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
@@ -94,7 +94,7 @@
 
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 
 	if(isset($_POST["indigency"])) { 
@@ -129,11 +129,11 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(106.5, 159.4);
-		$pdf->Write(0, "2022");
+		$pdf->Write(0, "2024");
 
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 ?>
 <!DOCTYPE html>
