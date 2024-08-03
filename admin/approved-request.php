@@ -321,7 +321,7 @@
 													<input type="hidden" name="age" value="<?php echo $age; ?>">
 													<input type="hidden" name="idnumber" value="<?php echo $idnumber; ?>">
 
-													<button type="submit" name="brgy_clearance" class="btn green" style="float: right;"><i class="ti-print"></i></button><br><br>
+													<button type="submit" name="brgy_clearance" class="btn btn-block green radius-xl" style="float: right;">PRINT</button><br><br>
 												</form>
 												<?php	
 													}
