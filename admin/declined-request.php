@@ -292,6 +292,10 @@
 												<?php
 												}
 												?>
+												<form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this request?');">
+													<input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
+													<button type="submit" name="delete_request" class="btn btn-danger btn-sm">DELETE</button>
+												</form>
 											</center>
 										</td>
 									</tr>
