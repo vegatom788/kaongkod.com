@@ -388,7 +388,7 @@ if (isset($_POST['archive_hidden'])) {
 															<label class="col-form-label"><b>Firstname</b></label>
 															<input class="form-control" type="text" name="fname" required maxlength="30">
 														</div>
-														<div class="form-group col-2">
+														<div class="form-group col-2.5">
 															<label class="col-form-label"><b>Middlename</b></label>
 															<input class="form-control" type="text" name="mname" maxlength="30">
 														</div>
@@ -396,7 +396,7 @@ if (isset($_POST['archive_hidden'])) {
 															<label class="col-form-label"><b>Lastname</b></label>
 															<input class="form-control" type="text" name="lname" required maxlength="30">
 														</div>
-														<div class="form-group col-3">
+														<div class="form-group col-2.5">
 															<label class="col-form-label"><b>Suffix Name</b></label>
 															<input class="form-control" 
 															type="text" 
