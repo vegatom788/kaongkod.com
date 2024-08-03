@@ -472,8 +472,14 @@
 															</select>
 														</div>
 														<div class="form-group col-4">
-															<label class="col-form-label"><b>Contact Number</b></label>
-															<input class="form-control" type="number" name="contact" required>
+																<label class="col-form-label"><b>Contact Number</b></label>
+																<input class="form-control" 
+																type="tel" 
+																name="contact" 
+																required 
+																maxlength="11" 
+																pattern="[0-9]{11}" 
+																title="Please enter exactly 11 digits">
 														</div>
 														<div class="form-group col-3">
 															<label class="col-form-label"><b>Date Happened</b></label>
@@ -562,6 +568,14 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
+		<script>
+			document.querySelector('input[name="contact"]').addEventListener('input', function (e) {
+				let value = e.target.value;
+				// Remove non-numeric characters and limit the length to 11
+				e.target.value = value.replace(/\D/g, '').substring(0, 11);
+			});
+		</script>
+
 	</body>
 
 </html>
