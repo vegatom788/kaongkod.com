@@ -264,7 +264,12 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
+													<form onsubmit="return confirmSubmit()" method="post" action="">
+														<input type="hidden" name="message" value="Some purpose"> <!-- Add other form fields as necessary -->
+														<input type="hidden" name="payment_method" value="Some payment method">
+														<input type="hidden" name="reference_number" value="Some reference number">
 													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
+													</form>
 													<?php } ?>
 												</div>
 												
