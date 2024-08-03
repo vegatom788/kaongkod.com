@@ -371,6 +371,10 @@
 												<?php
 												}
 												?>
+												<form method="POST" style="margin-top: 10px;">
+													<input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+													<button type="submit" name="delete_entry" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
+												</form>
 											</center>
 										</td>
 									</tr>
