@@ -199,7 +199,7 @@
 										<th>Name</th>
 										<th>Request Type</th>
 										<th>Purpose</th>
-										<th>Date Approved</th>
+										<th>Date Declined</th>
 										<th width="80">Status</th>
 										<th width="80">Action</th>
 									</tr>
