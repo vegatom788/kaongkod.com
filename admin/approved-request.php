@@ -322,6 +322,7 @@
 													<input type="hidden" name="idnumber" value="<?php echo $idnumber; ?>">
 
 													<button type="submit" name="brgy_clearance" class="btn btn-block green radius-xl" style="float: right;">PRINT</button><br><br>
+													<button type="submit" name="delete" class="btn btn-block red radius-xl" style="float: right;">DELETE</button><br><br>
 												</form>
 												<?php	
 													}
