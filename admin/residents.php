@@ -398,7 +398,11 @@ if (isset($_POST['archive_hidden'])) {
 														</div>
 														<div class="form-group col-2">
 															<label class="col-form-label"><b>Suffix Name</b></label>
-															<input class="form-control" type="text" name="ext" maxlength="5">
+															<input class="form-control" 
+															type="text" 
+															name="ext" 
+															maxlength="5" 
+															placeholder="Leave blank if no suffix">
 														</div>
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Gender</b></label>
