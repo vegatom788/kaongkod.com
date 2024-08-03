@@ -379,6 +379,83 @@
 											</center>
 										</td>
 									</tr>
+
+	<div id="status-<?php echo $row['id']; ?>" class="modal fade" role="dialog">
+    <form class="edit-profile m-b30" method="POST" enctype="multipart/form-data">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 30px; height: 30px;">&nbsp;Update Request Status</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <input class="form-control" type="hidden" name="approve_id" value="<?php echo $row['id']; ?>">
+                        <div class="form-group col-12">
+                            <label class="col-form-label">Request Type</label>
+                            <input class="form-control" type="text" value="<?php echo $type; ?>" readonly>
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="col-form-label">Purpose</label>
+                            <input class="form-control" type="text" value="<?php echo $row['purpose']; ?>" readonly>
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="col-form-label">Date Request</label>
+                            <input class="form-control" type="text" value="<?php echo date('M. d, Y g:i A', strtotime($row['date_issued'])); ?>" readonly>
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="col-form-label">Pickup Date</label>
+                            <input class="form-control" type="text" value="<?php echo date('M. d, Y', strtotime($row['date_pickup'])); ?>" readonly>
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="col-form-label">Status</label>
+                            <select class="form-control" name="status2">
+                                <option value="Processing"<?php if ($row['status2'] == "Processing") { echo "selected"; } ?>>Processing</option>
+                                <option value="For Pick Up"<?php if ($row['status2'] == "For Pick Up") { echo "selected"; } ?>>For Pick Up</option>
+                                <option value="Picked Up"<?php if ($row['status2'] == "Picked Up") { echo "selected"; } ?>>Picked Up</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn green radius-xl outline" name="update_status" value="Update Status">
+                    <button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn red radius-xl" name="delete" value="<?php echo $row['id']; ?>">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<?php
+												try {
+													// Assuming you have a PDO connection established, create a Model instance
+													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
+													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+													$model = new Model($pdo);
+
+													// Check if the form is submitted
+													if (isset($_POST['delete'])) {
+														$id = $_POST['update_status'];
+														
+														// Call deleteResident method
+														if ($model->deleteRequest($id)) {
+															echo "<script>alert('Blotter deleted successfully');</script>";
+														} else {
+															echo "<script>alert('Blotter deleted successfully');</script>";
+														}
+
+														// Redirect back to the same page after deletion
+														echo "<script>window.open('approved-request.php', '_self');</script>";
+														exit;
+													}
+												} catch (PDOException $e) {
+													// Handle PDO exception (connection or query error)
+													echo "Connection failed: " . $e->getMessage();
+													// You might want to log the error or display a user-friendly message
+													exit;
+												}
+												?>
+
 									<div id="status-<?php echo $row['id']; ?>" class="modal fade" role="dialog">
 										<form class="edit-profile m-b30" method="POST" enctype="multipart/form-data">
 											<div class="modal-dialog modal-lg">
