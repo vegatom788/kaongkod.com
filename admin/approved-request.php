@@ -321,8 +321,8 @@
 													<input type="hidden" name="age" value="<?php echo $age; ?>">
 													<input type="hidden" name="idnumber" value="<?php echo $idnumber; ?>">
 
-													<button type="submit" name="brgy_clearance" class="btn btn-block green radius-xl" style="float: right; width: 100px; height: 40px;">PRINT</button>
-    												<button type="submit" name="delete" class="btn btn-block red radius-xl" style="float: right; width: 100px; height: 40px;">DELETE</button>
+													<button type="submit" name="brgy_clearance" class="btn btn-block green radius-xl" style="float: right; width: 80px; height: 30px;">PRINT</button>
+    												<button type="submit" name="delete" class="btn btn-block red radius-xl" style="float: right; width: 80px; height: 30px;">DELETE</button>
 												</form>
 												<?php	
 													}
