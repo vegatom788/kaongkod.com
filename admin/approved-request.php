@@ -380,7 +380,7 @@
 										</td>
 									</tr>
 
-	<div id="status-<?php echo $row['id']; ?>" class="modal fade" role="dialog">
+	<div id="delete-<?php echo $row['id']; ?>" class="modal fade" role="dialog">
     <form class="edit-profile m-b30" method="POST" enctype="multipart/form-data">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -418,7 +418,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn green radius-xl outline" name="update_status" value="Update Status">
+                    <input type="submit" class="btn green radius-xl outline" name="delete_hidden" value="Update Status">
                     <button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn red radius-xl" name="delete" value="<?php echo $row['id']; ?>">Delete</button>
                 </div>
@@ -435,7 +435,7 @@
 
 													// Check if the form is submitted
 													if (isset($_POST['delete'])) {
-														$id = $_POST['update_status'];
+														$id = $_POST['delete_hidden'];
 														
 														// Call deleteResident method
 														if ($model->deleteRequest($id)) {
