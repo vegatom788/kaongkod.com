@@ -57,7 +57,7 @@
 
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 ?>
 <!DOCTYPE html>
