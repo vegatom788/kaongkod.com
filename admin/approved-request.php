@@ -374,51 +374,7 @@
 											</center>
 										</td>
 									</tr>
-									<div id="status-<?php echo $row['id']; ?>" class="modal fade" role="dialog">
-										<form class="edit-profile m-b30" method="POST" enctype="multipart/form-data">
-											<div class="modal-dialog modal-lg">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h4 class="modal-title"><img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 30px; height: 30px;">&nbsp;Update Request Status</h4>
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
-													</div>
-													<div class="modal-body">
-														<div class="row">
-															<input class="form-control" type="hidden" name="approve_id" value="<?php echo $row['id']; ?>">
-															<div class="form-group col-12">
-																<label class="col-form-label">Request Type	</label>
-																<input class="form-control" type="text" value="<?php echo $type; ?>" readonly>
-															</div>
-															<div class="form-group col-12">
-																<label class="col-form-label">Purpose</label>
-																<input class="form-control" type="text" value="<?php echo $row['purpose']; ?>" readonly>
-															</div>
-															<div class="form-group col-12">
-																<label class="col-form-label">Date Request</label>
-																<input class="form-control" type="text" value="<?php echo date('M. d, Y g:i A', strtotime($row['date_issued'])); ?>" readonly>
-															</div>
-															<div class="form-group col-12">
-																<label class="col-form-label">Pickup Date</label>
-																<input class="form-control" type="text" value="<?php echo date('M. d, Y', strtotime($row['date_pickup'])); ?>" readonly>
-															</div>
-															<div class="form-group col-12">
-																<label class="col-form-label">Status</label>
-																<select class="form-control" name="status2">
-																	<option value="Processing"<?php if ($row['status2'] == "Processing") { echo "selected"; } else {} ?>>Processing</option>
-																	<option value="For Pick Up"<?php if ($row['status2'] == "For Pick Up") { echo "selected"; } else {} ?>>For Pick Up</option>
-																	<option value="Picked Up"<?php if ($row['status2'] == "Picked Up") { echo "selected"; } else {} ?>>Picked Up</option>
-																</select>
-															</div>
-														</div>
-													</div>
-													<div class="modal-footer">
-														<input type="submit" class="btn green radius-xl outline" name="status" value="Update Status">
-														<button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
+									
 									<?php
 
 										}
