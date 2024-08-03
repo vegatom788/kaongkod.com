@@ -136,6 +136,34 @@
 		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 ?>
+
+<?php
+// Include your database connection
+include 'db_connection.php'; // Adjust the path as needed
+
+// Check if the delete form has been submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_entry'])) {
+    // Get the ID of the entry to be deleted
+    $delete_id = intval($_POST['delete_id']); // Convert to integer for safety
+
+    // Prepare and execute the delete query
+    $stmt = $conn->prepare("DELETE FROM request WHERE id = ?");
+    $stmt->bind_param('i', $delete_id);
+
+    if ($stmt->execute()) {
+        // Redirect back to the page after deletion
+        echo "<script>alert('Entry deleted successfully!'); window.location.href='approved-request.php';</script>";
+    } else {
+        // Show an error message if the deletion fails
+        echo "<script>alert('Error deleting entry.'); window.location.href='approved-request.php';</script>";
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
