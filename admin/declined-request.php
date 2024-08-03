@@ -295,7 +295,7 @@
 											</center>
 										</td>
 									<td>
-										<form method="POST" style="margin-top: 10px;" onsubmit="return confirm('Are you sure you want to delete this request?');">
+										<form method="POST" style="margin-top: 10px;" onsubmit="return confirm('Are you sure you want to delete this?');">
 											<input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
 											<button type="submit" name="delete_request" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
 										</form>
