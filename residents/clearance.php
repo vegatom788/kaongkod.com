@@ -58,6 +58,11 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/k.png" />
 
 		<title>Brgy. Kaongkod</title>
+		<script>
+    function confirmSubmit() {
+        return confirm('Are you sure you want to submit this request?');
+    }
+    </script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -259,7 +264,7 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
-													<form onsubmit="return confirmSubmit()">
+													<form onsubmit="return confirmSubmit()" method="post" action="">
 														<center>
 															<button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button>
 														</center>
@@ -268,11 +273,6 @@ if (isset($_POST['post_msg'])) {
 												</div>
 												
 											</div>
-										<script>
-										function confirmSubmit() {
-											return confirm('Are you sure you want to submit this request?');
-										}
-										</script>
 											<?php
 												$row['id'] = isset($row['id']) ? $row['id'] : ''; // Ensure $row['id'] is initialized
 												?>
