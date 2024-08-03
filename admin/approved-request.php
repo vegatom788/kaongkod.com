@@ -139,7 +139,7 @@
 
 <?php
 // Include your database connection
-include 'db_connection.php'; // Adjust the path as needed
+include '../global/model.php'; // Adjust the path as needed
 
 // Check if the delete form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_entry'])) {
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_entry'])) {
 
     // Prepare and execute the delete query
     $stmt = $conn->prepare("DELETE FROM request WHERE id = ?");
-    $stmt->bind_param('i', $delete_id);
+    $stmt->bind_param('i', $id);
 
     if ($stmt->execute()) {
         // Redirect back to the page after deletion
