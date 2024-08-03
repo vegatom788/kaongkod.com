@@ -136,34 +136,6 @@
 		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 ?>
-
-<?php
-// Include your database connection
-include '../global/model.php'; // Adjust the path as needed
-
-// Check if the delete form has been submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_entry'])) {
-    // Get the ID of the entry to be deleted
-    $delete_id = intval($_POST['delete_id']); // Convert to integer for safety
-
-    // Prepare and execute the delete query
-    $stmt = $conn->prepare("DELETE FROM request WHERE id = ?");
-    $stmt->bind_param('i', $id);
-
-    if ($stmt->execute()) {
-        // Redirect back to the page after deletion
-        echo "<script>alert('Entry deleted successfully!'); window.location.href='approved-request.php';</script>";
-    } else {
-        // Show an error message if the deletion fails
-        echo "<script>alert('Error deleting entry.'); window.location.href='approved-request.php';</script>";
-    }
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -462,6 +434,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_entry'])) {
 									}
 
 									?>
+
+<?php
+												try {
+													// Assuming you have a PDO connection established, create a Model instance
+													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
+													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+													$model = new Model($pdo);
+
+													// Check if the form is submitted
+													if (isset($_POST['delete_entry'])) {
+														$id = $_POST['delete_id'];
+														
+														// Call deleteResident method
+														if ($model->deleteRequest($id)) {
+															echo "<script>alert('Blotter deleted successfully');</script>";
+														} else {
+															echo "<script>alert('Blotter deleted successfully');</script>";
+														}
+
+														// Redirect back to the same page after deletion
+														echo "<script>window.open('approved-request.php', '_self');</script>";
+														exit;
+													}
+												} catch (PDOException $e) {
+													// Handle PDO exception (connection or query error)
+													echo "Connection failed: " . $e->getMessage();
+													// You might want to log the error or display a user-friendly message
+													exit;
+												}
+												?>
 								</tbody>
 							</table>
 						</div>
