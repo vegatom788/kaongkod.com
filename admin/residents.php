@@ -465,8 +465,15 @@ if (isset($_POST['archive_hidden'])) {
 															<input class="form-control" type="text" name="address3"  maxlength="10" required>
 														</div>
 														<div class="form-group col-3">
-															<label class="col-form-label"><b>Resident Since</b></label>
-															<input class="form-control" type="number" name="res_since" required maxlength="4">
+																<label class="col-form-label"><b>Resident Since</b></label>
+																<select class="form-control" name="res_since" required="">
+																<option value="" disabled selected hidden="" >-- Please select --</option>
+																<script type="text/javascript">
+																	for (var i = 2025; i >= 1900; i--) {
+																	document.write("<option value='" + i +"'>" + i + "</option>");
+																	}
+																</script>			
+																</select>
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Email</b><!-- <br>(Leave blank if resident has no email) --></label>
