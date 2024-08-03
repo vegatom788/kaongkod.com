@@ -259,11 +259,20 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
-													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
+													<form onsubmit="return confirmSubmit()">
+														<center>
+															<button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button>
+														</center>
+													</form>
 													<?php } ?>
 												</div>
 												
 											</div>
+										<script>
+										function confirmSubmit() {
+											return confirm('Are you sure you want to submit this request?');
+										}
+										</script>
 											<?php
 												$row['id'] = isset($row['id']) ? $row['id'] : ''; // Ensure $row['id'] is initialized
 												?>
