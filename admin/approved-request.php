@@ -337,7 +337,9 @@
 													<input type="hidden" name="age" value="<?php echo $age; ?>">
 													<input type="hidden" name="idnumber" value="<?php echo $idnumber; ?>">
 
-													<button type="submit" name="residency" class="btn btn-block green radius-xl" style="float: right;">PRINT</button><br><br>
+													
+													<button type="submit" name="residency" class="btn btn-block green radius-xl" style="float: right; width: 80px; height: 30px;">PRINT</button>
+    												<button type="submit" name="delete" class="btn btn-block red radius-xl" style="float: right; width: 80px; height: 30px;">DELETE</button>
 												</form>
 												<?php
 													}
@@ -353,7 +355,9 @@
 													<input type="hidden" name="day" value="<?php echo $day; ?>">
 													<input type="hidden" name="month" value="<?php echo $month; ?>">
 
-													<button type="submit" name="indigency" class="btn btn-block green radius-xl" style="float: right;">PRINT</button><br><br>
+													
+													<button type="submit" name="indigency" class="btn btn-block green radius-xl" style="float: right; width: 80px; height: 30px;">PRINT</button>
+    												<button type="submit" name="delete" class="btn btn-block red radius-xl" style="float: right; width: 80px; height: 30px;">DELETE</button>
 												</form>
 												<?php
 													}
