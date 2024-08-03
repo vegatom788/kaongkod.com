@@ -294,13 +294,6 @@
 												?>
 											</center>
 										</td>
-												<td>
-													<center>
-														<a href="#" class="btn red" style="width: 50px; height: 37px;" data-toggle="modal" data-target="#delete-<?php echo $id; ?>">
-															<div data-toggle="tooltip" title="Delete"><i class="ti-trash" style="font-size: 12px;"></i></div>
-														</a>
-													</center>
-												</td>
 									</tr>
 									<?php
 
