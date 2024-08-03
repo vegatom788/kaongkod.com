@@ -402,7 +402,7 @@ if (isset($_POST['archive_hidden'])) {
 															type="text" 
 															name="ext" 
 															maxlength="5"
-															placeholder="Leave the field blank if you don't have a suffix">
+															placeholder="Leave blank if no suffix">
 														</div>
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Gender</b></label>
