@@ -315,18 +315,18 @@
 													$model = new Model($pdo);
 
 													// Check if the form is submitted
-													if (isset($_POST['delete_entry'])) {
-														$id = $_POST['delete_id'];
+													if (isset($_POST['delete_request'])) {
+														$id = $_POST['request_id'];
 														
 														// Call deleteResident method
-														if ($model->deleteRequest($id)) {
-															echo "<script>alert('Approved Request deleted successfully');</script>";
+														if ($model->deleteDeclinedRequest($id)) {
+															echo "<script>alert('Declined Request deleted successfully');</script>";
 														} else {
-															echo "<script>alert('Approved Request deleted successfully');</script>";
+															echo "<script>alert('Declined Request deleted successfully');</script>";
 														}
 
 														// Redirect back to the same page after deletion
-														echo "<script>window.open('approved-request.php', '_self');</script>";
+														echo "<script>window.open('declined-request.php', '_self');</script>";
 														exit;
 													}
 												} catch (PDOException $e) {
