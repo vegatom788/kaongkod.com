@@ -417,8 +417,14 @@ if (isset($_POST['archive_hidden'])) {
 														</div>
 
 														<div class="form-group col-6">
-															<label class="col-form-label"><b>Contact</b></label>
-															<input class="form-control" type="number" name="contact" maxlength="14" value="09">
+																<label class="col-form-label"><b>Contact</b></label>
+																<input class="form-control" 
+																type="tel" 
+																name="contact" 
+																maxlength="11" 
+																pattern="[0-9]{11}" 
+																title="Please enter exactly 11 digits" 
+																value="09">
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Civil Status</b></label>
@@ -645,6 +651,13 @@ if (isset($_POST['archive_hidden'])) {
             });
         });
     </script>
+		<script>
+			document.querySelector('input[name="contact"]').addEventListener('input', function (e) {
+				let value = e.target.value;
+				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
+			});
+		</script>
+
 
 </body>
 </html>
