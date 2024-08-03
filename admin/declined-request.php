@@ -201,7 +201,6 @@
 										<th>Purpose</th>
 										<th>Date Approved</th>
 										<th width="80">Status</th>
-										<th width="80">Action</th>
 									</tr>
 								</thead>
 								<tbody>
