@@ -259,11 +259,18 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
-													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
+													<center><button id="submitRequestBtn" name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
 													<?php } ?>
 												</div>
 												
 											</div>
+											<script>
+											document.getElementById('submitRequestBtn').addEventListener('click', function(event) {
+												if (!confirm('Are you sure you want to submit this request?')) {
+													event.preventDefault(); // Prevent the default action (e.g., form submission) if the user cancels
+												}
+											});
+											</script>
 											<?php
 												$row['id'] = isset($row['id']) ? $row['id'] : ''; // Ensure $row['id'] is initialized
 												?>
