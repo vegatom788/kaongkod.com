@@ -58,11 +58,6 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/k.png" />
 
 		<title>Brgy. Kaongkod</title>
-		<script>
-			function confirmSubmit() {
-				return confirm('Are you sure you want to submit this request?');
-			}
-    	</script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -264,12 +259,7 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
-													<form onsubmit="return confirmSubmit()" method="post" action="">
-														<input type="hidden" name="message" value="<?php echo htmlspecialchars($purpose); ?>">
-														<input type="hidden" name="payment_method" value="Some payment method">
-														<input type="hidden" name="reference_number" value="Some reference number">
 													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
-													</form>
 													<?php } ?>
 												</div>
 												
