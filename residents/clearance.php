@@ -259,7 +259,7 @@ if (isset($_POST['post_msg'])) {
 															echo "<script>window.open('clearance', '_self');</script>";
 														}
 													} else { ?>
-													<center><button id="submitRequestBtn" name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
+													<center><button id="submitRequestBtn" name="post_msg" class="btn button-md button-block">Submit Request</button></center>
 													<?php } ?>
 												</div>
 												
