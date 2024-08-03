@@ -57,16 +57,6 @@
 				$stmt->close();
 			}
 		}
-
-		public function deleteRequest($id) {
-			$query = "DELETE FROM request WHERE id = ?";
-			
-			if ($stmt = $this->conn->prepare($query)) {
-				$stmt->bind_param('i', $id);
-				$stmt->execute();
-				$stmt->close();
-			}
-		}
 		
 
 		//chat
