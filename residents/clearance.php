@@ -58,11 +58,6 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/k.png" />
 
 		<title>Brgy. Kaongkod</title>
-		<script>
-    function confirmSubmit() {
-        return confirm('Are you sure you want to submit this request?');
-    }
-    </script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -273,6 +268,11 @@ if (isset($_POST['post_msg'])) {
 												</div>
 												
 											</div>
+											<script>
+    function confirmSubmit() {
+        return confirm('Are you sure you want to submit this request?');
+    }
+    </script>
 											<?php
 												$row['id'] = isset($row['id']) ? $row['id'] : ''; // Ensure $row['id'] is initialized
 												?>
