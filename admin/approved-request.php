@@ -448,9 +448,9 @@
 														
 														// Call deleteResident method
 														if ($model->deleteRequest($id)) {
-															echo "<script>alert('Blotter deleted successfully');</script>";
+															echo "<script>alert('Approved Request deleted successfully');</script>";
 														} else {
-															echo "<script>alert('Blotter deleted successfully');</script>";
+															echo "<script>alert('Approved Request deleted successfully');</script>";
 														}
 
 														// Redirect back to the same page after deletion
