@@ -306,6 +306,36 @@
 										}
 									}
 									?>
+									
+											<?php
+												try {
+													// Assuming you have a PDO connection established, create a Model instance
+													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
+													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+													$model = new Model($pdo);
+
+													// Check if the form is submitted
+													if (isset($_POST['delete_entry'])) {
+														$id = $_POST['delete_id'];
+														
+														// Call deleteResident method
+														if ($model->deleteRequest($id)) {
+															echo "<script>alert('Approved Request deleted successfully');</script>";
+														} else {
+															echo "<script>alert('Approved Request deleted successfully');</script>";
+														}
+
+														// Redirect back to the same page after deletion
+														echo "<script>window.open('approved-request.php', '_self');</script>";
+														exit;
+													}
+												} catch (PDOException $e) {
+													// Handle PDO exception (connection or query error)
+													echo "Connection failed: " . $e->getMessage();
+													// You might want to log the error or display a user-friendly message
+													exit;
+												}
+												?>
 								</tbody>
 							</table>
 						</div>
