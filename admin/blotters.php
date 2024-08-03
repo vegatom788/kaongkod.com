@@ -463,6 +463,14 @@
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Age</b></label>
 															<input class="form-control" type="number" name="age" required>
+															<select class="form-control" name="age" required="">
+																<option value="" disabled selected hidden="" >-- Please select --</option>
+																<script type="text/javascript">
+																	for (var i = 1; i >= 120; i--) {
+																	document.write("<option value='" + i +"'>" + i + "</option>");
+																	}
+																</script>			
+																</select>
 														</div>
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Gender</b></label>
