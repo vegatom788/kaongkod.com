@@ -57,7 +57,7 @@
 		<div class="page-wraper">
 			<!-- <div id="loading-icon-bx"></div> -->
 			<div class="account-form">
-				<div class="account-head" style="background-image:url(assets/images/m.jpg);"></div>
+				<div class="account-head" style="background-image:url(assets/images/bg2.png);"></div>
 				<div class="account-form-inner">
 					<div class="account-container">
 						<form class="contact-bx" method="POST">
@@ -210,19 +210,19 @@
 								<div class="col-lg-4">
 									<div class="form-group">
 										<span><b>Barangay</b></span><br>
-										Kaongkod
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<span><b>Province</b></span><br>
-									    Madridejos
+										Victoria Reyes
 									</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 										<span><b>City</b></span><br>
-										Cebu
+									    Dasmarinas
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="form-group">
+										<span><b>Province</b></span><br>
+										Cavite
 									</div>
 								</div>
 								<div class="col-lg-12">
@@ -512,7 +512,6 @@
 
 			password.onchange = validatePassword;
 			confirm_password.onkeyup = validatePassword;
-
 		</script>
 	</body>
 </html>
