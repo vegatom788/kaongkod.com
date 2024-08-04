@@ -13,7 +13,7 @@
 		require_once('../tcpdf/tcpdf.php');  
 		$obj_pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
 		$obj_pdf->SetCreator(PDF_CREATOR);  
-		$obj_pdf->SetTitle("BRGY. SALVACION 1ST - RESIDENTS");   
+		$obj_pdf->SetTitle("BRGY. KAONGKOD - RESIDENTS");   
 		$obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
 		$obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
 		$obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
@@ -30,7 +30,7 @@
 		$content .= '
 		<div align="center">
 			<img src="11header.jpg" height="115" width="300">
-			<h2 style="color: black;">BARANGAY SALVACION 1ST RESIDENTS</h2>
+			<h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
 		</div>
 		<table border="1" cellspacing="0" cellpadding="5">
         	<thead>
@@ -105,7 +105,7 @@
 		<link rel="icon" href="../assets/images/<?php echo $web_icon; ?>.png" type="image/x-icon" />
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/<?php echo $web_icon; ?>.png" />
 
-		<title><?php echo $web_name; ?></title>
+		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -175,151 +175,174 @@
 				<?php include 'widget.php'; ?>
 
 				<div class="row">
-					<div class="col-lg-12 m-b30">
-								<div align="right">
-									<a href="" class="btn green radius-xl" style="background-color: <?PHP echo $primary_color; ?>" data-toggle="modal" data-target="#add-announcement"><i class="ti-agenda"></i><span>&nbsp;ADD NEW RESIDENT</span></a>&nbsp;
-									<!-- <a href="pending-residents" class="btn green radius-xl" style="background-color: #267621;"><i class="ti-agenda"></i><span>&nbsp;PENDING RESIDENTS (<?php echo $pending; ?>)</span></a>&nbsp; -->
-									<a href="archived-residents" class="btn red radius-xl"><i class="ti-agenda"></i><span>&nbsp;ARCHIVED RESIDENTS</span></a><br>
-								</div>
-								<div style="padding: 25px;"></div>
+    <div class="col-lg-12 m-b30">
+        <div align="right">
+            <a href="" class="btn green radius-xl" style="background-color: <?php echo $primary_color; ?>" data-toggle="modal" data-target="#add-announcement">
+                <i class="ti-agenda"></i><span>&nbsp;ADD NEW RESIDENT</span>
+            </a>&nbsp;
+            <!-- <a href="pending-residents" class="btn green radius-xl" style="background-color: #267621;"><i class="ti-agenda"></i><span>&nbsp;PENDING RESIDENTS (<?php echo $pending; ?>)</span></a>&nbsp; -->
+            <a href="archived-residents" class="btn red radius-xl"><i class="ti-agenda"></i><span>&nbsp;ARCHIVED RESIDENTS</span></a><br>
+        </div>
+        <div style="padding: 25px;"></div>
 
-								<div class="table-responsive">
-									<table id="table" class="table hover" style="width:100%">
-										<thead>
-											<tr>
-												<th>ID Number</th>
-												<th>Name</th>
-												<th>Gender</th>
-												<th>Civil Status</th>
-												<th>Contact</th>
-												<th width="80">Status</th>
-												<th width="100">Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-												$status = 1;
-												$rows = $model->displayResidents($status);
+        <div class="table-responsive">
+            <table id="table" class="table hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID Number</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Civil Status</th>
+                        <th>Contact</th>
+                        <th width="80">Status</th>
+                        <th width="100">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $status = 1;
+                    $rows = $model->displayResidents($status);
 
-												if (!empty($rows)) {
-													foreach ($rows as $row) {
-														$id = $row['id'];
-														$id_number = $row['id_number'];
-														$first_name = $row['fname'];
-														$middle_name = $row['mname'];
-														$last_name = $row['lname'];
-														$email = $row['email'];
-														$contact = $row['contact_number'];
-														$gender = $row['gender'];
-														$civil_status = $row['civil_status'];
-														$address = $row['address'];
-														$address2 = $row['address2'];
-														$address3 = $row['address3'];
-														$resident_since = $row['resident_since'];
-														$date_added = $row['date_registered'];
-														$verified = $row['verified'];
-														//default.jpg
-														$bdt = date('Y', strtotime($row['birth_date']));
-														$dttt = date("Y");
-														$age = $dttt - $bdt;
+                    if (!empty($rows)) {
+                        foreach ($rows as $row) {
+                            $id = $row['id'];
+                            $id_number = $row['id_number'];
+                            $first_name = $row['fname'];
+                            $middle_name = $row['mname'];
+                            $last_name = $row['lname'];
+                            $email = $row['email'];
+                            $contact = $row['contact_number'];
+                            $gender = $row['gender'];
+                            $civil_status = $row['civil_status'];
+                            $address = $row['address'];
+                            $address2 = $row['address2'];
+                            $address3 = $row['address3'];
+                            $resident_since = $row['resident_since'];
+                            $date_added = $row['date_registered'];
+                            $verified = $row['verified'];
 
-														if ($verified == 1) {
-															if ($row['email_verif'] == 1) {
-															    $verified = 'Registered';
-															    $verified2 = 'success';
-    														}
-    														else {
-    															$verified = 'Registered';
-    															$verified2 = 'success';
-    														}
-														}
-														else {
-															$verified = '<span style="font-size: 12px;">Unregistered</span>';
-															$verified2 = 'danger';
-														}
+                            $bdt = date('Y', strtotime($row['birth_date']));
+                            $dttt = date("Y");
+                            $age = $dttt - $bdt;
 
-														$photo = $row['photo'];
-														if ($photo == '') {
-															$photo = 'default';
-    													}
-    													else {
-    														$photo = $row['photo'];
-    													}
-											?>
-											<tr>
-												<td><?php echo $id_number; ?></td>
-												<td><img src="../assets/images/profile-pictures/<?php echo $photo; ?>.jpg" alt="User" style="width: 30px; height: 30px; border-radius: 50%;object-fit: cover;">&nbsp;
-													<?php echo $first_name.' '.$middle_name.' '.$last_name; ?></td>
-												<td><?php echo $gender; ?></td>
-												<td><?php echo $civil_status; ?></td>
-												<td><?php echo $contact; ?></td>
-												<td style="font-size: 12px;"><center><span class="badge badge-<?php echo $verified2; ?>"><a href="" style="font-size: 14px;color: white;" data-toggle="modal" data-target="#status-<?php echo $row['id']; ?>"><?php echo $verified; ?></a></span></center> 
-												    
-										
-												</td>
-												
-												
-												<!-- <td style="font-size: 14px;"><?php echo date('M. d, Y g:i A', strtotime($date_added)); ?></td> -->
-												<td>
-													<center><a href="residents-profile?id=<?php echo $id; ?>" class="btn blue" style="width: 50px; height: 37px;"><div data-toggle="tooltip" title="Profile"><i class="ti-search" style="font-size: 12px;"></i></div></a>&nbsp;<a href="" class="btn red" style="width: 50px; height: 37px;" data-toggle="modal" data-target="#archive-<?php echo $id; ?>"><div data-toggle="tooltip" title="Archive"><i class="ti-archive" style="font-size: 12px;"></i></div></a></center>
-											</tr>
-											<div id="archive-<?php echo $id; ?>" class="modal fade" role="dialog">
-												<form class="edit-profile m-b30" method="POST">
-													<div class="modal-dialog modal-md">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h4 class="modal-title"><img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 30px; height: 30px;">&nbsp;Archive Resident?</h4>
-																<button type="button" class="close" data-dismiss="modal">&times;</button>
-															</div>
-															<div class="modal-body">
-																<input type="hidden" name="approve_hidden" value="<?php echo $id; ?>">
-																<div class="row">
-																	<div class="form-group col-8">
-																		<label class="col-form-label">Name</label>
-																		<br><?php echo $first_name.' '.$middle_name.' '.$last_name; ?>
-																	</div>
-																	<div class="form-group col-4">
-																		<label class="col-form-label">Gender</label>
-																		<br><?php echo $gender; ?>
-																	</div>
-																	<div class="form-group col-7">
-																		<label class="col-form-label">Email</label>
-																		<br><?php echo $email; ?>
-																	</div>
-																	<div class="form-group col-5">
-																		<label class="col-form-label">Contact</label>
-																		<br><?php echo $contact; ?>
-																	</div>
-																	<div class="form-group col-6">
-																		<label class="col-form-label">Date registered</label>
-																		<br><?php echo date('M. d, Y g:i A', strtotime($date_added)); ?>
-																	</div>
-																</div>
-															</div>
-															<div class="modal-footer">
-																<input type="submit" class="btn red radius-xl outline" name="archive" value="Archive">
-																<button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
-															</div>
-														</div>
-													</div>
+                            if ($verified == 1) {
+                                if ($row['email_verif'] == 1) {
+                                    $verified_text = 'Registered';
+                                    $verified_class = 'success';
+                                } else {
+                                    $verified_text = 'Registered';
+                                    $verified_class = 'success';
+                                }
+                            } else {
+                                $verified_text = '<span style="font-size: 12px;">Unregistered</span>';
+                                $verified_class = 'danger';
+                            }
+
+                            $photo = ($row['photo'] == '') ? 'default' : $row['photo'];
+                    ?>
+                            <tr>
+                                <td><?php echo $id_number; ?></td>
+                                <td>
+                                    <img src="../assets/images/profile-pictures/<?php echo $photo; ?>.jpg" alt="User" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">&nbsp;
+                                    <?php echo $first_name . ' ' . $middle_name . ' ' . $last_name; ?>
+                                </td>
+                                <td><?php echo $gender; ?></td>
+                                <td><?php echo $civil_status; ?></td>
+                                <td><?php echo $contact; ?></td>
+                                <td style="font-size: 12px;">
+                                    <center><span class="badge badge-<?php echo $verified_class; ?>"><a href="" style="font-size: 14px; color: white;" data-toggle="modal" data-target="#status-<?php echo $id; ?>"><?php echo $verified_text; ?></a></span></center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <a href="residents-profile?id=<?php echo $id; ?>" class="btn blue" style="width: 50px; height: 37px;">
+                                            <div data-toggle="tooltip" title="Profile"><i class="ti-search" style="font-size: 12px;"></i></div>
+                                        </a>&nbsp;
+                                        <a href="" class="btn red" style="width: 50px; height: 37px;" data-toggle="modal" data-target="#archive-<?php echo $id; ?>">
+                                            <div data-toggle="tooltip" title="Archive"><i class="ti-archive" style="font-size: 12px;"></i></div>
+                                        </a>
+                                    </center>
+                                </td>
+                            </tr>
+
+                            <div id="archive-<?php echo $id; ?>" class="modal fade" role="dialog">
+                                <form id="archive-form-<?php echo $id; ?>" class="edit-profile m-b30" method="POST">
+                                    <div class="modal-dialog modal-md">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">
+                                                    <img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 30px; height: 30px;">&nbsp;Archive Resident?
+                                                </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" name="archive_hidden" value="<?php echo $id; ?>">
+                                                <div class="row">
+                                                    <div class="form-group col-8">
+                                                        <label class="col-form-label">Name</label>
+                                                        <br><?php echo $first_name . ' ' . $middle_name . ' ' . $last_name; ?>
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                        <label class="col-form-label">Gender</label>
+                                                        <br><?php echo $gender; ?>
+                                                    </div>
+                                                    <div class="form-group col-7">
+                                                        <label class="col-form-label">Email</label>
+                                                        <br><?php echo $email; ?>
+                                                    </div>
+                                                    <div class="form-group col-5">
+                                                        <label class="col-form-label">Contact</label>
+                                                        <br><?php echo $contact; ?>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label class="col-form-label">Date registered</label>
+                                                        <br><?php echo date('M. d, Y g:i A', strtotime($date_added)); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+												<form id="archive-form-<?php echo $id; ?>" method="POST" action="residents.php">
+													<input type="hidden" name="archive_hidden" value="<?php echo $id; ?>">
 												</form>
+												<button type="button" class="btn red radius-xl outline" onclick="confirmArchive(<?php echo $id; ?>)">Archive</button>
+												<button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
 											</div>
-											<?php
 
-														if (isset($_POST['archive'])) {
-															$approve_id = $_POST['approve_hidden'];
-															$model->changeResidentStatus($approve_id, 3);
-															echo "<script>window.open('residents', '_self');</script>";
-														}
-													}
-												}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
-											?>
-										</tbody>
-									</table>
-								</div>
-								<br>
-								<hr>
+                            <script>
+								function confirmArchive(id) {
+									var willArchive = confirm("Are you sure you want to archive?");
+									if (willArchive) {
+										console.log('Submitting form for ID:', id);
+										document.getElementById('archive-form-' + id).submit(); // Submit the form
+									} else {
+										console.log('Archive canceled.');
+									}
+								}
+							</script>
+
+                    <?php
+                        } // end foreach
+                    } // end if
+                    ?>
+
+                </tbody>
+            </table>
+        </div> <!-- /.table-responsive -->
+    </div> <!-- /.col-lg-12 -->
+</div> <!-- /.row -->
+
+<?php
+if (isset($_POST['archive_hidden'])) {
+    $archive_id = $_POST['archive_hidden'];
+    $model->changeResidentStatus($archive_id, 3);
+    echo "<script>window.open('residents', '_self');</script>";
+}
+?>
+
 								<!-- <div align="right">
 									<a href="" class="btn green radius-xl" style="background-color: #267621;" data-toggle="modal" data-target="#add-announcement"><i class="ti-agenda"></i><span>&nbsp;ADD NEW RESIDENT</span></a>&nbsp;
 									<a href="pending-residents" class="btn green radius-xl" style="background-color: #267621;"><i class="ti-agenda"></i><span>&nbsp;PENDING RESIDENTS (<?php echo $pending; ?>)</span></a>&nbsp;
@@ -356,12 +379,12 @@
 															}
 
 														?>
-														<!-- <input class="form-control" type="hidden" name="r_id" value="<?php echo 'BS1-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly> -->
+														<!-- <input class="form-control" type="hidden" name="r_id" value="<?php echo 'BK-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly> -->
 														<div class="form-group col-12">
 															<label class="col-form-label"><b>Resident ID</b></label>
-															<input class="form-control" type="text" name="r_id" value="<?php echo 'BS1-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly>
+															<input class="form-control" type="text" name="r_id" value="<?php echo 'BK-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly>
 														</div>
-														<div class="form-group col-4">
+														<div class="form-group col-3">
 															<label class="col-form-label"><b>Firstname</b></label>
 															<input class="form-control" type="text" name="fname" required maxlength="30">
 														</div>
@@ -373,9 +396,13 @@
 															<label class="col-form-label"><b>Lastname</b></label>
 															<input class="form-control" type="text" name="lname" required maxlength="30">
 														</div>
-														<div class="form-group col-2">
+														<div class="form-group col-3">
 															<label class="col-form-label"><b>Suffix Name</b></label>
-															<input class="form-control" type="text" name="ext" maxlength="5">
+															<input class="form-control" 
+															type="text" 
+															name="ext" 
+															maxlength="5"
+															placeholder="Leave blank if no suffix">
 														</div>
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Gender</b></label>
@@ -394,8 +421,14 @@
 														</div>
 
 														<div class="form-group col-6">
-															<label class="col-form-label"><b>Contact</b></label>
-															<input class="form-control" type="number" name="contact" maxlength="14" value="09">
+																<label class="col-form-label"><b>Contact</b></label>
+																<input class="form-control" 
+																type="tel" 
+																name="contact" 
+																maxlength="11" 
+																pattern="[0-9]{11}" 
+																title="Please enter exactly 11 digits" 
+																value="09">
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Civil Status</b></label>
@@ -432,8 +465,15 @@
 															<input class="form-control" type="text" name="address3"  maxlength="10" required>
 														</div>
 														<div class="form-group col-3">
-															<label class="col-form-label"><b>Resident Since</b></label>
-															<input class="form-control" type="number" name="res_since" required maxlength="4">
+																<label class="col-form-label"><b>Resident Since</b></label>
+																<select class="form-control" name="res_since" required="">
+																<option value="" disabled selected hidden="" >-- Please select --</option>
+																<script type="text/javascript">
+																	for (var i = 2025; i >= 1900; i--) {
+																	document.write("<option value='" + i +"'>" + i + "</option>");
+																	}
+																</script>			
+																</select>
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Email</b><!-- <br>(Leave blank if resident has no email) --></label>
@@ -444,9 +484,7 @@
 															<br>
 															<!-- <?php echo $digits_main; ?> -->
 														</div>
-														<div class="form-group col-12">
-															<b>DISCLAIMER:</b> By providing your personal data, you agree that any document/report you voluntary uploaded will be part of the <b>e-Barangay: A Web-based Barangay Office Management System for Salvacion 1st, Lupao, Nueva Ecija</b>. The e-Barangay, under the Data Privacy Act, with your consent, shall use all information provided in this portal for validation to your document/report requests.
-														</div>
+														
 													</div>
 												</div>
 												<div class="modal-footer">
@@ -527,11 +565,11 @@
 											$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 											$mail->Port = 465;
 
-	                                        $mail->setFrom("azraelgriffin.riego@gmail.com", 'Barangay Salvacion 1st');
+	                                        $mail->setFrom("azraelgriffin.riego@gmail.com", 'Barangay Kaongkod');
 											$mail->addAddress($email);
 
 											$mail->isHTML(true);
-											$mail->Subject = 'Welcome to Brgy. Salvacion 1st Portal - Account Verification';
+											$mail->Subject = 'Welcome to Brgy. Kaongkod Portal - Account Verification';
 											$mail->Body = "Good day $fname!<br><br>
 											Before you can use your account, you need to verify it first before you can use your E-Barangay System account to access our platform.<br><br>
 											<h2> ACCOUNT CREDENTIALS </h2><br>
@@ -540,7 +578,7 @@
 											
 											Note – This is a system autogenerated password. For security purposes, do not share this to anyone and please update your password as soon as you login to the system. <br><br>
 											Best Regards, <br>
-											Barangay Salvacion 1st";
+											Barangay Kaongkod";
 											
 											if ($mail->send()) {
 												echo "<script>alert('Resident has been added. Password has been sent to email!');window.open('residents', '_self')</script>";
@@ -584,15 +622,52 @@
 		<script src='../dashboard/assets/vendors/calendar/moment.min.js'></script>   
 		<script src="../dashboard/assets/js/jquery.dataTables.min.js"></script>
 		<script src="../dashboard/assets/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#table').DataTable();
-			});
-			$(document).ready(function(){
-				$('[data-toggle="tooltip"]').tooltip();
+
+		<script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+
+            $('.archive-btn').on('click', function() {
+                var residentId = $(this).data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you really want to archive this resident?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, archive it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Perform the archive action by submitting the form or using AJAX
+                        $.ajax({
+                            type: "POST",
+                            url: "model.php", // Update with your actual URL for archiving
+                            data: { id: residentId },
+                            success: function(response) {
+                                Swal.fire(
+                                    'Archived!',
+                                    'The resident has been archived.',
+                                    'success'
+                                ).then(() => {
+                                    location.reload(); // Reload the page after successful archive
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+		<script>
+			document.querySelector('input[name="contact"]').addEventListener('input', function (e) {
+				let value = e.target.value;
+				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
 			});
 		</script>
-	</body>
 
+</body>
 </html>
