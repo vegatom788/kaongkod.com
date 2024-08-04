@@ -384,7 +384,7 @@ if (isset($_POST['archive_hidden'])) {
 															<label class="col-form-label"><b>Resident ID</b></label>
 															<input class="form-control" type="text" name="r_id" value="<?php echo 'BK-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly>
 														</div>
-														<div class="form-group col-3">
+														<div class="form-group col-4">
 															<label class="col-form-label"><b>Firstname</b></label>
 															<input class="form-control" type="text" name="fname" required maxlength="30">
 														</div>
