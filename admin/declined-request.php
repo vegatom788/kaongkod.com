@@ -199,8 +199,9 @@
 										<th>Name</th>
 										<th>Request Type</th>
 										<th>Purpose</th>
-										<th>Date Approved</th>
+										<th>Date Declined</th>
 										<th width="80">Status</th>
+										<th width="80">Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -293,12 +294,48 @@
 												?>
 											</center>
 										</td>
-									</tr>
+									<td>
+										<form method="POST" style="margin-top: 10px;" onsubmit="return confirm('Are you sure you want to delete this?');">
+											<input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
+											<button type="submit" name="delete_request" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
+										</form>
+									</td>
+								</tr>
 									<?php
 
 										}
 									}
 									?>
+									
+											<?php
+												try {
+													// Assuming you have a PDO connection established, create a Model instance
+													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
+													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+													$model = new Model($pdo);
+
+													// Check if the form is submitted
+													if (isset($_POST['delete_request'])) {
+														$id = $_POST['request_id'];
+														
+														// Call deleteResident method
+														if ($model->deleteDeclinedRequest($id)) {
+															echo "<script>alert('Declined Request deleted successfully');</script>";
+														} else {
+															echo "<script>alert('Declined Request deleted successfully');</script>";
+														}
+
+														// Redirect back to the same page after deletion
+														echo "<script>window.open('declined-request.php', '_self');</script>";
+														exit;
+													}
+												} catch (PDOException $e) {
+													// Handle PDO exception (connection or query error)
+													echo "Connection failed: " . $e->getMessage();
+													// You might want to log the error or display a user-friendly message
+													exit;
+												}
+												?>
 								</tbody>
 							</table>
 						</div>

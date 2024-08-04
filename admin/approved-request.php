@@ -44,10 +44,10 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(116.3, 146.7);
-		$pdf->Write(0, "2");
+		$pdf->Write(0, "4");
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 
 	if(isset($_POST["residency"])) { 
@@ -81,7 +81,7 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(101.5, 170);
-		$pdf->Write(0, "2022");
+		$pdf->Write(0, "2024");
 
 		$pdf->SetXY(65, 116.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
@@ -94,7 +94,7 @@
 
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 
 	if(isset($_POST["indigency"])) { 
@@ -129,11 +129,11 @@
 		$pdf->Write(0, strtoupper($_POST['month']));
 
 		$pdf->SetXY(106.5, 159.4);
-		$pdf->Write(0, "2022");
+		$pdf->Write(0, "2024");
 
 
 		ob_end_clean();
-		$pdf->Output('I', 'BARANGAY SALVACION 1ST.pdf');
+		$pdf->Output('I', 'BARANGAY KAONGKOD.pdf');
 	}
 ?>
 <!DOCTYPE html>
@@ -371,6 +371,10 @@
 												<?php
 												}
 												?>
+												<form method="POST" style="margin-top: 10px;" onsubmit="return confirm('Are you sure you want to delete this?');">
+													<input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+													<button type="submit" name="delete_entry" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
+												</form>
 											</center>
 										</td>
 									</tr>
@@ -430,6 +434,36 @@
 									}
 
 									?>
+
+												<?php
+												try {
+													// Assuming you have a PDO connection established, create a Model instance
+													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
+													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+													$model = new Model($pdo);
+
+													// Check if the form is submitted
+													if (isset($_POST['delete_entry'])) {
+														$id = $_POST['delete_id'];
+														
+														// Call deleteResident method
+														if ($model->deleteRequest($id)) {
+															echo "<script>alert('Approved Request deleted successfully');</script>";
+														} else {
+															echo "<script>alert('Approved Request deleted successfully');</script>";
+														}
+
+														// Redirect back to the same page after deletion
+														echo "<script>window.open('approved-request.php', '_self');</script>";
+														exit;
+													}
+												} catch (PDOException $e) {
+													// Handle PDO exception (connection or query error)
+													echo "Connection failed: " . $e->getMessage();
+													// You might want to log the error or display a user-friendly message
+													exit;
+												}
+												?>
 								</tbody>
 							</table>
 						</div>
