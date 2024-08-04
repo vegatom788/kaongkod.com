@@ -497,106 +497,89 @@ if (isset($_POST['archive_hidden'])) {
 								</div>
 
 								<?php
-									$category = 0;
-									$status = 1;
-									if (isset($_POST['add_resident'])) {
-										$r_id = $_POST['r_id'];
-										$fname = $_POST['fname'];
-										$mname = isset($_POST['mname']) ? $_POST['mname'] : "N/A";
-										$lname = $_POST['lname'];
-										$time = strtotime($_POST['bdate']);
-										$bdate = date('Y-m-d', $time);
-										$gender = $_POST['gender'];
-										$civil_status = $_POST['civil_status'];
-										$resident_status = $_POST['resident_status'];
-										$address1 = $_POST['address1'];
-										$address2 = $_POST['address2'];
-										$address3 = $_POST['address3'];
-										$bplace = $_POST['bplace'];
-										$occupation = $_POST['occupation'];
-										$ext = $_POST['ext'];
-										$res_since = $_POST['res_since'];
-										$date = date("Y-m-d H:i:s");
-										$contact = isset($_POST['contact']) ? $_POST['contact'] : "N/A";
+$category = 0;
+$status = 1;
 
+if (isset($_POST['add_resident'])) {
+    $r_id = $_POST['r_id'];
+    $fname = $_POST['fname'];
+    $mname = isset($_POST['mname']) ? $_POST['mname'] : "N/A";
+    $lname = $_POST['lname'];
+    $time = strtotime($_POST['bdate']);
+    $bdate = date('Y-m-d', $time);
+    $gender = $_POST['gender'];
+    $civil_status = $_POST['civil_status'];
+    $resident_status = $_POST['resident_status'];
+    $address1 = $_POST['address1'];
+    $address2 = $_POST['address2'];
+    $address3 = $_POST['address3'];
+    $bplace = $_POST['bplace'];
+    $occupation = $_POST['occupation'];
+    $ext = $_POST['ext'];
+    $res_since = $_POST['res_since'];
+    $date = date("Y-m-d H:i:s");
+    $contact = isset($_POST['contact']) ? $_POST['contact'] : "N/A";
+    $email = $_POST['email'];
+    $digits_main = 'generated_password'; // Replace this with actual password generation logic
+    $digits_hash = password_hash($digits_main, PASSWORD_DEFAULT);
 
-										$email = $_POST['email'];
-										$digits_hash = password_hash($digits_main, PASSWORD_DEFAULT);
+    if (empty($email)) {
+        $result = $model->addResident($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact);
 
-										if ($email == "") {
+        if ($result) {
+            $model->updateIdCounter(); // Assuming only one call is needed
+            echo "<script>alert('Resident has been added!');window.open('residents', '_self')</script>";
+        } else {
+            echo "<script>alert('Failed to add resident.');window.open('residents', '_self')</script>";
+        }
+    } else {
+        $result = $model->addResident2($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact, $email, $digits_hash);
 
-											$result = $model->addResident($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact);
+        if ($result) {
+            $model->updateIdCounter(); // Assuming only one call is needed
+            
+            require 'vendor/autoload.php';
+            use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\Exception;
 
-											if ($checker == 0 && $result == true) {
-												$model->updateIdCounter();
-												$model->updateIdCounter();
-											}
+            $mail = new PHPMailer(true);
+            try {
+                $mail->SMTPDebug = PHPMailer::DEBUG_SERVER;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'azraelgriffin.riego@gmail.com'; // Use environment variables for sensitive info
+                $mail->Password = 'ecavbuyseyfggbcm'; // Use environment variables for sensitive info
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = 465;
 
-											else if ($checker == 1 && $result == true) {
-												$model->updateIdCounter();
-											}
-	                                        
-	                                        echo "<script>alert('Resident has been added!');window.open('residents', '_self')</script>";
+                $mail->setFrom('azraelgriffin.riego@gmail.com', 'Barangay Kaongkod');
+                $mail->addAddress($email);
 
-										}
-										else {
+                $mail->isHTML(true);
+                $mail->Subject = 'Welcome to Brgy. Kaongkod Portal - Account Verification';
+                $mail->Body = "Good day $fname!<br><br>
+                Before you can use your account, you need to verify it first before you can use your E-Barangay System account to access our platform.<br><br>
+                <h2> ACCOUNT CREDENTIALS </h2><br>
+                <h3>Email: $email<br></h3>
+                <h3>Default password: $digits_main </h3><br>
+                
+                Note – This is a system autogenerated password. For security purposes, do not share this with anyone and please update your password as soon as you log in to the system. <br><br>
+                Best Regards, <br>
+                Barangay Kaongkod";
 
-											$result = $model->addResident2($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact, $email, $digits_hash);
+                $mail->send();
+                echo "<script>alert('Resident has been added. Password has been sent to email!');window.open('residents', '_self')</script>";
+            } catch (Exception $e) {
+                echo "<script>alert('Failed to send email. Error: {$mail->ErrorInfo}');window.open('residents', '_self')</script>";
+            }
+        } else {
+            echo "<script>alert('Failed to add resident.');window.open('residents', '_self')</script>";
+        }
+    }
+}
+?>
 
-											if ($checker == 0 && $result == true) {
-												$model->updateIdCounter();
-												$model->updateIdCounter();
-											}
-
-											else if ($checker == 1 && $result == true) {
-												$model->updateIdCounter();
-											}
-	                                        
-	                                        require 'vendor/autoload.php';
-
-											$mail = new PHPMailer(true);
-												
-											$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-											$mail->isSMTP();
-											$mail->Host = 'smtp.gmail.com';
-											$mail->SMTPAuth = true;
-											$mail->Username = 'azraelgriffin.riego@gmail.com';
-											$mail->Password = 'ecavbuyseyfggbcm';
-											$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-											$mail->Port = 465;
-
-	                                        $mail->setFrom("azraelgriffin.riego@gmail.com", 'Barangay Kaongkod');
-											$mail->addAddress($email);
-
-											$mail->isHTML(true);
-											$mail->Subject = 'Welcome to Brgy. Kaongkod Portal - Account Verification';
-											$mail->Body = "Good day $fname!<br><br>
-											Before you can use your account, you need to verify it first before you can use your E-Barangay System account to access our platform.<br><br>
-											<h2> ACCOUNT CREDENTIALS </h2><br>
-											<h3>Email: $email<br></h3>
-											<h3>Default password: $digits_main </h3><br>
-											
-											Note – This is a system autogenerated password. For security purposes, do not share this to anyone and please update your password as soon as you login to the system. <br><br>
-											Best Regards, <br>
-											Barangay Kaongkod";
-											
-											if ($mail->send()) {
-												echo "<script>alert('Resident has been added. Password has been sent to email!');window.open('residents', '_self')</script>";
-											} 
-
-											else {
-												echo $mail->ErrorInfo;
-											}
-
-
-	                                        
-											
-
-										}
-										
-									}
-
-								?>
 					</div>
 				</div>
 			</div>
