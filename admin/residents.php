@@ -384,7 +384,7 @@ if (isset($_POST['archive_hidden'])) {
 															<label class="col-form-label"><b>Resident ID</b></label>
 															<input class="form-control" type="text" name="r_id" value="<?php echo 'BK-'.date("Y").'-'.str_pad($id_counter + 1, 4, "0", STR_PAD_LEFT); ?>" readonly>
 														</div>
-														<div class="form-group col-3">
+														<div class="form-group col-4">
 															<label class="col-form-label"><b>Firstname</b></label>
 															<input class="form-control" type="text" name="fname" required maxlength="30">
 														</div>
@@ -396,13 +396,9 @@ if (isset($_POST['archive_hidden'])) {
 															<label class="col-form-label"><b>Lastname</b></label>
 															<input class="form-control" type="text" name="lname" required maxlength="30">
 														</div>
-														<div class="form-group col-3">
+														<div class="form-group col-2">
 															<label class="col-form-label"><b>Suffix Name</b></label>
-															<input class="form-control" 
-															type="text" 
-															name="ext" 
-															maxlength="5"
-															placeholder="Leave blank if no suffix">
+															<input class="form-control" type="text" name="ext" maxlength="5">
 														</div>
 														<div class="form-group col-4">
 															<label class="col-form-label"><b>Gender</b></label>
@@ -421,14 +417,8 @@ if (isset($_POST['archive_hidden'])) {
 														</div>
 
 														<div class="form-group col-6">
-																<label class="col-form-label"><b>Contact</b></label>
-																<input class="form-control" 
-																type="tel" 
-																name="contact" 
-																maxlength="11" 
-																pattern="[0-9]{11}" 
-																title="Please enter exactly 11 digits" 
-																value="09">
+															<label class="col-form-label"><b>Contact</b></label>
+															<input class="form-control" type="number" name="contact" maxlength="14" value="09">
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Civil Status</b></label>
@@ -465,15 +455,8 @@ if (isset($_POST['archive_hidden'])) {
 															<input class="form-control" type="text" name="address3"  maxlength="10" required>
 														</div>
 														<div class="form-group col-3">
-																<label class="col-form-label"><b>Resident Since</b></label>
-																<select class="form-control" name="res_since" required="">
-																<option value="" disabled selected hidden="" >-- Please select --</option>
-																<script type="text/javascript">
-																	for (var i = 2025; i >= 1900; i--) {
-																	document.write("<option value='" + i +"'>" + i + "</option>");
-																	}
-																</script>			
-																</select>
+															<label class="col-form-label"><b>Resident Since</b></label>
+															<input class="form-control" type="number" name="res_since" required maxlength="4">
 														</div>
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Email</b><!-- <br>(Leave blank if resident has no email) --></label>
@@ -662,12 +645,6 @@ if (isset($_POST['archive_hidden'])) {
             });
         });
     </script>
-		<script>
-			document.querySelector('input[name="contact"]').addEventListener('input', function (e) {
-				let value = e.target.value;
-				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
-			});
-		</script>
 
 </body>
 </html>
