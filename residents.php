@@ -172,19 +172,6 @@
 		<script src="styles/assets/vendors/owl-carousel/owl.carousel.js"></script>
 		<script src="styles/assets/js/functions.js"></script>
 		<script src="styles/assets/js/contact.js"></script>
-		<script>
-			// Get the password input field and the toggle button
-			const passwordField = document.getElementById('password');
-			const togglePassword = document.getElementById('togglePassword');
-
-			// Toggle password visibility when the eye icon is clicked
-			togglePassword.addEventListener('click', function() {
-				const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-				passwordField.setAttribute('type', type);
-				
-				// Change eye icon accordingly
-				togglePassword.textContent = type === 'password' ? '👁️' : '🔒';
-			});
-		</script>
+		
 	</body>
 </html>
