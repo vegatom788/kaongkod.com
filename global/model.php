@@ -319,41 +319,64 @@
 
 		public function residentSignIn($sid, $sid1, $pw) {
 			$query = "SELECT id, password, status, verified FROM residents WHERE email = ? OR contact_number = ?";
-			
-			if ($stmt = $this->conn->prepare($query)) {
+			if($stmt = $this->conn->prepare($query)) {
 				$stmt->bind_param("ss", $sid, $sid1);
 				$stmt->execute();
 				$stmt->bind_result($id, $hashed_pass, $fetched_status, $verified);
 				$stmt->store_result();
-				
-				if ($stmt->num_rows > 0) {
-					if ($stmt->fetch()) {
+				if($stmt->num_rows > 0) {
+					if($stmt->fetch()) {
 						if (password_verify($pw, $hashed_pass)) {
 							if ($fetched_status == 1) {
 								if ($verified == 1) {
 									$_SESSION['sess2'] = $id;
 									echo "<script>window.open('residents/homepage', '_self');</script>";
 									exit();
-								} else {
-									// Handle the case where the account is not verified
-									echo "<script>alert('Account not verified! Please contact Administrator.');</script>";
 								}
-							} else {
-								// Handle the case where the account is not activated
-								echo "<script>alert('Account not activated. Please contact Administrator!');</script>";
+
+								else {
+									$_SESSION['sess2'] = $id;
+									echo "<script>window.open('residents/homepage', '_self');</script>";
+									exit();
+								}
 							}
-						} else {
-							// Handle incorrect password
+							else {
+								echo "<script>alert('Account not activated. Please contact Administrator!')</script>";
+							}
+						}
+
+						else {
 							echo "<script>alert('Wrong Password!');</script>";
+							if (empty($_SESSION['slattempt'])) {
+								$_SESSION['slattempt'] = 1;
+							}
+							
+							else {
+								switch ($_SESSION['slattempt']) {
+									case 1:
+										$_SESSION['slattempt']++;
+										break;
+									case 2:
+										$_SESSION['slattempt']++;
+										break;
+									case 3:
+										$_SESSION['slattempt']++;
+										break;
+									default:
+										unset($_SESSION['slattempt']);
+										setcookie('srlimited', '5', time() + (60), "/");
+										setcookie('expiration_date', time() + (60), time() + (60), "/");
+										echo "<script>alert('Reached limit!');window.open('index.php', '_self')</script>";
+								}
+							}
 						}
 					}
-				} else {
-					// Handle case where email or contact number is not found
-					echo "<script>alert('Email or contact number not found in database!');</script>";
+				}
+				else {
+					echo "<script>alert('Email not found in database!');</script>";
 				}
 				$stmt->close();
 			}
-			
 			$this->conn->close();
 		}
 		
