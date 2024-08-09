@@ -348,7 +348,6 @@
 									</div>
 								</div> -->
 								<div class="col-lg-12 m-b30">
-									<br>
 									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Verify Account</button>
 								</div>
 								<?php
