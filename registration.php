@@ -53,7 +53,7 @@
 		<div class="page-wraper">
 			<div id="loading-icon-bx"></div>
 			<div class="account-form">
-				<div class="account-head" style="background-image:url(assets/images/m.jpg);"></div>
+				<div class="account-head" style="background-image:url(assets/images/n1.jpg);"></div>
 				<div class="account-form-inner">
 					<div class="account-container">
 						<div class="heading-bx left">
