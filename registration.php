@@ -62,12 +62,10 @@
 						<form class="contact-bx" method="POST">
 							<div class="row placeani">
 								<div class="col-lg-12">
-									<div class="form-group">
-										<div class="input-group">
-											<label>ID Number</label>
-											<input class="form-control" type="text" name="id_number" required maxlength="20">
-										</div>
-									</div>
+								<div class="form-group">
+									<label for="id_number">ID Number</label>
+									<input id="id_number" class="form-control" type="text" name="id_number" required maxlength="20">
+								</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group">
