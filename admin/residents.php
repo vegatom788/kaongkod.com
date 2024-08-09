@@ -227,14 +227,14 @@
 
                             if ($verified == 1) {
                                 if ($row['email_verif'] == 1) {
-                                    $verified_text = 'Registered';
+                                    $verified_text = 'Verified';
                                     $verified_class = 'success';
                                 } else {
-                                    $verified_text = 'Registered';
+                                    $verified_text = 'Verified';
                                     $verified_class = 'success';
                                 }
                             } else {
-                                $verified_text = '<span style="font-size: 12px;">Unregistered</span>';
+                                $verified_text = '<span style="font-size: 12px;">Not Verified</span>';
                                 $verified_class = 'danger';
                             }
 
