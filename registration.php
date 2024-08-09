@@ -80,7 +80,7 @@
 								<div class="col-lg-12 m-b30">
 									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Register Account</button>
 								</div>
-								<div class="col-lg-12 m-b30">Already have an account? <a href="residents.php">Login here</a></div>
+								<div class="col-lg-12 m-b30">Is your account already verified? <a href="residents.php">Login here</a></div>
 								<div class="col-lg-12 m-b30">
 									<?php
 
