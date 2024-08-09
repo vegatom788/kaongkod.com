@@ -62,7 +62,7 @@
 					<div class="account-container">
 						<form class="contact-bx" method="POST">
 							<div class="heading-bx left">
-								<h2 class="title-head">Registration <span></span></h2>
+								<h2 class="title-head">Account Verification <span></span></h2>
 							</div>	
 							<div class="row placeani">
 								<?php
@@ -349,7 +349,7 @@
 								</div>
 								<div class="col-lg-12 m-b30">
 									<br>
-									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Register Account</button>
+									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Verify Account</button>
 								</div>
 								<?php
 
