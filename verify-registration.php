@@ -498,20 +498,23 @@
 				});
 			});
 
-			var password = document.getElementById("password"), confirm_password = document.getElementById("confirm-password");
+			var password = document.getElementById("password"),
+        confirm_password = document.getElementById("confirm-password");
 
-			function validatePassword() {
-				if(password.value != confirm_password.value) {
-					confirm_password.setCustomValidity("Passwords don't match.");
-				} 
+    function validatePassword() {
+        if (password.value !== confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords don't match.");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
 
-				else {
-					confirm_password.setCustomValidity('');
-				}
-			}
+    // Bind event listeners
+    password.addEventListener('input', validatePassword);
+    confirm_password.addEventListener('input', validatePassword);
 
-			password.onchange = validatePassword;
-			confirm_password.onkeyup = validatePassword;
+    // Initial validation in case of page reload
+    validatePassword();
 		</script>
 	</body>
 </html>
