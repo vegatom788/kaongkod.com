@@ -134,10 +134,10 @@
 
 														if ($verified == 1) {
 
-															$verified = '<center><span class="badge badge-success"><a href="" style="font-size: 14px;color: white;">Registered</a></span></center> ';
+															$verified = '<center><span class="badge badge-success"><a href="" style="font-size: 14px;color: white;">Verified</a></span></center> ';
 														}
 														else {
-															$verified = '<center><span class="badge badge-danger"><a href="" style="font-size: 14px;color: white;">Unregistered</a></span></center> ';
+															$verified = '<center><span class="badge badge-danger"><a href="" style="font-size: 14px;color: white;">Not Verified</a></span></center> ';
 														}
 											?>
 											<tr>
