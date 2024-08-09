@@ -68,12 +68,10 @@
 								</div>
 								</div>
 								<div class="col-lg-12">
-									<div class="form-group">
-										<div class="input-group">
-											<label>Last Name</label>
-											<input class="form-control" type="text" name="last_name" required maxlength="150">
-										</div>
-									</div>
+								<div class="form-group">
+									<label for="last_name">Last Name</label>
+									<input id="last_name" class="form-control" type="text" name="last_name" required maxlength="150">
+								</div>
 								</div>
 								<div class="col-lg-12 m-b30">
 									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Verify Account</button>
