@@ -147,8 +147,8 @@
 						<div class="form-group">
 							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
 						</div>
-							<center><!--<br>Don't have an account? <a href="registration.php">Register here</a>
-								<br><br><br> -->
+							<center><br>Don't have an account? <a href="registration.php">Register here</a>
+								<br><br><br>
 								Back to <a href="index.php">Homepage</a>
 							</center>
 					</form>
