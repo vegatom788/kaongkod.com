@@ -155,7 +155,7 @@
 								?>
 							</div>
 							<br>
-							<div class="heading-bx left">
+							<!-- <div class="heading-bx left">
 								<h2 class="title-head">Census <span></span></h2>
 							</div>	
 							<div class="row placeani">
@@ -346,7 +346,7 @@
 											<button type="button" class="red-hover btn button-md btn-block" style="background-color: #267621!important;" id="add-family">Add a family member</button>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<div class="col-lg-12 m-b30">
 									<br>
 									<button name="submit" type="submit" value="Submit" class="red-hover btn button-md" style="background-color: #267621!important;" onclick="return validateSelect()">Verify Account</button>
