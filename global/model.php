@@ -1468,18 +1468,7 @@
 			return $data;
 		}
 		
-		public function insertCensus($room_number, $house_number, $block_number, $lot_number, $street, $subdivision, $monthly_income, $salary, $business, $remittance, $others, $head_fname, $head_mname, $head_lname, $head_sname, $head_gender, $head_civil_status, $head_birthday, $head_email, $head_contact, $head_employed, $head_self_employed, $head_informal, $head_solo_parent, $head_pwd, $resident_id) {
-			$query = "INSERT INTO census (room_number, house_number, block_number, lot_number, street, subdivision, monthly_income, salary, business, remittance, others, head_fname, head_mname, head_lname, head_sname, head_gender, head_civil_status, head_birthday, head_email, head_contact, head_employed, head_self_employed, head_informal, head_solo_parent, head_pwd, resident_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-			if ($stmt = $this->conn->prepare($query)) {
-				$stmt->bind_param('sssssssiiissssssssssiiiiii', $room_number, $house_number, $block_number, $lot_number, $street, $subdivision, $monthly_income, $salary, $business, $remittance, $others, $head_fname, $head_mname, $head_lname, $head_sname, $head_gender, $head_civil_status, $head_birthday, $head_email, $head_contact, $head_employed, $head_self_employed, $head_informal, $head_solo_parent, $head_pwd, $resident_id);
-				$stmt->execute();
-				$last_id = $this->conn->insert_id;
-				$stmt->close();
-			}
-
-			return $last_id;
-		}
+		
 
 		public function insertHouseholdMember($fname, $mname, $lname, $sname, $gender, $civil_status, $birthday, $email, $contact, $head_relation, $employed, $self_employed, $informal, $solo_parent, $pwd, $census_id, $resident_id) {
 			$query = "INSERT INTO census_household (fname, mname, lname, sname, gender, civil_status, birthday, email, contact, head_relation, employed, self_employed, informal, solo_parent, pwd, census_id, resident_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
