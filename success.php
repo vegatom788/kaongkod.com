@@ -53,7 +53,7 @@
 				<div class="account-form-inner">
 					<div class="">
 						<div class="heading-bx left" align="center">
-							<h3><span>You have <span style='color: green;'>succesfully registered</span>.<!-- <br>The admin needs to approve your<br>account before you can login. --><br><img src='assets/images/icon.png' style='width: 200px; height: 200px;'><br></span>
+							<h3><span>You have <span style='color: green;'>successfully verified your account</span>.<!-- <br>The admin needs to approve your<br>account before you can login. --><br><img src='assets/images/k.png' style='width: 200px; height: 200px;'><br></span>
 							<?php
 							$details_id = 1;
 							if ($details_id == 0) {
