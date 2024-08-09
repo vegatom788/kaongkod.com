@@ -2983,7 +2983,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 	width: 500px;
 	min-width: 500px;
 	height: 100vh;
-	background-position: center;
+	background-position: left;
 	text-align: center;
 	align-items: center;
 	display: flex;
