@@ -137,7 +137,7 @@
 
 															$model->updateResidentPhoto($unique);
 
-															echo "<script>alert('Profile picture has been updated');window.open('my-profile', '_self');</script>";
+															echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
 														}
 														else {
 															echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
