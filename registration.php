@@ -46,9 +46,6 @@
 			.btn.dropdown-toggle:hover, .btn.dropdown-toggle:focus {
 				color: black;
 			}
-			.account-heads:after{
-				background: transparent;
-			}
 		</style>
 	</head>
 	<?php include 'assets/css/color/color-1.php'; ?>
