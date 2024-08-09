@@ -370,7 +370,7 @@
 										$head_solo_parent = (isset($_POST['head_solo_parent'])) ? $_POST['head_solo_parent'] : 0;
 										$head_pwd = (isset($_POST['head_pwd'])) ? $_POST['head_pwd'] : 0;
 
-										$last_id = $model->insertCensus($_POST['room_number'], $_POST['house_number'], $_POST['block_number'], $_POST['lot_number'], $_POST['street'], $_POST['subdivision'], $_POST['monthly_income'], $salary, $business, $remittance, $_POST['others'], $_POST['head_first_name'], $_POST['head_middle_name'], $_POST['head_last_name'], $_POST['head_suffix_name'], $_POST['head_gender'], $_POST['head_civil_status'], $_POST['head_birthday'], $_POST['head_email'], $_POST['head_contact'], $head_employed, $head_self_employed, $head_informal, $head_solo_parent, $head_pwd, $_SESSION['verify_resident']);
+										
 
 										$i = 0;
 
