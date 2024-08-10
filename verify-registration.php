@@ -114,7 +114,7 @@
 										<option value="Widowed" <?php if ($row['civil_status'] == 'Widowed') { echo 'selected'; } ?>>Widowed</option>
 									</select>
 								</div>
-								<div style="padding: 10px;"></div>
+								
 								<div class="form-group">
 									<label for="contact">Contact Number</label>
 									<input name="contact" id="contact" type="text" class="form-control" required>
