@@ -2995,7 +2995,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 }
 .account-head:after{
 	opacity:0.9;
-	content:"";
+	
 	position:absolute;
 	left:0;
 	top:0;
