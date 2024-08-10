@@ -391,7 +391,7 @@
 									}
 
 								?>
-								<div class="col-lg-12 m-b30">Not your Information? <a href="residents.php">Back here</a></div>
+								<div class="col-lg-12 m-b30">Not your Information? <a href="residents.php" style="color: #0866ff;">Back here</a></div>
 							</div>
 						</form>
 					</div>
