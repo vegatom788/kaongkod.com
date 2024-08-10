@@ -116,7 +116,7 @@
 			}
 
 			.ml-auto {
-				color: blue;
+				color: #0866ff;
 			}
 		</style>
 	</head>
@@ -146,7 +146,7 @@
 								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
 								<label class="custom-control-label" for="customControlAutosizing">Remember me</label>
 							</div>
-							<a href="admin.php" class="ml-auto" style="color: blue;">Administrator Login</a>
+							<a href="admin.php" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
 						</div>
 						<div class="form-group">
 							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
