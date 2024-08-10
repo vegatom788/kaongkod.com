@@ -153,7 +153,7 @@
 						</div>
 							<center>Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
 								<br><br><br>
-								Back to <a href="index.php">Homepage</a>
+								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
 							</center>
 					</form>
 				</div>
