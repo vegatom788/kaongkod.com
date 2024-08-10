@@ -115,38 +115,26 @@
 									</select>
 								</div>
 								<div style="padding: 10px;"></div>
-								<div class="col-lg-12">
-									<div class="form-group">
-										<div class="input-group">
-											<label>Contact Number</label>
-											<input name="contact" type="text" class="form-control" required>
-										</div>
-									</div>
+								<div class="form-group">
+									<label for="contact">Contact Number</label>
+									<input name="contact" id="contact" type="text" class="form-control" required>
 								</div>
-								<div class="col-lg-12">
-									<div class="form-group">
-										<div class="input-group">
-											<label>Email</label>
-											<input name="email" type="email" class="form-control" required>
-										</div>
-									</div>
+
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input name="email" id="email" type="email" class="form-control" required>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<div class="input-group"> 
-											<label>Password</label>
-											<input id="password" name="password" type="password" class="form-control" minlength="5" maxlength="20" required>
-										</div>
-									</div>
+
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input id="password" name="password" type="password" class="form-control" minlength="5" maxlength="20" required>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<div class="input-group"> 
-											<label>Confirm Password</label>
-											<input id="confirm-password" type="password" class="form-control" minlength="5" maxlength="20" required>
-										</div>
-									</div>
+
+								<div class="form-group">
+									<label for="confirm-password">Confirm Password</label>
+									<input id="confirm-password" type="password" class="form-control" minlength="5" maxlength="20" required>
 								</div>
+
 								<?php
 
 										}
