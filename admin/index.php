@@ -32,7 +32,7 @@
 
 		<title>Brgy. Kaongkod</title>
 
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
