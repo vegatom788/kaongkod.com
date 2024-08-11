@@ -398,7 +398,7 @@
 
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Defendant</b></label>
-															<input type="text" class="form-control" name="defendant_name" placeholder="Type the defendant's name here" required>
+															<input type="text" class="form-control" name="def_id" placeholder="Type the defendant's name here" required>
 														</div>
 
 														<div class="form-group col-6">
