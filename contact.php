@@ -30,7 +30,8 @@ include 'content/head.php';
 		<title>Brgy. Kaongkod</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.min.js"></script>
