@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2024 at 01:42 PM
+-- Generation Time: Jul 28, 2024 at 07:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -137,9 +137,7 @@ CREATE TABLE `census` (
 --
 
 INSERT INTO `census` (`census_id`, `room_number`, `house_number`, `block_number`, `lot_number`, `street`, `subdivision`, `monthly_income`, `salary`, `business`, `remittance`, `others`, `head_fname`, `head_mname`, `head_lname`, `head_sname`, `head_gender`, `head_civil_status`, `head_birthday`, `head_email`, `head_contact`, `head_employed`, `head_self_employed`, `head_informal`, `head_solo_parent`, `head_pwd`, `resident_id`) VALUES
-(9, '45', '2', '14', '25', 'Barbuco compound', 'Victoria reyes', 'PHP 100,001 and above', 1, 0, 0, '', 'Mary jean', 'Tagnipez', 'barbuco', '', 'Female', 'Married', '2015-10-13', 'janebrbco@gmail.com', '09217519616', 0, 0, 0, 0, 0, 57),
-(10, '1', '2', '3', '4', 'Burgos', 'Sample', 'PHP 10,000 and below', 1, 0, 0, '', 'Jaden', 'S.', 'Smith', '', 'Male', 'Single', '2024-08-04', 'jadensmith@gmail.com', '09104014315', 1, 0, 0, 0, 0, 92),
-(11, '1', '2', '3', '4', 'Burgos', 'Sample', 'PHP 10,000 and below', 1, 0, 0, '', 'Jaden', 'S.', 'Smith', '', 'Male', 'Single', '2024-08-04', 'marollanocristine182@gmail.com', '09104014290', 1, 0, 0, 0, 0, 96);
+(9, '45', '2', '14', '25', 'Barbuco compound', 'Victoria reyes', 'PHP 100,001 and above', 1, 0, 0, '', 'Mary jean', 'Tagnipez', 'barbuco', '', 'Female', 'Married', '2015-10-13', 'janebrbco@gmail.com', '09217519616', 0, 0, 0, 0, 0, 57);
 
 -- --------------------------------------------------------
 
@@ -289,14 +287,7 @@ INSERT INTO `id_counter` (`id`) VALUES
 (0056),
 (0057),
 (0058),
-(0059),
-(0060),
-(0061),
-(0062),
-(0063),
-(0064),
-(0065),
-(0066);
+(0059);
 
 -- --------------------------------------------------------
 
@@ -497,7 +488,8 @@ CREATE TABLE `residents` (
 --
 
 INSERT INTO `residents` (`id`, `id_number`, `fname`, `mname`, `lname`, `gender`, `civil_status`, `email`, `password`, `contact_number`, `address`, `address2`, `resident_since`, `birth_date`, `ext`, `address3`, `birth_place`, `occupation`, `status`, `verified`, `email_verif`, `date_registered`, `resident_status`, `photo`) VALUES
-(78, 'BK-2024-0047', 'Tom Dominique', 'S.', 'Vega', 'Male', 'Single', 'vegatom788@gmail.com', '$2y$10$n1cdh4ygJVJtLrw9wh5ZnOMOpQDwksuc506IvHzZDm.HfgpBSOyWe', '09488502209', '10', '20', '2021', '2002-10-09', '', '1', 'Kaongkod, Madridejos, Cebu', 'Student', 1, 1, 1, '2024-07-08 05:30:19', 'Yes', '17203880121540231394668b09ac9ddd4');
+(78, 'BK-2024-0047', 'Tom Dominique', 'S.', 'Vega', 'Male', 'Single', 'vegatom788@gmail.com', '$2y$10$n1cdh4ygJVJtLrw9wh5ZnOMOpQDwksuc506IvHzZDm.HfgpBSOyWe', '09488502209', '10', '20', '2021', '2002-10-09', '', '1', 'Kaongkod, Madridejos, Cebu', 'Student', 1, 1, 1, '2024-07-08 05:30:19', 'Yes', '17203880121540231394668b09ac9ddd4'),
+(90, 'BK-2024-0059', 'Juvy', 'S.', 'Vega', 'Female', 'Married', 'juvyvega3@gmail.com', '$2y$10$pv9BpR7D/05DBq0aYPCAyOSTZmyxdRIW6hMTf014TzES92eBHEVrm', '09104014314', '1', '2', '2022', '2024-07-01', '', '3', 'Kaongkod, Madridejos, Cebu', 'BHW', 1, 1, 1, '2024-07-22 23:38:24', 'Yes', '17216628431845000607669e7d7b69c94');
 
 -- --------------------------------------------------------
 
@@ -8771,40 +8763,7 @@ INSERT INTO `visit` (`id`, `visit_date`) VALUES
 (8250, '2024-07-28 23:20:40'),
 (8251, '2024-07-28 23:21:21'),
 (8252, '2024-07-29 00:08:00'),
-(8253, '2024-07-29 00:08:05'),
-(8254, '2024-07-30 12:04:12'),
-(8255, '2024-07-30 19:57:40'),
-(8256, '2024-08-04 00:20:11'),
-(8257, '2024-08-04 00:55:24'),
-(8258, '2024-08-04 00:57:29'),
-(8259, '2024-08-04 01:01:04'),
-(8260, '2024-08-04 01:04:17'),
-(8261, '2024-08-04 01:24:55'),
-(8262, '2024-08-04 01:32:23'),
-(8263, '2024-08-04 01:44:31'),
-(8264, '2024-08-04 01:44:39'),
-(8265, '2024-08-04 09:04:22'),
-(8266, '2024-08-04 12:22:00'),
-(8267, '2024-08-04 12:26:29'),
-(8268, '2024-08-10 00:13:13'),
-(8269, '2024-08-10 00:14:18'),
-(8270, '2024-08-10 00:14:40'),
-(8271, '2024-08-10 00:22:34'),
-(8272, '2024-08-11 19:26:55'),
-(8273, '2024-08-11 19:39:18'),
-(8274, '2024-08-11 19:39:37'),
-(8275, '2024-08-11 19:39:40'),
-(8276, '2024-08-11 19:39:44'),
-(8277, '2024-08-11 19:39:46'),
-(8278, '2024-08-11 19:39:46'),
-(8279, '2024-08-11 19:39:48'),
-(8280, '2024-08-11 19:39:51'),
-(8281, '2024-08-11 19:39:53'),
-(8282, '2024-08-11 19:39:54'),
-(8283, '2024-08-11 19:40:47'),
-(8284, '2024-08-11 19:41:02'),
-(8285, '2024-08-11 19:41:24'),
-(8286, '2024-08-11 19:41:40');
+(8253, '2024-07-29 00:08:05');
 
 -- --------------------------------------------------------
 
@@ -8957,13 +8916,13 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `blotters`
 --
 ALTER TABLE `blotters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `census`
 --
 ALTER TABLE `census`
-  MODIFY `census_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `census_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `census_household`
@@ -8987,7 +8946,7 @@ ALTER TABLE `content_management`
 -- AUTO_INCREMENT for table `id_counter`
 --
 ALTER TABLE `id_counter`
-  MODIFY `id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `inquiries`
@@ -9023,13 +8982,13 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `residents`
 --
 ALTER TABLE `residents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `visit`
 --
 ALTER TABLE `visit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8287;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8254;
 
 --
 -- AUTO_INCREMENT for table `web_details`
