@@ -398,26 +398,9 @@
 
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Defendant</b></label>
-															<select class="form-control" name="def_id">
-
-															<?php 
-															$status = 1;
-															$rows = $model->displayResidents($status);
-
-															if (!empty($rows)) {
-																foreach ($rows as $row) {
-																	$id = $row['id'];
-																	$first_name = $row['fname'];
-																	$middle_name = $row['mname'];
-																	$last_name = $row['lname'];
-															?>
-																<option value="<?php echo $id; ?>"><?php echo $last_name; ?>, <?php echo $first_name; ?> <?php echo $middle_name; ?></option>
-															<?php
-																}
-															}
-															?>
-															</select>
+															<input type="text" class="form-control" name="defendant_name" placeholder="Type the defendant's name here" required>
 														</div>
+
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Accusation</b></label>
 															<select class="form-control" name="accusation">
