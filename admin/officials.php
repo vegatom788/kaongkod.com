@@ -31,6 +31,8 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -182,6 +184,8 @@
 									</div>
 								</form>
 							</div>
+							<!-- SweetAlert2 JS -->
+							<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 							<?php
 
 								if (isset($_POST['edit-head'])) {
@@ -200,7 +204,21 @@
 										$model->editHeadImage($unique, $brgy_head_id);
 									}
 
-									echo "<script>window.open('officials', '_self');</script>";
+									echo "<script>
+														Swal.fire({
+															title: 'Edit Success!',
+															text: 'The item has been edited successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'officials';
+															}
+														});
+														</script>";
 								}
 
 							?>
@@ -340,6 +358,8 @@
 													</div>
 												</form>
 											</div>
+											<!-- SweetAlert2 JS -->
+    										<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 											<?php
 
 													}
@@ -363,13 +383,41 @@
 														$model->editStructureImage($base, $unique, $edit_id);
 													}
 
-													echo "<script>window.open('officials', '_self');</script>";
+													echo "<script>
+														Swal.fire({
+															title: 'Edit Success!',
+															text: 'The item has been edited successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'officials';
+															}
+														});
+														</script>";
 												}
 
 												if (isset($_POST['archive'])) {
 													$status = 0;
 													$model->archiveOrgStructure($status, $_POST['delete-id']);
-													echo "<script>window.open('officials', '_self');</script>";
+													echo "<script>
+															Swal.fire({
+															title: 'Archived!',
+															text: 'The item has been archived successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'officials';
+															}
+														});
+														</script>";
 												}
 
 														// if (isset($_POST['archive'])) {
