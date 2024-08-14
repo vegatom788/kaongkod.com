@@ -596,8 +596,8 @@
 											if ($mail->send()) {
 												echo "<script>
 														Swal.fire({
-															title: 'Added!',
-															text: 'Resident has been added. Password has been sent to email!',
+															title: 'Resident has been added!',
+															text: 'Password has been sent to email!',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
