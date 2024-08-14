@@ -108,6 +108,8 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -303,7 +305,7 @@
 												<form id="archive-form-<?php echo $id; ?>" method="POST" action="residents.php">
 													<input type="hidden" name="archive_hidden" value="<?php echo $id; ?>">
 												</form>
-												<button type="button" class="btn red radius-xl outline" onclick="confirmArchive(<?php echo $id; ?>)">Archive</button>
+												<button type="button" class="btn red radius-xl outline" onclick="submitForm(<?php echo $id; ?>)">Archive</button>
 												<button type="button" class="btn red outline radius-xl" data-dismiss="modal">Close</button>
 											</div>
 
@@ -313,14 +315,9 @@
                             </div>
 
                             <script>
-								function confirmArchive(id) {
-									var willArchive = confirm("Are you sure you want to archive?");
-									if (willArchive) {
-										console.log('Submitting form for ID:', id);
-										document.getElementById('archive-form-' + id).submit(); // Submit the form
-									} else {
-										console.log('Archive canceled.');
-									}
+								function submitForm(id) {
+									console.log('Submitting form for ID:', id);
+									document.getElementById('archive-form-' + id).submit(); // Submit the form
 								}
 							</script>
 
@@ -334,14 +331,29 @@
         </div> <!-- /.table-responsive -->
     </div> <!-- /.col-lg-12 -->
 </div> <!-- /.row -->
-
-<?php
-if (isset($_POST['archive_hidden'])) {
-    $archive_id = $_POST['archive_hidden'];
-    $model->changeResidentStatus($archive_id, 3);
-    echo "<script>window.open('residents', '_self');</script>";
-}
-?>
+														<!-- SweetAlert2 JS -->
+														<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+														<?php
+														if (isset($_POST['archive_hidden'])) {
+															$archive_id = $_POST['archive_hidden'];
+															$model->changeResidentStatus($archive_id, 3);
+															echo "<script>
+															Swal.fire({
+															title: 'Archived!',
+															text: 'The item has been archived successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'residents';
+															}
+														});
+														</script>";
+														}
+														?>
 
 								<!-- <div align="right">
 									<a href="" class="btn green radius-xl" style="background-color: #267621;" data-toggle="modal" data-target="#add-announcement"><i class="ti-agenda"></i><span>&nbsp;ADD NEW RESIDENT</span></a>&nbsp;
@@ -495,7 +507,8 @@ if (isset($_POST['archive_hidden'])) {
 										</div>
 									</form>
 								</div>
-
+								<!-- SweetAlert2 JS -->
+								<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 								<?php
 									$category = 0;
 									$status = 1;
@@ -581,7 +594,21 @@ if (isset($_POST['archive_hidden'])) {
 											Barangay Kaongkod";
 											
 											if ($mail->send()) {
-												echo "<script>alert('Resident has been added. Password has been sent to email!');window.open('residents', '_self')</script>";
+												echo "<script>
+														Swal.fire({
+															title: 'Added!',
+															text: 'Resident has been added. Password has been sent to email!',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'residents';
+															}
+														});
+													</script>";
 											} 
 
 											else {
