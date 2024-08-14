@@ -270,7 +270,7 @@
 															echo "<script>
 																	Swal.fire({
 																		title: 'Restored!',
-																		text: 'The item has been restored successfully.',
+																		text: 'Resident has been restored successfully.',
 																		icon: 'success',
 																		confirmButtonText: 'OK',
 																		customClass: {
