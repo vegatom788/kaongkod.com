@@ -597,7 +597,7 @@
 												echo "<script>
 														Swal.fire({
 															title: 'Resident has been added!',
-															text: 'Password has been sent to email!',
+															text: 'Password has been sent to email',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
