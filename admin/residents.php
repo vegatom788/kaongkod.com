@@ -340,7 +340,7 @@
 															echo "<script>
 															Swal.fire({
 															title: 'Archived!',
-															text: 'The item has been archived successfully.',
+															text: 'Resident has been archived successfully.',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
