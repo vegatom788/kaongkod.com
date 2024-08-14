@@ -206,8 +206,8 @@
 
 									echo "<script>
 														Swal.fire({
-															title: 'Edit Success!',
-															text: 'The item has been edited successfully.',
+															title: 'Success!',
+															text: 'Brgy. Head has been edited successfully.',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
@@ -385,8 +385,8 @@
 
 													echo "<script>
 														Swal.fire({
-															title: 'Edit Success!',
-															text: 'The item has been edited successfully.',
+															title: 'Success!',
+															text: 'Brgy. Member has been edited successfully.',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
@@ -406,7 +406,7 @@
 													echo "<script>
 															Swal.fire({
 															title: 'Archived!',
-															text: 'The item has been archived successfully.',
+															text: 'Brgy. Member has been archived successfully.',
 															icon: 'success',
 															confirmButtonText: 'OK',
 															customClass: {
