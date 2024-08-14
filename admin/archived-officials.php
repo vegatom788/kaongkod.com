@@ -322,7 +322,7 @@
 															echo "<script>
 																	Swal.fire({
 																		title: 'Restored!',
-																		text: 'The item has been restored successfully.',
+																		text: 'Brgy. Member has been restored successfully.',
 																		icon: 'success',
 																		confirmButtonText: 'OK',
 																		customClass: {
@@ -341,7 +341,7 @@
 															echo "<script>
 																Swal.fire({
 																	title: 'Deleted!',
-																	text: 'The item has been deleted successfully.',
+																	text: 'Brgy. Member has been deleted successfully.',
 																	icon: 'success',
 																	confirmButtonText: 'OK',
 																	customClass: {
