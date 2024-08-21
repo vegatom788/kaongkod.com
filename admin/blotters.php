@@ -82,6 +82,8 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -351,13 +353,29 @@
 													</div>
 												</form>
 											</div>
+											<!-- SweetAlert2 JS -->
+											<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 											<?php
 
 
 														if (isset($_POST['archive'])) {
 															$decline_hidden = $_POST['decline_hidden'];
 															$model->changeBlotterStatus(2, $decline_hidden);
-															echo "<script>window.open('blotters', '_self');</script>";
+															echo "<script>
+															Swal.fire({
+															title: 'Archived!',
+															text: 'Blotter has been archived successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'blotters';
+															}
+														});
+														</script>";
 														}
 														
 														if (isset($_POST['status'])) {
@@ -641,13 +659,28 @@
 										</div>
 									</form>
 								</div>
-
+								<!-- SweetAlert2 JS -->
+								<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 								<?php
 
 									if (isset($_POST['add-confirm'])) {
 										$model->addBlotters($_POST['def_id'], $_POST['brgy_case'], $_POST['complaint_name'], $_POST['age'], $_POST['gender'], $_POST['address'], $_POST['contact'], $_POST['time'], $_POST['date'], $_POST['happened'], $_POST['accusation'], $_POST['date_filed']);
 
-										echo "<script>window.open('blotters', '_self');</script>";
+										echo "<script>
+														Swal.fire({
+															title: 'Added!',
+															text: 'Blotter has been added.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'blotters';
+															}
+														});
+													</script>";
 									}
 
 								?>
