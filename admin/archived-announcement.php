@@ -31,6 +31,8 @@
 		<title><?php echo $web_name; ?></title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -243,6 +245,8 @@
 													</div>
 												</form>
 											</div>
+											<!-- SweetAlert2 JS -->
+											<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 											<?php 
 
 													}
@@ -251,7 +255,21 @@
 												if (isset($_POST['archive'])) {
 													$status = 1;
 													$model->archiveAnnouncement($status, $_POST['archive-id']);
-													echo "<script>window.open('archived-announcement', '_self');</script>";
+													echo "<script>
+																	Swal.fire({
+																		title: 'Restored!',
+																		text: 'Announcement has been restored successfully.',
+																		icon: 'success',
+																		confirmButtonText: 'OK',
+																		customClass: {
+																			popup: 'my-swal-popup'
+																		}
+																	}).then((result) => {
+																		if (result.isConfirmed) {
+																			window.location.href = 'archived-announcement';
+																		}
+																	});
+																</script>";
 												}
 
 											?>
