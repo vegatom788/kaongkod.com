@@ -34,6 +34,8 @@
 		<title><?php echo $web_name; ?></title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -115,7 +117,8 @@
 
 				<div class="row">
 					<div class="col-lg-12 m-b30">
-								
+								<!-- SweetAlert2 JS -->
+								<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 								<?php
 									$category = 3;
 									$status = 1;
@@ -133,7 +136,21 @@
 
 										$model->addAnnouncement2($title, $details, $base, $unique, $date, $date, $category);
 
-										echo "<script>window.open('issuance', '_self');</script>";
+										echo "<script>
+														Swal.fire({
+															title: 'Added!',
+															text: 'Issuance has been added.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'issuance';
+															}
+														});
+													</script>";
 									}
 
 								?>
@@ -284,13 +301,41 @@
 														$model->editImageAnnouncement($base, $unique, $edit_id);
 													}
 
-													echo "<script>window.open('issuance', '_self');</script>";
+													echo "<script>
+														Swal.fire({
+															title: 'Edit Success!',
+															text: 'Issuance has been edited successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'issuance';
+															}
+														});
+														</script>";
 												}
 
 												if (isset($_POST['archive'])) {
 													$status = 2;
 													$model->archiveAnnouncement($status, $_POST['archive-id']);
-													echo "<script>window.open('issuance', '_self');</script>";
+													echo "<script>
+															Swal.fire({
+															title: 'Archived!',
+															text: 'Issuance has been archived successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'issuance';
+															}
+														});
+														</script>";
 												}
 
 											?>
