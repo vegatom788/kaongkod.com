@@ -30,6 +30,43 @@
 							</ul>
 						</div>
 					</li> -->
+					<?php
+					$status = 1;
+					$rows = $model->displayResidents($status);
+					$hasUnverified = false; // Flag to check for unverified residents
+
+					if (!empty($rows)) {
+						foreach ($rows as $row) {
+							$verified = $row['verified'];
+
+							if ($verified == 0) {
+								// Not verified
+								$hasUnverified = true; // Set the flag if unverified resident is found
+								break; // No need to check further if we found at least one unverified
+							}
+						}
+					}
+					?>
+
+					<li id="checkmark-circle" style="position: relative;">
+						<a href="residents.php">
+							<i class="fa fa-check-circle"></i>
+							<?php if ($hasUnverified): ?>
+								<span class="notification-dot"></span>
+							<?php endif; ?>
+						</a>
+					</li>
+
+					<style>
+					.notification-dot {
+						position: absolute;
+						width: 10px;
+						height: 10px;
+						background-color: black; /* Color of the dot */
+						border-radius: 50%; /* Makes it a circle */
+						border: 2px solid white; /* Optional: white border for better visibility */
+					}
+					</style>
 
 						<li id="bell">
 							<a href="monitoring-of-request.php">
