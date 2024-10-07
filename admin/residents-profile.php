@@ -33,6 +33,9 @@
 		<title><?php echo $web_name; ?></title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Include SweetAlert CSS and JS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -353,7 +356,21 @@
                         		    $hashed_password = password_hash($_POST['new_pw'], PASSWORD_DEFAULT);
                         		    $model->verifiedChangePassword($id, $hashed_password);
                         		    
-                        		   echo "<script>alert('Password has been reset!');window.open('residents-profile?id=".$id."','_self');</script>";
+									echo "<script>
+										Swal.fire({
+											title: 'Success!',
+											text: 'Password has been reset!',
+											icon: 'success',
+											confirmButtonText: 'OK',
+											customClass: {
+														popup: 'my-swal-popup'
+														}
+										}).then(() => {
+											window.location.href = 'residents-profile?id=".$id."';
+										});
+									</script>";
+
+								
                         	    }
                         	    
                         	    if (isset($_POST['status-update'])) {
