@@ -20,21 +20,6 @@
 	if (isset($_SESSION['sess'])) {
 		echo "<script>window.open('admin/index.php','_self');</script>";
 	}
-
-	if (isset($_POST['submit'])) {
-		if (!isset($_COOKIE['rlimited'])) {
-			$uname = $_POST['username'];
-			$pword = $_POST['password'];
-
-			$model = new Model();
-			$model->signIn($uname, $pword);	
-		}
-
-		else {
-			echo "<script>alert('Wait before trying again!')</script>";
-		}
-	}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +150,78 @@
 				</div>
 			</div>
 		</div>
+		<?php
+		if (isset($_POST['submit'])) {
+			if (!isset($_COOKIE['rlimited'])) {
+				$uname = $_POST['username'];
+				$pword = $_POST['password'];
+
+				$model = new Model();
+				$response = $model->signIn($uname, $pword); // Capture the response
+
+				// Check for success or error in the response
+				if (isset($response['success']) && $response['success']) {
+					echo "<script>window.open('admin/index.php', '_self');</script>";
+					exit();
+				} elseif (isset($response['error'])) {
+					// Check if it indicates SweetAlert should be displayed
+					if (isset($response['sweetalert']) && $response['sweetalert']) {
+						echo "<script>
+							Swal.fire({
+								icon: 'warning',
+								title: 'Warning!',
+								text: '{$response['error']}',
+								customClass: {
+									popup: 'my-custom-swal' // Custom class for the SweetAlert
+								}
+							});
+						</script>";
+					} else {
+						echo "<script>
+							Swal.fire({
+								icon: 'error',
+								title: 'Error!',
+								text: '{$response['error']}',
+								customClass: {
+									popup: 'my-custom-swal' // Custom class for the SweetAlert
+								}
+							});
+						</script>";
+					}
+				}
+			} else {
+				// Check if the user is locked out
+				if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
+					$remainingTime = $_SESSION['lockout_time'] - time(); // Calculate remaining lockout time
+					$minutes = floor($remainingTime / 60);
+					$seconds = $remainingTime % 60;
+
+					echo "<script>
+						Swal.fire({
+							icon: 'warning',
+							title: 'Warning!',
+							text: 'You are temporarily locked out. Please try again in {$minutes} minute(s) and {$seconds} second(s).',
+							customClass: {
+								popup: 'my-custom-swal' // Custom class for the SweetAlert
+							}
+						});
+					</script>";
+				} else {
+					// User has reached the max attempts without a lockout
+					echo "<script>
+						Swal.fire({
+							icon: 'warning',
+							title: 'Warning!',
+							text: 'You have reached the maximum login attempts. Please wait a moment before trying again.',
+							customClass: {
+								popup: 'my-custom-swal' // Custom class for the SweetAlert
+							}
+						});
+					</script>";
+				}
+			}
+		}
+		?>
 		<script src="styles/assets/js/jquery.min.js"></script>
 		<script src="styles/assets/vendors/bootstrap/js/popper.min.js"></script>
 		<script src="styles/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
