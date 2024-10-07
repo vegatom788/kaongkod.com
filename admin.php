@@ -36,6 +36,11 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- SweetAlert CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+		<!-- SweetAlert JS -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/typography.css">
