@@ -301,6 +301,7 @@
 										<input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
 										<button type="submit" name="delete_request" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
 									</form>
+
 									</td>
 								</tr>
 									<?php
@@ -319,16 +320,15 @@
 													// Check if the form is submitted
 													if (isset($_POST['delete_request'])) {
 														$id = $_POST['request_id'];
-														
-														// Call deleteResident method
-														if ($model->deleteDeclinedRequest($id)) {
-															echo "<script>alert('Declined Request deleted successfully');</script>";
-														} else {
-															echo "<script>alert('Declined Request deleted successfully');</script>";
-														}
 
-														// Redirect back to the same page after deletion
-														echo "<script>window.open('declined-request.php', '_self');</script>";
+														// Call deleteRequest method
+														if ($model->deleteDeclinedRequest($id)) {
+															// Redirect with a success message
+															header('Location: declined-request.php?status=success');
+														} else {
+															// Redirect with a failure message
+															header('Location: declined-request.php?status=failure');
+														}
 														exit;
 													}
 												} catch (PDOException $e) {
@@ -379,7 +379,6 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
-
 		<!-- SweetAlert2 JS -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 		<script>
