@@ -151,8 +151,9 @@
 						<div class="form-group">
 							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
 						</div>
-							<center>Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
-								<br><br><br>
+							Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
+						<br>
+							<center>
 								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
 							</center>
 					</form>
