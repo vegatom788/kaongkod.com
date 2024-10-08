@@ -31,6 +31,8 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -248,6 +250,7 @@
 											</div>
 										</form>
 									</div>
+									<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 									<?php
 
 											}
@@ -256,13 +259,41 @@
 										if (isset($_POST['approve'])) {
 											$model->approveRequest($_POST['pickup-date'], 1, $_POST['approve_id']);
 
-											echo "<script>window.open('monitoring-of-request', '_self');</script>";
+											echo "<script>
+															Swal.fire({
+															title: 'Approved!',
+															text: 'Request has been approved successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'monitoring-of-request';
+															}
+														});
+														</script>";
 										}
 
 										if (isset($_POST['decline'])) {
 											$model->updateRequestStatus(3, $_POST['decline_id']);
 
-											echo "<script>window.open('monitoring-of-request', '_self');</script>";
+											echo "<script>
+															Swal.fire({
+															title: 'Declined!',
+															text: 'Request has been declined successfully.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'monitoring-of-request';
+															}
+														});
+														</script>";
 										}
 
 									?>
