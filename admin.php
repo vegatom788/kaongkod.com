@@ -148,6 +148,8 @@
 						<div class="form-group">
 							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
 						</div>
+						<div class="link forget-pass text-left"><a href="forgot-password.php" style="color: #0866ff;">Forgot password?</a></div>
+						<br>
 							<center>
 								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
 							</center>
