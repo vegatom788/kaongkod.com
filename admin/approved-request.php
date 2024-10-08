@@ -158,6 +158,8 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -371,7 +373,7 @@
 												<?php
 												}
 												?>
-												<form method="POST" style="margin-top: 10px;" onsubmit="return confirm('Are you sure you want to delete this?');">
+												<form method="POST" style="margin-top: 10px;">
 													<input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
 													<button type="submit" name="delete_entry" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
 												</form>
@@ -505,6 +507,42 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
+
+		<!-- SweetAlert2 JS -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+		<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check the query parameter for status
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+
+            if (status === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Approved Request deleted successfully.',
+                    customClass: {
+                        popup: 'my-swal-popup' // Apply custom class here
+                    }
+                }).then(() => {
+                    // Optionally redirect or take action after alert
+                    window.location.href = 'approved-request.php'; // Redirect to the same page
+                });
+            } else if (status === 'failure') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Deleted!',
+                    text: 'Approved Request deleted successfully.',
+                    customClass: {
+                        popup: 'my-swal-popup' // Apply custom class here
+                    }
+                }).then(() => {
+                    // Optionally redirect or take action after alert
+                    window.location.href = 'approved-request.php'; // Redirect to the same page
+                });
+            }
+        });
+    </script>
 	</body>
 
 </html>
