@@ -95,6 +95,9 @@
 					height: 200px;
 				}
 			}
+			.my-custom-swal .dropdown-toggle {
+				display: none; 
+			}
 		</style>
 		<style>
 			.form-group {
