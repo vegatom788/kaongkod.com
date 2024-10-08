@@ -158,6 +158,9 @@ textarea.form-control {
     font-size: 13px;
     color: #999;
 }
+.my-custom-swal .dropdown-toggle {
+    display: none; 
+}
 .my-swal-popup .dropdown-toggle {
     display: none;
 }
