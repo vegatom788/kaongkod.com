@@ -160,6 +160,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- SweetAlert2 CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+		<!-- SweetAlert2 JS -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -508,8 +510,7 @@
 			});
 		</script>
 
-		<!-- SweetAlert2 JS -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+		
 		<script>
         document.addEventListener('DOMContentLoaded', function() {
             // Check the query parameter for status
