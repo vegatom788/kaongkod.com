@@ -160,8 +160,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- SweetAlert2 CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-		<!-- SweetAlert2 JS -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -379,6 +377,7 @@
 													<input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
 													<button type="submit" name="delete_entry" class="btn btn-block red radius-xl" style="float: right;">DELETE</button>
 												</form>
+
 											</center>
 										</td>
 									</tr>
@@ -439,35 +438,35 @@
 
 									?>
 
-												<?php
-												try {
-													// Assuming you have a PDO connection established, create a Model instance
-													$pdo = new PDO('mysql:host=127.0.0.1;dbname=u510162695_kaongkod', 'u510162695_kaongkod', '1Kaongkod');
-													$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
-													$model = new Model($pdo);
+									<?php
+									try {
+										// Assuming you have a PDO connection established, create a Model instance
+										$pdo = new PDO('mysql:host=localhost;dbname=brgy_salvacion', 'root', '');
+										$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set PDO to throw exceptions on error
+										$model = new Model($pdo);
 
-													// Check if the form is submitted
-													if (isset($_POST['delete_entry'])) {
-														$id = $_POST['delete_id'];
-														
-														// Call deleteResident method
-														if ($model->deleteRequest($id)) {
-															echo "<script>alert('Approved Request deleted successfully');</script>";
-														} else {
-															echo "<script>alert('Approved Request deleted successfully');</script>";
-														}
+										// Check if the form is submitted
+										if (isset($_POST['delete_entry'])) {
+											$id = $_POST['delete_id'];
 
-														// Redirect back to the same page after deletion
-														echo "<script>window.open('approved-request.php', '_self');</script>";
-														exit;
-													}
-												} catch (PDOException $e) {
-													// Handle PDO exception (connection or query error)
-													echo "Connection failed: " . $e->getMessage();
-													// You might want to log the error or display a user-friendly message
-													exit;
-												}
-												?>
+											// Call deleteRequest method
+											if ($model->deleteRequest($id)) {
+												// Redirect with a success message
+												header('Location: approved-request.php?status=success');
+											} else {
+												// Redirect with a failure message
+												header('Location: approved-request.php?status=failure');
+											}
+											exit;
+										}
+									} catch (PDOException $e) {
+										// Handle PDO exception (connection or query error)
+										echo "Connection failed: " . $e->getMessage();
+										// You might want to log the error or display a user-friendly message
+										exit;
+									}
+?>
+
 								</tbody>
 							</table>
 						</div>
@@ -509,8 +508,8 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
-
-		
+		<!-- SweetAlert2 JS -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 		<script>
         document.addEventListener('DOMContentLoaded', function() {
             // Check the query parameter for status
