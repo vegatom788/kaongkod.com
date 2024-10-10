@@ -247,7 +247,7 @@
 		<script src="styles/assets/js/functions.js"></script>
 		<script src="styles/assets/js/contact.js"></script>
 		<script>
-			// Gets the password input field and the toggle button
+			// Get the password input field and the toggle button
 			const passwordField = document.getElementById('password');
 			const togglePassword = document.getElementById('togglePassword');
 
