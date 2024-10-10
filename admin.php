@@ -107,7 +107,7 @@
 			.eye-icon {
 				position: absolute;
 				top: 70%;
-				right: 10px; /* Adjust this value to position it as desired */
+				right: 10px; /* Asdjust this value to position it as desired */
 				transform: translateY(-50%);
 				cursor: pointer;
 			}
@@ -167,7 +167,7 @@
 				$pword = $_POST['password'];
 
 				$model = new Model();
-				$response = $model->signIn($uname, $pword); // Capture the response
+				$response = $model->signIn($uname, $pword); 
 
 				// Check for success or error in the response
 				if (isset($response['success']) && $response['success']) {
@@ -200,7 +200,7 @@
 					}
 				}
 			} else {
-				// Check if the user is locked out
+				// Check if the user is locked oust
 				if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
 					$remainingTime = $_SESSION['lockout_time'] - time(); // Calculate remaining lockout time
 					$minutes = floor($remainingTime / 60);
@@ -247,7 +247,7 @@
 		<script src="styles/assets/js/functions.js"></script>
 		<script src="styles/assets/js/contact.js"></script>
 		<script>
-			// Get the password input field and the toggle button
+			// Gets the password input field and the toggle button
 			const passwordField = document.getElementById('password');
 			const togglePassword = document.getElementById('togglePassword');
 
