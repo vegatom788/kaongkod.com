@@ -64,6 +64,21 @@
 				display: flex;
 				vertical-align: middle;
 			}
+			.account-heads a{
+				display:block;
+				width:100%;
+			}
+			.account-heads:after{
+				opacity:0.9;
+				content:"";
+				position:absolute;
+				left:0;
+				top:0;
+				z-index:-1;
+				width:100%;
+				height:100%;
+				background: transparent;
+			}
 
 			@media only screen and (max-width: 1200px) {
 				.account-heads {
