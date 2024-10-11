@@ -1,3 +1,4 @@
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -83,7 +84,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+			<div class="col-10 col-md-4 offset-md-4 form" style="max-width: 350px; margin: 0 auto;">
                 <form action="forgot-password.php" method="POST" autocomplete="">
                     <h2 class="text-center">Forgot Password</h2>
                     <p class="text-center">Enter your email address</p>
