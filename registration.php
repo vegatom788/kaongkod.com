@@ -69,7 +69,7 @@
 				display:block;
 				width:100%;
 			}
-			.account-head:after{
+			.account-heads:after{
 				opacity:0.9;
 				content:"";
 				position:absolute;
