@@ -47,7 +47,7 @@
 			.btn.dropdown-toggle:hover, .btn.dropdown-toggle:focus {
 				color: black;
 			}
-			.account-head {
+			.account-heads {
 				position: sticky;
 				left: 0;
 				top: 0;
@@ -63,38 +63,6 @@
 				align-items: center;
 				display: flex;
 				vertical-align: middle;
-			}
-			.account-head a{
-				display:block;
-				width:100%;
-			}
-			.account-head:after{
-				opacity:0.9;
-				content:"";
-				position:absolute;
-				left:0;
-				top:0;
-				z-index:-1;
-				width:100%;
-				height:100%;
-				background: transparent;
-			}
-
-			@media only screen and (max-width: 1200px) {
-				.account-heads {
-					width: 350px;
-					min-width: 350px;
-				}
-			}
-
-			@media only screen and (max-width: 991px) {
-				.account-heads {
-					width: 100%;
-					min-width: 100%;
-					height: 200px;
-					background-color: #90ee90; /* Light green color */
-					background-image: none; /* Remove the background image */
-				}
 			}
 		</style>
 	</head>
