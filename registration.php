@@ -64,11 +64,11 @@
 				display: flex;
 				vertical-align: middle;
 			}
-			.account-heads a{
+			.account-head a{
 				display:block;
 				width:100%;
 			}
-			.account-heads:after{
+			.account-head:after{
 				opacity:0.9;
 				content:"";
 				position:absolute;
