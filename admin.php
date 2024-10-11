@@ -52,13 +52,16 @@
 			}
 			.account-heads {
 				position: sticky;
-				left:0;
-				top:0;
+				left: 0;
+				top: 0;
 				z-index: 1;
 				width: 500px;
 				min-width: 500px;
 				height: 100vh;
+				background-image: url('assets/images/n1.jpg'); /* Original background image */
 				background-position: left;
+				background-repeat: no-repeat;
+				background-size: cover; /* Adjust as needed */
 				text-align: center;
 				align-items: center;
 				display: flex;
@@ -81,11 +84,10 @@
 			}
 
 			@media only screen and (max-width: 1200px) {
-				.account-heads{
+				.account-heads {
 					width: 350px;
 					min-width: 350px;
 				}
-
 			}
 
 			@media only screen and (max-width: 991px) {
@@ -93,6 +95,8 @@
 					width: 100%;
 					min-width: 100%;
 					height: 200px;
+					background-color: #90ee90; /* Light green color */
+					background-image: none; /* Remove the background image */
 				}
 			}
 			.my-custom-swal .dropdown-toggle {
