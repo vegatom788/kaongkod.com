@@ -47,7 +47,7 @@
 			.btn.dropdown-toggle:hover, .btn.dropdown-toggle:focus {
 				color: black;
 			}
-			.account-heads {
+			.account-head {
 				position: sticky;
 				left: 0;
 				top: 0;
