@@ -80,23 +80,6 @@
 				height:100%;
 				background: transparent;
 			}
-
-			@media only screen and (max-width: 1200px) {
-				.account-heads {
-					width: 350px;
-					min-width: 350px;
-				}
-			}
-
-			@media only screen and (max-width: 991px) {
-				.account-heads {
-					width: 100%;
-					min-width: 100%;
-					height: 200px;
-					background-color: #90ee90; /* Light green color */
-					background-image: none; /* Remove the background image */
-				}
-			}
 		</style>
 	</head>
 	<?php include 'assets/css/color/color-1.php'; ?>
