@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 html,body{
     background: rgb(152 251 152 / 90%);
-    font-family: 'Poppins', sans-serif;
+    
 }
 ::selection{
     color: #fff;
@@ -37,7 +37,7 @@ html,body{
     transition: all 0.3s ease;
 }
 .container .form form .button:hover{
-    background: #5757d1;
+    background: #616161;
 }
 .container .form form .link{
     padding: 5px 0;
