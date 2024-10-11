@@ -66,14 +66,14 @@
 			}
 
 			@media only screen and (max-width: 1200px) {
-				.account-head {
+				.account-heads {
 					width: 350px;
 					min-width: 350px;
 				}
 			}
 
 			@media only screen and (max-width: 991px) {
-				.account-head {
+				.account-heads {
 					width: 100%;
 					min-width: 100%;
 					height: 200px;
