@@ -133,7 +133,7 @@
 				<div class="account-form-inner">
 				<div class="account-container">
 					<div class="heading-bx left">
-						<h2 class="title-head">Residents<span> Access</span></h2>
+						<h2 class="title-head">Residents<span> Accesstomtom</span></h2>
 					</div>  
 					<form class="contact-bx" method="POST">
 						<div class="form-group">
