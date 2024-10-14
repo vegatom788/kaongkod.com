@@ -334,65 +334,61 @@
 
 		public function residentSignIn($sid, $sid1, $pw) {
 			$query = "SELECT id, password, status, verified FROM residents WHERE email = ? OR contact_number = ?";
-			if($stmt = $this->conn->prepare($query)) {
+			if ($stmt = $this->conn->prepare($query)) {
 				$stmt->bind_param("ss", $sid, $sid1);
 				$stmt->execute();
 				$stmt->bind_result($id, $hashed_pass, $fetched_status, $verified);
 				$stmt->store_result();
-				if($stmt->num_rows > 0) {
-					if($stmt->fetch()) {
+		
+				if ($stmt->num_rows > 0) {
+					if ($stmt->fetch()) {
 						if (password_verify($pw, $hashed_pass)) {
-							if ($fetched_status == 1) {
-								if ($verified == 1) {
-									$_SESSION['sess2'] = $id;
-									echo "<script>window.open('residents/homepage', '_self');</script>";
-									exit();
-								}
-
-								else {
-									$_SESSION['sess2'] = $id;
-									echo "<script>window.open('residents/homepage', '_self');</script>";
-									exit();
-								}
-							}
-							else {
-								echo "<script>alert('Account not activated. Please contact Administrator!')</script>";
-							}
-						}
-
-						else {
-							echo "<script>alert('Wrong Password!');</script>";
-							if (empty($_SESSION['slattempt'])) {
-								$_SESSION['slattempt'] = 1;
-							}
-							
-							else {
-								switch ($_SESSION['slattempt']) {
-									case 1:
-										$_SESSION['slattempt']++;
-										break;
-									case 2:
-										$_SESSION['slattempt']++;
-										break;
-									case 3:
-										$_SESSION['slattempt']++;
-										break;
-									default:
-										unset($_SESSION['slattempt']);
-										setcookie('srlimited', '5', time() + (60), "/");
-										setcookie('expiration_date', time() + (60), time() + (60), "/");
-										echo "<script>alert('Reached limit!');window.open('index.php', '_self')</script>";
-								}
-							}
+							return $this->handleSuccessfulSignIn($id, $fetched_status, $verified);
+						} else {
+							return $this->handleFailedLogin();
 						}
 					}
-				}
-				else {
-					echo "<script>alert('Email not found in database!');</script>";
+				} else {
+					return ['error' => 'The specified email address was not found in our records.'];
 				}
 				$stmt->close();
 			}
 			$this->conn->close();
+		}
+		
+		private function handleSuccessfulSignIn($id, $status, $verified) {
+			if ($status == 1) {
+				$_SESSION['sess2'] = $id;
+				echo "<script>window.open('residents/homepage', '_self');</script>";
+				exit();
+			} else {
+				return ['error' => 'Account not activated. Please contact Administrator!'];
+			}
+		}
+		
+		private function handleFailedLogin() {
+			$maxAttempts = 3;
+			$cooldownTime = 300; // 5 minutes
+		
+			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
+				return ['error' => 'You are temporarily locked out. Please try again later.', 'sweetalert' => true];
+			}
+		
+			if (empty($_SESSION['slattempt'])) {
+				$_SESSION['slattempt'] = 1;
+			} else {
+				$_SESSION['slattempt']++;
+		
+				if ($_SESSION['slattempt'] > $maxAttempts) {
+					setcookie('srlimited', '5', time() + 60, "/");
+					setcookie('expiration_date', time() + 60, time() + 60, "/");
+					$_SESSION['lockout_time'] = time() + $cooldownTime;
+					unset($_SESSION['slattempt']);
+					return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
+				}
+			}
+		
+			return ['error' => 'The password entered is incorrect. Please check your credentials and try again.'];
 		}
 		
 
