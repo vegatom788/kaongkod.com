@@ -8,7 +8,7 @@ class HTMLPurifier_AttrDef_Clone extends HTMLPurifier_AttrDef
 {
     /**
      * What we're cloning.
-     * @type HTMLPurifier_AttrDefs
+     * @type HTMLPurifier_AttrDef
      */
     protected $clone;
 
