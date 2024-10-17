@@ -86,13 +86,7 @@
                     </div>
                 </div>
                 <!-- Search Box ==== -->
-                <div class="nav-search-bar">
-                    <form action="#">
-                        <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
-                        <span><i class="ti-search"></i></span>
-                    </form>
-                    <span id="search-remove"><i class="ti-close"></i></span>
-                </div>
+                
                 <!-- Navigation Menu ==== -->
                 <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
                     <div class="menu-logo">
