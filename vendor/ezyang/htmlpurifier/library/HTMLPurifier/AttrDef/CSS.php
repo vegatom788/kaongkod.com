@@ -9,7 +9,7 @@
  *       tokenize the styles and then parse the tokens. Obviously, we
  *       are not doing that. Doing that could seriously harm performance,
  *       but would make these components a lot more viable for a CSS
- *       filtering solutions.
+ *       filtering solution.
  */
 class HTMLPurifier_AttrDef_CSS extends HTMLPurifier_AttrDef
 {

@@ -5,7 +5,7 @@
  * @note While this class was modeled off the CSS definition, no currently
  *       allowed CSS uses this type.  The properties that do are: widows,
  *       orphans, z-index, counter-increment, counter-reset.  Some of the
- *       HTML attributes, however, find use for a non-negative versions of this.
+ *       HTML attributes, however, find use for a non-negative version of this.
  */
 class HTMLPurifier_AttrDef_Integer extends HTMLPurifier_AttrDef
 {
