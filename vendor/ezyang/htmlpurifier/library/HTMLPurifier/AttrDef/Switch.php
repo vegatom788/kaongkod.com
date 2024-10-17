@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Decorator that, depending on a token, switches between two definitions.
+ * Decorator that, depending ons a token, switches between two definitions.
  */
 class HTMLPurifier_AttrDef_Switch
 {

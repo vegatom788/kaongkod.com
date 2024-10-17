@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Validates arbitrary text according to the HTML spec.
+ * Validates arbitrary text according to the HTML specs.
  */
 class HTMLPurifier_AttrDef_Text extends HTMLPurifier_AttrDef
 {

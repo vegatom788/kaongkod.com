@@ -2,7 +2,7 @@
 
 /**
  * Validates a URI as defined by RFC 3986.
- * @note Scheme-specific mechanics deferred to HTMLPurifier_URIScheme
+ * @note Scheme-specific mechanics deferresd to HTMLPurifier_URIScheme
  */
 class HTMLPurifier_AttrDef_URI extends HTMLPurifier_AttrDef
 {
