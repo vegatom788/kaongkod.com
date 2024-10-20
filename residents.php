@@ -41,6 +41,7 @@
     
 		<!-- SweetAlert JS -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/typography.css">
@@ -140,10 +141,7 @@
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-								<label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-							</div>
+							<div class="g-recaptcha" data-sitekey="6LdCD2cqAAAAAHSmYSbeVAzzNbA_7khE_ALMqqY5" style="transform: scale(0.67); transform-origin: 0 0; height: 50px; width: 10px;"></div>
 							<a href="admin.php" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
 						</div>
 						<div class="form-group">
@@ -167,54 +165,71 @@
 				if (!isset($_COOKIE['srlimited'])) {
 					$uname = $_POST['username'];
 					$pword = $_POST['password'];
-
-					$model = new Model();
-					$response = $model->residentSignIn($uname, $uname, $pword); // Capture the response
-
-					// Check for success or error in the response
-					if (isset($response['success']) && $response['success']) {
-						echo "<script>window.open('residents/homepage', '_self');</script>";
-						exit();
-					} elseif (isset($response['error'])) {
-						// Check if it indicates SweetAlert should be displayed
-						if (isset($response['sweetalert']) && $response['sweetalert']) {
-							echo "<script>
-								Swal.fire({
-									icon: 'warning',
-									title: 'Warning!',
-									text: '{$response['error']}',
-									customClass: {
-										popup: 'my-custom-swal' // Custom class for the SweetAlert
-									}
-								});
-							</script>";
-						} else {
-							echo "<script>
+					$captchaResponse = $_POST['g-recaptcha-response'];
+			
+					// Verify reCAPTCHA
+					$secretKey = '6LdCD2cqAAAAAFK0fCk9_gYtaSz_hWAlW66BzQ6y'; // Replace with your actual secret key
+					$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$captchaResponse}");
+					$responseKeys = json_decode($response, true);
+			
+					if (intval($responseKeys["success"]) !== 1) {
+						echo "<script>
 								Swal.fire({
 									icon: 'error',
 									title: 'Error!',
-									text: '{$response['error']}',
-									customClass: {
-										popup: 'my-custom-swal' // Custom class for the SweetAlert
-									}
+									text: 'Please complete the CAPTCHA.',
+									customClass: { popup: 'my-custom-swal' }
 								});
 							</script>";
+					} else {
+						$model = new Model();
+						$response = $model->residentSignIn($uname, $uname, $pword); // Capture the response
+			
+						// Check for success or error in the response
+						if (isset($response['success']) && $response['success']) {
+							echo "<script>window.open('residents/homepage', '_self');</script>";
+							exit();
+						} elseif (isset($response['error'])) {
+							// Display SweetAlert for errors
+							if (isset($response['sweetalert']) && $response['sweetalert']) {
+								echo "<script>
+									Swal.fire({
+										icon: 'warning',
+										title: 'Warning!',
+										text: '{$response['error']}',
+										customClass: {
+											popup: 'my-custom-swal'
+										}
+									});
+								</script>";
+							} else {
+								echo "<script>
+									Swal.fire({
+										icon: 'error',
+										title: 'Error!',
+										text: '{$response['error']}',
+										customClass: {
+											popup: 'my-custom-swal'
+										}
+									});
+								</script>";
+							}
 						}
 					}
 				} else {
 					// Check if the user is locked out
 					if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
-						$remainingTime = $_SESSION['lockout_time'] - time(); // Calculate remaining lockout time
+						$remainingTime = $_SESSION['lockout_time'] - time();
 						$minutes = floor($remainingTime / 60);
 						$seconds = $remainingTime % 60;
-
+			
 						echo "<script>
 							Swal.fire({
 								icon: 'warning',
 								title: 'Warning!',
 								text: 'You are temporarily locked out. Please try again in {$minutes} minute(s) and {$seconds} second(s).',
 								customClass: {
-									popup: 'my-custom-swal' // Custom class for the SweetAlert
+									popup: 'my-custom-swal'
 								}
 							});
 						</script>";
@@ -226,7 +241,7 @@
 								title: 'Warning!',
 								text: 'You have reached the maximum login attempts. Please wait a moment before trying again.',
 								customClass: {
-									popup: 'my-custom-swal' // Custom class for the SweetAlert
+									popup: 'my-custom-swal'
 								}
 							});
 						</script>";
