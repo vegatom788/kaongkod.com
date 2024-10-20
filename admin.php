@@ -34,7 +34,7 @@
 		<link rel="icon" href="assets/images/<?php echo $web_icon; ?>.png" type="image/x-icon" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/images/<?php echo $web_icon; ?>.png" />
 		<title>Brgy. Kaongkod</title>
-		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		<script src="https://www.google.com/recaptcha/api.js"></script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- SweetAlert CSS -->
