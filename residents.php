@@ -141,7 +141,7 @@
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
-							<div class="g-recaptcha" data-sitekey="6LdCD2cqAAAAAHSmYSbeVAzzNbA_7khE_ALMqqY5" style="transform: scale(0.60); transform-origin: 0 0; height: 40px; width: 10px;"></div>
+							<div class="g-recaptcha" data-sitekey="6LdCD2cqAAAAAHSmYSbeVAzzNbA_7khE_ALMqqY5" style="transform: scale(0.50); transform-origin: 0 0; height: 30px; width: 10px;"></div>
 							<a href="admin.php" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
 						</div>
 						<div class="form-group">
