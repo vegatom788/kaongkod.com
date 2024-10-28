@@ -119,7 +119,7 @@
 
 			.modal-content {
 				background-color: white;
-				margin: 15% auto;
+				margin: 1.5% auto;
 				padding: 60px 30px;
 				max-width: 460px; /* Smaller modal width */
 			}
