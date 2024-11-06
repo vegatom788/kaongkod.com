@@ -23,36 +23,36 @@
 		$pdf->SetFont('Times', 'B', 10);
 		$pdf->SetTextColor(0, 0, 0);
 
-		$pdf->SetXY(23, 108.2);
+		$pdf->SetXY(32, 126);
 		$pdf->Write(0, strtoupper($_POST['def']));
 
-		$pdf->SetXY(23, 82.5);
+		$pdf->SetXY(32, 87);
 		$pdf->Write(0, strtoupper($_POST['com']));
 
-		$pdf->SetXY(127.8, 82.5);
+		$pdf->SetXY(133.8, 95);
 		$pdf->Write(0, strtoupper($_POST['acu']));
 
 
-		$pdf->SetXY(114.8, 143.5);
+		$pdf->SetXY(100.8, 165.5);
 		$pdf->Write(0, strtoupper(date('g:i A', strtotime($_POST['time']))));
 
-		$pdf->SetXY(147.8, 143.5);
+		$pdf->SetXY(147.8, 165.5);
 		$pdf->Write(0, date('jS', strtotime($_POST['date_filed'])));
 
-		$pdf->SetXY(27, 148.5);
+		$pdf->SetXY(32, 170.5);
 		$pdf->Write(0, strtoupper(date('F', strtotime($_POST['date_filed']))));
 
-		$pdf->SetXY(55, 148.5);
+		$pdf->SetXY(65, 170.5);
 		$pdf->Write(0, strtoupper(date('Y', strtotime($_POST['date_filed']))));
 
 
-		$pdf->SetXY(52.5, 204);
+		$pdf->SetXY(50.5, 231);
 		$pdf->Write(0, date('jS'));
 
-		$pdf->SetXY(78.5, 204);
+		$pdf->SetXY(72.5, 231);
 		$pdf->Write(0, strtoupper(date('F')));
 
-		$pdf->SetXY(104, 204);
+		$pdf->SetXY(100, 231);
 		$pdf->Write(0, strtoupper("2024"));
 
 
