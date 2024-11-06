@@ -218,7 +218,7 @@
 		<div id="termsModal" class="modal">
 				<div class="modal-content">
 				<div class="modal-scroll">
-					<center><h4>Terms and Conditions</h4></center>
+					<center><h4>Terms and Conditionstom</h4></center>
 					<p>Last updated: October 28, 2024</p>
 					<p>Please read these terms and conditions carefully before using our Service.</p>
 					<p>The Terms and Conditions of the Service are a set of guidelines that govern the use of the Service and the agreement between the user and the Company. The terms are based on the following definitions: Affiliate refers to an entity that controls, is controlled by, or is under common control with a party, Country refers to the Philippines, Company refers to Brgy. Kaongkod, Device refers to any device that can access the Service, Service refers to the Website, and Terms and Conditions form the entire agreement between the user and the Company regarding the use of the Service.</p>
