@@ -22,28 +22,28 @@
 		$pdf->SetFont('Times', 'B', 11);
 		$pdf->SetTextColor(0, 0, 0);
 
-		$pdf->SetXY(76, 101.5);
+		$pdf->SetXY(78, 99.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
 
-		$pdf->SetXY(121, 101.5);
+		$pdf->SetXY(120.5, 100.5);
 		$pdf->Write(0, $_POST['age']);
 
-		$pdf->SetXY(144.3, 101.5);
+		$pdf->SetXY(144.3, 99.5);
 		$pdf->Write(0, "FILIPINO");
 
-		$pdf->SetXY(80, 106.5);
+		$pdf->SetXY(77, 105.5);
 		$pdf->Write(0, strtoupper($_POST['address']));
 
-		$pdf->SetXY(103, 131.5);
+		$pdf->SetXY(103, 129.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
 
-		$pdf->SetXY(58.5, 146.5);
+		$pdf->SetXY(58.5, 145.5);
 		$pdf->Write(0, $_POST['day']);
 
-		$pdf->SetXY(84.3, 146.5);
+		$pdf->SetXY(82.3, 145.5);
 		$pdf->Write(0, strtoupper($_POST['month']));
 
-		$pdf->SetXY(116.3, 146.7);
+		$pdf->SetXY(116.3, 145.5);
 		$pdf->Write(0, "4");
 
 		ob_end_clean();
@@ -62,34 +62,31 @@
 		$pdf->SetFont('Times', 'B', 11);
 		$pdf->SetTextColor(0, 0, 0);
 
-		$pdf->SetXY(65, 116.5);
-		$pdf->Write(0, strtoupper($_POST['name']));
-
-		$pdf->SetXY(109, 116.5);
+		$pdf->SetXY(109, 134);
 		$pdf->Write(0, $_POST['age']);
 
-		$pdf->SetXY(134, 116.5);
+		$pdf->SetXY(134, 134);
 		$pdf->Write(0, "FILIPINO");
 
-		$pdf->SetXY(114.5, 153.5);
+		$pdf->SetXY(117.5, 171.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
 
-		$pdf->SetXY(49, 170);
+		$pdf->SetXY(49, 187.5);
 		$pdf->Write(0, $_POST['day']);
 
-		$pdf->SetXY(73, 170);
+		$pdf->SetXY(73, 187.5);
 		$pdf->Write(0, strtoupper($_POST['month']));
 
-		$pdf->SetXY(101.5, 170);
+		$pdf->SetXY(101.5, 187.5);
 		$pdf->Write(0, "2024");
 
-		$pdf->SetXY(65, 116.5);
+		$pdf->SetXY(65, 134);
 		$pdf->Write(0, strtoupper($_POST['name']));
 
-		$pdf->SetXY(53.4, 121.7);
+		$pdf->SetXY(53.4, 139.7);
 		$pdf->Write(0, strtoupper($_POST['address']));
 
-		$pdf->SetXY(136, 121.7);
+		$pdf->SetXY(144, 139.7);
 		$pdf->Write(0, strtoupper($_POST['resident_since']));
 
 
@@ -112,23 +109,23 @@
 		// $pdf->SetXY(145, 70);
 		// $pdf->Write(0, strtoupper($_POST['idnumber']));
 
-		$pdf->SetXY(82, 116.5);
+		$pdf->SetXY(78, 115.5);
 		$pdf->Write(0, strtoupper($_POST['name']));
 
-		$pdf->SetXY(132.5, 116.5);
+		$pdf->SetXY(132.5, 115.5);
 		$pdf->Write(0, $_POST['age']);
 
-		$pdf->SetXY(72, 122);
+		$pdf->SetXY(77, 121.1);
 		$pdf->Write(0, strtoupper($_POST['address']));
 
 
-		$pdf->SetXY(55, 159.4);
+		$pdf->SetXY(55, 158.1);
 		$pdf->Write(0, $_POST['day']);
 
-		$pdf->SetXY(79, 159.4);
+		$pdf->SetXY(79, 158.1);
 		$pdf->Write(0, strtoupper($_POST['month']));
 
-		$pdf->SetXY(106.5, 159.4);
+		$pdf->SetXY(106.5, 158.1);
 		$pdf->Write(0, "2024");
 
 
