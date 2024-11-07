@@ -128,6 +128,9 @@
 														title: 'Invalid file type.',
 														text: 'Please upload a valid image file.',
 														confirmButtonText: 'OK'
+														customClass: {
+																popup: 'my-swal-popup'
+																}
 													}).then(() => {
 														window.open('update-photo', '_self');
 													});
@@ -151,9 +154,12 @@
 														echo "<script>
 															Swal.fire({
 																icon: 'success',
-																title: 'Profile picture has been updated.',
+																title: 'Success.',
 																text: 'Your profile picture has been successfully updated.',
 																confirmButtonText: 'OK'
+																customClass: {
+																popup: 'my-swal-popup'
+																}
 															}).then(() => {
 																window.open('update-photo', '_self');
 															});
@@ -162,9 +168,12 @@
 														echo "<script>
 															Swal.fire({
 																icon: 'error',
-																title: 'Invalid image file.',
+																title: 'Error.',
 																text: 'Please upload a valid image file.',
 																confirmButtonText: 'OK'
+																customClass: {
+																popup: 'my-swal-popup'
+																}
 															}).then(() => {
 																window.open('update-photo', '_self');
 															});
