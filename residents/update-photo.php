@@ -128,9 +128,6 @@
 														title: 'Invalid file type.',
 														text: 'Please upload a valid image file.',
 														confirmButtonText: 'OK'
-														customClass: {
-																popup: 'my-swal-popup'
-																}
 													}).then(() => {
 														window.open('update-photo', '_self');
 													});
@@ -157,9 +154,6 @@
 																title: 'Success.',
 																text: 'Your profile picture has been successfully updated.',
 																confirmButtonText: 'OK'
-																customClass: {
-																popup: 'my-swal-popup'
-																}
 															}).then(() => {
 																window.open('update-photo', '_self');
 															});
@@ -171,9 +165,6 @@
 																title: 'Error.',
 																text: 'Please upload a valid image file.',
 																confirmButtonText: 'OK'
-																customClass: {
-																popup: 'my-swal-popup'
-																}
 															}).then(() => {
 																window.open('update-photo', '_self');
 															});
