@@ -26,10 +26,6 @@
 
 		<title>Brgy. Kaongkod</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Include SweetAlert CSS and JS -->
-		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/vendors/calendar/fullcalendar.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/typography.css">
@@ -117,65 +113,40 @@
 										</div>
 										</form>
 										<?php
-										if (isset($_POST['submit'])) {
-											$filename = $_FILES['image']['name'];
-											$file = basename($filename);
+											if (isset($_POST['submit'])) {
 
-											if (strtolower(end(explode(".", $file))) == "mp4") {
-												echo "<script>
-													Swal.fire({
-														icon: 'error',
-														title: 'Invalid file type.',
-														text: 'Please upload a valid image file.',
-														confirmButtonText: 'OK'
-													}).then(() => {
-														window.open('update-photo', '_self');
-													});
-												</script>";
-											} else {
-												if (!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE) {
-													// Handle no file uploaded (if necessary)
-												} else {
-													$is_image = getimagesize($_FILES["image"]["tmp_name"]) ? true : false;
+												$filename=$_FILES['image']['name'];
+													$file = basename($filename);
 
-													if ($is_image) {
-														$path = '../assets/images/profile-pictures/';
-														$unique = time() . uniqid(rand());
-														$destination = $path . $unique . '.jpg';
-														$base = basename($_FILES["image"]["name"]);
-														$image = $_FILES["image"]["tmp_name"];
-														move_uploaded_file($image, $destination);
+													if(strtolower(end(explode(".",$file))) =="mp4") {
+														echo "<script>alert('Invalid file type.');window.open('update-photo', '_self');</script>";
+													}
+													else {
+													if (!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE) {}
+													else {
 
-														$model->updateResidentPhoto($unique);
+														$is_image = getimagesize($_FILES["image"]["tmp_name"]) ? true : false;
 
-														echo "<script>
-															Swal.fire({
-																icon: 'success',
-																title: 'Success.',
-																text: 'Your profile picture has been successfully updated.',
-																confirmButtonText: 'OK'
-																customClass: { popup: 'my-custom-swal' }
-															}).then(() => {
-																window.open('update-photo', '_self');
-															});
-														</script>";
-													} else {
-														echo "<script>
-															Swal.fire({
-																icon: 'error',
-																title: 'Error.',
-																text: 'Please upload a valid image file.',
-																confirmButtonText: 'OK'
-															}).then(() => {
-																window.open('update-photo', '_self');
-															});
-														</script>";
+														if ($is_image) {
+															$path = '../assets/images/profile-pictures/';
+															$unique = time().uniqid(rand());
+															$destination = $path . $unique . '.jpg';
+															$base = basename($_FILES["image"]["name"]);
+															$image = $_FILES["image"]["tmp_name"];
+															move_uploaded_file($image, $destination);
+
+															$model->updateResidentPhoto($unique);
+
+															
+														}
+														else {
+															
+														}
+
 													}
 												}
 											}
-										}
 										?>
-
 									</div>
 									<div class="col-lg-12">
 
