@@ -60,6 +60,9 @@
 		<title><?php echo $web_name; ?></title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Include SweetAlert CSS and JS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/vendors/calendar/fullcalendar.css">
@@ -266,7 +269,20 @@
 											if (isset($_POST['save_pass'])) {
 												$model->verifyResident($r_id_number, $r_ext, $_POST['purok'], $_POST['birth-place'], $_POST['occupation'], $_POST['lot'], $r_fname, $r_mname, $r_lname, $_POST['gender'], $_POST['civil_status'], $_POST['block'], $_POST['email'], $r_password, $_POST['contact-number'], $_POST['birth-date'], $_SESSION['sess2'], $_POST['resident-since']);
 
-												echo "<script>alert('Profile has been changed!');window.open('residents-profile?id=".$id."','_self');</script>";
+												
+												echo "<script>
+												Swal.fire({
+													title: 'Success!',
+													text: 'Password has been reset!',
+													icon: 'success',
+													confirmButtonText: 'OK',
+													customClass: {
+																popup: 'my-swal-popup'
+																}
+												}).then(() => {
+													window.location.href = 'residents-profile?id=".$id."';
+												});
+											</script>";
 											}
 
 										?>
