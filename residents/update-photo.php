@@ -154,6 +154,7 @@
 																title: 'Success.',
 																text: 'Your profile picture has been successfully updated.',
 																confirmButtonText: 'OK'
+																customClass: { popup: 'my-custom-swal' }
 															}).then(() => {
 																window.open('update-photo', '_self');
 															});
