@@ -460,8 +460,8 @@
 														<div class="form-group col-6">
 															<label class="col-form-label"><b>Voter Status</b></label>
 															<select class="form-control" name="resident_status">
-																<option value="No">InActive</option>
-																<option value="Yes">Active</option>
+																<option value="Active">Active</option>
+																<option value="InActive">InActive</option>
 															</select>
 														</div>
 														<div class="form-group col-3">
