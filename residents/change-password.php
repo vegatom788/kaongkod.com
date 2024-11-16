@@ -169,6 +169,7 @@
 													<div class="col-sm-7">
 														<input class="form-control" type="password" name="npass" minlength="8" maxlength="20" id="password" required>
 														<span class="eye-icon" id="toggleNewPassword">👁️</span>
+														<small id="passwordHelp" class="form-text text-muted">Password must include at least one uppercase letter.</small>
 													</div>
 												</div>
 												<div class="form-group row">
