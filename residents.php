@@ -228,7 +228,7 @@
 					<center><h6>I Agree to the <span>Terms and Conditions</span> and I read the Privacy Notice.</h6></center>
 					<div class="modal-buttons">
 						<button id="acceptBtn">Accept</button>
-						<!-- <button id="declineBtn" style="background-color: #333333; color: white;">Decline</button> -->
+						
 					</div>
 			</div>
 		</div>
@@ -377,7 +377,7 @@
 			// Get modal elements
 			const termsModal = document.getElementById('termsModal');
 			const acceptBtn = document.getElementById('acceptBtn');
-			const declineBtn = document.getElementById('declineBtn');
+			
 
 			// Function to open the modal (You might call this when the user first visits the page)
 			function openModal() {
@@ -405,20 +405,6 @@
 			});
 
 			// Event listener for the Decline button
-			declineBtn.addEventListener('click', () => {
-				closeModal();
-				
-				// Use SweetAlert to show a notification
-				Swal.fire({
-					title: 'Declined!',
-					text: 'You must accept the terms and conditions to use the service.',
-					icon: 'warning',
-					confirmButtonText: 'Okay'
-				}).then(() => {
-					// Redirect to index.html after the alert is closed
-					window.location.href = 'index.php';
-				});
-			});
 
 			// Example to open the modal when the page loads
 			window.onload = () => {
