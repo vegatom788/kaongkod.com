@@ -296,6 +296,7 @@
 
 					</div>
 				</div>
+				</table>
 			</div>
 		</main>
 		<div class="ttr-overlay"></div>
