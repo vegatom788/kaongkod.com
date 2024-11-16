@@ -69,6 +69,24 @@
 				background-color: #d4d4d4;
 			}
 		</style>
+		<style>
+			@media (max-width: 768px) {
+    /* Adjust font sizes for mobile */
+    .breadcrumb-title {
+        font-size: 18px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    /* Ensure table rows adapt */
+    table {
+        font-size: 12px;
+    }
+}
+</style>
 	</head>
 	<?php include '../assets/css/color/color-1.php';  ?>
 	<body class="ttr-opened-sidebar ttr-pinned-sidebar" style="background-color: #FCFCFC;">
