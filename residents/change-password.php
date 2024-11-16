@@ -36,7 +36,7 @@
 		<meta name="format-detection" content="telephone=no">
 
 		<link rel="icon" href="../assets/images/icon.png" type="image/x-icon" />
-		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/icon.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/k.png" />
 
 		<title><?php echo $web_name; ?></title>
 
@@ -160,21 +160,21 @@
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">Current Password</label>
 													<div class="col-sm-7">
-														<input class="form-control" type="password" name="cpass" minlength="8" maxlength="20" required>
+														<input class="form-control" type="password" name="cpass" minlength="5" maxlength="20" required>
 														<span class="eye-icon" id="togglePassword">👁️</span>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">New Password</label>
 													<div class="col-sm-7">
-														<input class="form-control" type="password" name="npass" minlength="8" maxlength="20" id="password" required>
+														<input class="form-control" type="password" name="npass" minlength="5" maxlength="20" id="password" required>
 														<span class="eye-icon" id="toggleNewPassword">👁️</span>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">Re Type Password</label>
 													<div class="col-sm-7">
-														<input class="form-control" type="password" name="rpass" minlength="8" maxlength="20" id="confirm_password" required>
+														<input class="form-control" type="password" name="rpass" minlength="5" maxlength="20" id="confirm_password" required>
 														<span class="eye-icon" id="toggleRetypePassword">👁️</span>
 													</div>
 												</div>
