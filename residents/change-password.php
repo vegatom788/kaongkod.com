@@ -160,7 +160,7 @@
 												<div class="form-group row">
 													<label class="col-sm-2 col-form-label">Current Password</label>
 													<div class="col-sm-7">
-														<input class="form-control" type="password" name="cpass" minlength="8" maxlength="20" required>
+														<input class="form-control" type="password" name="cpass" minlength="7" maxlength="20" required>
 														<span class="eye-icon" id="togglePassword">👁️</span>
 													</div>
 												</div>
