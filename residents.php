@@ -226,9 +226,9 @@
 					<p>Access to and use of the Service is also conditioned on acceptance and compliance with the Company's Privacy Policy. The Company has no control over the content, privacy policies, or practices of any third-party websites or services and is not responsible for any damage or loss caused by or in connection with the use of or reliance on such content, goods, or services.</p>
 					</div>
 					<center><h6>I Agree to the <span>Terms and Conditions</span> and I read the Privacy Notice.</h6></center>
+					<br>
 					<div class="modal-buttons">
 						<button id="acceptBtn">Accept</button>
-						
 					</div>
 			</div>
 		</div>
