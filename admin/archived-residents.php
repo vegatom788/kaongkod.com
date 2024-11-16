@@ -44,9 +44,6 @@
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dashboard.css">
-		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
-		<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-
 
 		<style type="text/css">
 			.btn.dropdown-toggle.btn-default:hover {
@@ -69,32 +66,6 @@
 				background-color: #d4d4d4;
 			}
 		</style>
-		<style>
-			@media (max-width: 768px) {
-    /* Adjust font sizes for mobile */
-    .breadcrumb-title {
-        font-size: 18px;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 5px 10px;
-    }
-
-    /* Ensure table rows adapt */
-    table {
-        font-size: 12px;
-    }
-}
-.ttr-sidebar {
-        display: none; /* Hide sidebar */
-    }
-
-    .ttr-wrapper {
-        margin-left: 0; /* Remove sidebar spacing */
-    }
-}
-</style>
 	</head>
 	<?php include '../assets/css/color/color-1.php';  ?>
 	<body class="ttr-opened-sidebar ttr-pinned-sidebar" style="background-color: #FCFCFC;">
@@ -351,10 +322,8 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-    $('#table').DataTable({
-        responsive: true
-    });
-});
+				$('#table').DataTable();
+			});
 			$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();
 			});
