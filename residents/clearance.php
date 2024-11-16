@@ -215,8 +215,18 @@ if (isset($_POST['post_msg'])) {
         <div class="form-group">
             <label>Reference No. (for Gcash Payment only)</label>
             <div class="input-group">
-                <input type="text" id="reference-number" name="reference_number" class="form-control" placeholder="Enter gcash reference no." maxlength="20">
-            </div>
+				<input 
+					type="text" 
+					id="reference-number" 
+					name="reference_number" 
+					class="form-control" 
+					placeholder="Enter GCash reference no." 
+					maxlength="15" 
+					required 
+					oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+					pattern="\d{1,15}">
+			</div>
+
 						</div>
 										</div>
 											<div class="col-lg-12">
