@@ -44,6 +44,9 @@
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dashboard.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
+		<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+
 
 		<style type="text/css">
 			.btn.dropdown-toggle.btn-default:hover {
