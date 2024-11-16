@@ -140,7 +140,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input name="password" id="password" type="password" class="form-control" minlength="5" maxlength="20" required>
+							<input name="password" id="password" type="password" class="form-control" minlength="8" maxlength="20" required>
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
