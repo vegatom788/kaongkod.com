@@ -99,8 +99,8 @@
 				
 				<?php include 'widget.php'; ?>
 
-				<div class="row">
-					<div class="col-lg-12 m-b30">
+				<div class="table-responsive">
+    			<table id="table" class="table hover" style="width:100%">
 								<a href="residents" class="btn green radius-xl" style="float: right;background-color: #1043A9;"><i class="ti-agenda"></i><span>&nbsp;ALL RESIDENTS</span></a><br>
 								<div style="padding: 30px;"></div>
 									<table id="table" class="table hover" style="width:100%">
