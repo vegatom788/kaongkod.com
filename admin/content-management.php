@@ -82,17 +82,19 @@
 			}
 
 			.btn.blue {
-				display: block;
-				width: 100%; /* Full-width buttons on small screens */
-				margin-bottom: 15px;
+				display: block; /* Ensures buttons stack vertically */
+				width: 100%;    /* Full width for mobile */
+				margin-bottom: 15px; /* Add spacing between buttons */
+				text-align: center;  /* Center-align text */
 			}
-
+			
 			.row.align-items.d-flex {
-				flex-direction: column;
+				flex-direction: column; /* Stack the content vertically */
+				align-items: center; /* Center align items */
 			}
 
 			.col-lg-6, .col-md-12 {
-				max-width: 100%;
+				max-width: 100%; /* Ensure columns take full width */
 			}
 
 			.breadcrumb-title {
@@ -156,16 +158,18 @@
 									</div>
 								</div>
 								<div class="row align-items d-flex">
-									<div class="col-lg-6 col-md-12">
-											<a href="edit-content?id=3" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>					
+									<div class="col-12">
+										<a href="edit-content?id=3" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>;">
+											<i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT STORY DETAILS</span>
+										</a>
 									</div>
-									<div class="col-lg-6 col-md-12">
-										<div class="heading-bx left">
-											<a href="edit-content?id=4" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>
-										</div>
-														
+									<div class="col-12">
+										<a href="edit-content?id=4" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>;">
+											<i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT LOGO DETAILS</span>
+										</a>
 									</div>
 								</div>
+
 								<br><hr><br>
 								<div class="row align-items d-flex">
 									<div class="col-lg-6 col-md-12">
