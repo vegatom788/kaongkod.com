@@ -228,7 +228,7 @@
 					<center><h6>I Agree to the <span>Terms and Conditions</span> and I read the Privacy Notice.</h6></center>
 					<div class="modal-buttons">
 						<button id="acceptBtn">Accept</button>
-						<button id="declineBtn" style="background-color: #333333; color: white;">Decline</button>
+						<!-- <button id="declineBtn" style="background-color: #333333; color: white;">Decline</button> -->
 					</div>
 			</div>
 		</div>
