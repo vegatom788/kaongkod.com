@@ -64,6 +64,46 @@
 				background-color: #d4d4d4;
 			}
 		</style>
+		<style>
+			/* Ensure that text, images, and buttons fit smaller screens */
+		@media (max-width: 767px) {
+			.heading-bx {
+				text-align: center;
+			}
+
+			.heading-bx img {
+				display: block;
+				margin: 0 auto;
+			}
+
+			p {
+				font-size: 14px; /* Smaller font for better readability */
+				padding: 10px;
+			}
+
+			.btn.blue {
+				display: block;
+				width: 100%; /* Full-width buttons on small screens */
+				margin-bottom: 15px;
+			}
+
+			.row.align-items.d-flex {
+				flex-direction: column;
+			}
+
+			.col-lg-6, .col-md-12 {
+				max-width: 100%;
+			}
+
+			.breadcrumb-title {
+				font-size: 16px; /* Adjust breadcrumb font */
+			}
+
+			.breadcrumb-list li {
+				font-size: 14px;
+			}
+		}
+		</style>
 	</head>
 	<?php include '../assets/css/color/color-1.php';  ?>
 	<body class="ttr-opened-sidebar ttr-pinned-sidebar" style="background-color: #FCFCFC;">
@@ -98,20 +138,23 @@
 				<?php include 'widget.php'; ?>
 
 				<div class="row">
-    <div class="col-md-6 col-sm-12">
-        <div class="heading-bx">
-            <h2>Story</h2>
-        </div>
-        <p><?php echo $story; ?></p>
-    </div>
-    <div class="col-md-6 col-sm-12">
-        <div class="heading-bx">
-            <h2>Logo</h2>
-            <img src="../assets/images/<?php echo $web_icon; ?>.png" alt="Logo" class="img-fluid rounded-circle">
-        </div>
-    </div>
-</div>
-
+					<div class="col-lg-12 m-b30">
+								
+								<div class="row align-items d-flex">
+									<div class="col-lg-6 col-md-12">
+										<div class="heading-bx left">
+											<h2 class="m-b10 title-head">Story</h2>
+										</div>
+											<p style="text-align: justify; "><?php echo $story; ?></p>				
+									</div>
+									<div class="col-lg-6 col-md-12">
+										<div class="heading-bx left">
+											<h2 class="m-b10 title-head">Logo</h2>
+											<img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 180px; height: 180px; border-radius: 50%;"><br>
+										</div>
+														
+									</div>
+								</div>
 								<div class="row align-items d-flex">
 									<div class="col-lg-6 col-md-12">
 											<a href="edit-content?id=3" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>					
