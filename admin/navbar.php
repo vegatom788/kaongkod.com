@@ -7,7 +7,7 @@
 			<div class="ttr-logo-box">
 				<div>
 					<a href="index" class="ttr-logo">
-						<img alt="" class="ttr-logo-mobile" src="../assets/images/3.png" style="width: 200px; height: 36px;">
+						<img alt="" class="ttr-logo-mobile" src="../assets/images/3r.png" style="width: 200px; height: 36px;">
 						<img alt="" class="ttr-logo-desktop" src="../assets/images/3r.png" style="width: 200px; height: 36px;">
 					</a>
 				</div>
