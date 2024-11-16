@@ -86,6 +86,14 @@
         font-size: 12px;
     }
 }
+.ttr-sidebar {
+        display: none; /* Hide sidebar */
+    }
+
+    .ttr-wrapper {
+        margin-left: 0; /* Remove sidebar spacing */
+    }
+}
 </style>
 	</head>
 	<?php include '../assets/css/color/color-1.php';  ?>
