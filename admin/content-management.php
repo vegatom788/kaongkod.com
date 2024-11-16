@@ -98,23 +98,20 @@
 				<?php include 'widget.php'; ?>
 
 				<div class="row">
-					<div class="col-lg-12 m-b30">
-								
-								<div class="row align-items d-flex">
-									<div class="col-lg-6 col-md-12">
-										<div class="heading-bx left">
-											<h2 class="m-b10 title-head">Story</h2>
-										</div>
-											<p style="text-align: justify; "><?php echo $story; ?></p>				
-									</div>
-									<div class="col-lg-6 col-md-12">
-										<div class="heading-bx left">
-											<h2 class="m-b10 title-head">Logo</h2>
-											<img src="../assets/images/<?php echo $web_icon; ?>.png" style="width: 180px; height: 180px; border-radius: 50%;"><br>
-										</div>
-														
-									</div>
-								</div>
+    <div class="col-md-6 col-sm-12">
+        <div class="heading-bx">
+            <h2>Story</h2>
+        </div>
+        <p><?php echo $story; ?></p>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <div class="heading-bx">
+            <h2>Logo</h2>
+            <img src="../assets/images/<?php echo $web_icon; ?>.png" alt="Logo" class="img-fluid rounded-circle">
+        </div>
+    </div>
+</div>
+
 								<div class="row align-items d-flex">
 									<div class="col-lg-6 col-md-12">
 											<a href="edit-content?id=3" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>					
