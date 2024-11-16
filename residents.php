@@ -228,7 +228,7 @@
 					<center><h6>I Agree to the <span>Terms and Conditions</span> and I read the Privacy Notice.</h6></center>
 					<div class="modal-buttons">
 						<button id="acceptBtn">Accept</button>
-						<button id="declineBtn" style="background-color: #333333; color: white;">Decline</button>
+						<!-- <button id="declineBtn" style="background-color: #333333; color: white;">Decline</button> -->
 					</div>
 			</div>
 		</div>
@@ -238,7 +238,7 @@
 				<div class="account-form-inner">
 				<div class="account-container">
 					<div class="heading-bx left">
-						<h2 class="title-head">Residents<span> Access123</span></h2>
+						<h2 class="title-head">Residents<span> Access</span></h2>
 					</div>  
 					<form class="contact-bx" method="POST">
 						<div class="form-group">
