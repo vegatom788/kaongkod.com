@@ -68,7 +68,7 @@
 			/* Ensure that text, images, and buttons fit smaller screens */
 		@media (max-width: 767px) {
 			.heading-bx {
-				text-align: center;
+				text-align: left;
 			}
 
 			.heading-bx img {
