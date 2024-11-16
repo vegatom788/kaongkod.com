@@ -343,8 +343,10 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$('#table').DataTable();
-			});
+    $('#table').DataTable({
+        responsive: true
+    });
+});
 			$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();
 			});
