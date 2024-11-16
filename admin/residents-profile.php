@@ -305,10 +305,17 @@
 												</div>
 												<div class="modal-body">
 													<div class="row">
-														<div class="form-group col-12">
-															<label class="col-form-label">New Password</label>
-															<input class="form-control" type="text" name="new_pw" required maxlength="15">
-														</div>
+													<div class="form-group col-12">
+														<label class="col-form-label">New Password</label>
+														<input class="form-control" 
+															type="text" 
+															name="new_pw" 
+															required 
+															minlength="8" 
+															maxlength="15" 
+															id="newPassword">
+														<small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters long and include at least one uppercase letter.</small>
+													</div>
 													</div>
 												</div>
 												<div class="modal-footer">
@@ -622,6 +629,25 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
+		<script>
+    const newPasswordField = document.getElementById('newPassword');
+    const passwordHelp = document.getElementById('passwordHelp');
+
+    newPasswordField.addEventListener('input', () => {
+        const value = newPasswordField.value;
+        const uppercaseRegex = /[A-Z]/; // Check for at least one uppercase letter
+        if (value.length < 8 || !uppercaseRegex.test(value)) {
+            newPasswordField.setCustomValidity(
+                'Password must be at least 8 characters long and include at least one uppercase letter.'
+            );
+            passwordHelp.style.color = 'red';
+        } else {
+            newPasswordField.setCustomValidity(''); // Clear custom validation
+            passwordHelp.style.color = 'green';
+            passwordHelp.textContent = 'Password meets the requirements.';
+        }
+    });
+</script>
 	</body>
 
 </html>
