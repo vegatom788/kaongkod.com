@@ -158,18 +158,16 @@
 									</div>
 								</div>
 								<div class="row align-items d-flex">
-									<div class="col-12">
-										<a href="edit-content?id=3" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>;">
-											<i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT STORY DETAILS</span>
-										</a>
+									<div class="col-lg-6 col-md-12">
+											<a href="edit-content?id=3" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT STORY DETAILS</span></a>					
 									</div>
-									<div class="col-12">
-										<a href="edit-content?id=4" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>;">
-											<i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT LOGO DETAILS</span>
-										</a>
+									<div class="col-lg-6 col-md-12">
+										<div class="heading-bx left">
+											<a href="edit-content?id=4" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT LOGO DETAILS</span></a>
+										</div>
+														
 									</div>
 								</div>
-
 								<br><hr><br>
 								<div class="row align-items d-flex">
 									<div class="col-lg-6 col-md-12">
@@ -187,10 +185,10 @@
 								</div>
 								<div class="row align-items d-flex">
 									<div class="col-lg-6 col-md-12">
-										<a href="edit-content?id=1" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>
+										<a href="edit-content?id=1" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT VISION DETAILS</span></a>
 									</div>
 									<div class="col-lg-6 col-md-12">
-											<a href="edit-content?id=2" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT DETAILS</span></a>
+											<a href="edit-content?id=2" class="btn blue radius-xl" style="float: left;background-color: <?php echo $primary_color; ?>"><i class="ti-marker-alt"></i><span>&nbsp;&nbsp;EDIT MISSION DETAILS</span></a>
 									</div>
 								</div>
 								<br>
