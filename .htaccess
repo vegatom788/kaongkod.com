@@ -1,14 +1,5 @@
 Options All -Indexes
 
 RewriteEngine On
-
-# Ensure the rule does not apply to actual files or directories
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# Rewrite URLs without an extension to .php
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
-# Optional: Redirect URLs with .php extension to clean URLs
-RewriteCond %{THE_REQUEST} \s/([^\s]+)\.php [NC]
-RewriteRule ^(.*)\.php$ /$1 [R=301,L]
