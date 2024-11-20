@@ -1,5 +1,10 @@
 Options All -Indexes
 
 RewriteEngine On
+
+# Check if the requested file exists
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite URLs without extensions to .php
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
