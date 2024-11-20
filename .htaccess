@@ -1,5 +1,10 @@
-Options All -Indexes
+Options -Indexes
 
 RewriteEngine On
+
+# Ensure requests are not for existing directories or files
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect requests without .php to the corresponding .php file
+RewriteRule ^([^/]+)/?$ $1.php [NC,L]
