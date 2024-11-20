@@ -1,5 +1,8 @@
-Options All -Indexes
+Options -Indexes
 
 RewriteEngine On
+
+# Ensure the rewrite only applies if the file with the same name and .php extension exists
+RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
