@@ -33,6 +33,11 @@
 		<title>Brgy. Kaongkod</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- jQuery (needed for DataTables) -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<!-- DataTables JS -->
+		<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -71,6 +76,46 @@
 			    display: block!important;
 			}
 		</style>
+		<style>
+		/* Style for mobile responsiveness */
+		@media (max-width: 768px) {
+			.table-responsive {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+
+			.table {
+				font-size: 15px; /* Smaller font for mobile */
+			}
+
+			.table th, .table td {
+				padding: 6px 8px; /* Reduced padding */
+			}
+
+			/* Stack rows into cards for smaller screens */
+			.table thead {
+				display: none;
+			}
+
+			.table td {
+				display: block;
+				width: 100%;
+				text-align: left;
+				position: relative;
+				padding-left: 50%;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				border-top: 1px solid #ddd;
+			}
+
+			.table td::before {
+				content: attr(data-label);
+				position: absolute;
+				left: 10px;
+				font-weight: bold;
+			}
+		}
+	</style>
 		<style>
     .contact-bx {
         background-color: #ffffff;
