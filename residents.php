@@ -257,9 +257,8 @@
 						<div class="form-group">
 							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
 						</div>
-							Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
 							<div class="link forget-pass text-left"><a href="forgot-password1.php" style="color: #0866ff;">Forgot password?</a></div>
-						<br>
+							Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
 						<br>
 							<center>
 								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
