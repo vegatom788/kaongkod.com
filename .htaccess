@@ -1,12 +1,4 @@
-# Disable directory listing
-Options -Indexes
-
-# Enable URL rewriting engine
 RewriteEngine On
-
-# If the requested file does not exist and does not have a file extension
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,4}$
-
-# Rewrite the URL by appending .php to the requested file name
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php !-f 
+RewriteRule ^(.*)$ $1.php
