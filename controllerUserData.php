@@ -152,8 +152,15 @@ if(isset($_POST['signup'])){
             $insert_code = "UPDATE admin SET code = $code WHERE uname = '$email'";
             $run_query =  mysqli_query($con, $insert_code);
             if ($run_query) {
+                $reset_link = "https://kaongkod.com/reset-code.php";
                 $subject = "Password Reset Code";
-                $message = "Your password reset code is $code";
+                $message = "
+                <p>Hello,</p>
+                <p>We received a request to reset your password. Please use the following code to reset your password:</p>
+                <p><b>Your password reset code is: $code</b></p>
+                <p>Alternatively, you can <a href='$reset_link'>click here</a> to reset your password directly.</p>
+                <p>If you did not request a password reset, please ignore this email.</p>
+            ";
                 
                 if (sendEmail($email, $subject, $message)) {
                     $info = "We've sent a password reset OTP to your email - $email";
@@ -173,22 +180,43 @@ if(isset($_POST['signup'])){
     }
 
     //if user click check reset otp button
-    if(isset($_POST['check-reset-otp'])){
-        $_SESSION['info'] = "";
-        $otp_code = mysqli_real_escape_string($con, $_POST['otp']);
-        $check_code = "SELECT * FROM admin WHERE code = $otp_code";
-        $code_res = mysqli_query($con, $check_code);
-        if(mysqli_num_rows($code_res) > 0){
+    if (isset($_POST['check-reset-otp'])) {
+        $_SESSION['info'] = ""; // Reset any session info
+    
+        // Combine all OTP fields into one
+        $otp_code = mysqli_real_escape_string($con, $_POST['otp1'] . $_POST['otp2'] . $_POST['otp3'] . $_POST['otp4'] . $_POST['otp5'] . $_POST['otp6']);
+        
+        // Prepared statement to securely query the database
+        $check_code = "SELECT * FROM admin WHERE code = ?";
+        $stmt = mysqli_prepare($con, $check_code);
+        
+        // Bind the OTP code to the prepared statement
+        mysqli_stmt_bind_param($stmt, "s", $otp_code); // "s" indicates the parameter type is a string
+        
+        // Execute the statement
+        mysqli_stmt_execute($stmt);
+        
+        // Get the result of the query
+        $code_res = mysqli_stmt_get_result($stmt);
+        
+        // Check if the OTP exists in the database
+        if (mysqli_num_rows($code_res) > 0) {
+            // Fetch the user data
             $fetch_data = mysqli_fetch_assoc($code_res);
-            $email = $fetch_data['uname'];
+            $email = $fetch_data['uname']; // Assuming 'uname' is the column for the user's email or username
+            
+            // Store the email in session and redirect
             $_SESSION['uname'] = $email;
-            $info = "Please create a new password that you don't use on any other site.";
-            $_SESSION['info'] = $info;
-            header('location: new-password.php');
+            $_SESSION['info'] = "Password must be at least 8 characters long, include at least one uppercase letter, and one number.";
+            header('Location: new-password.php');
             exit();
-        }else{
+        } else {
+            // OTP did not match
             $errors['otp-error'] = "You've entered incorrect code!";
         }
+    
+        // Close the prepared statement
+        mysqli_stmt_close($stmt);
     }
 
     //if user click change password button

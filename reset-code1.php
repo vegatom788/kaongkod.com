@@ -84,6 +84,30 @@ if($email == false){
 			.my-custom-swal .dropdown-toggle {
 				display: none; 
 			}
+
+			.otp-input {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+			}
+
+			.otp-box {
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				font-size: 24px;
+				margin: 0 5px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				width: 12.5%;
+    			margin-bottom: 10px;
+			}
+
+			.otp-box:focus {
+				outline: none;
+				border-color: #007bff;
+				box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+			}
 		</style>
 </head>
 <?php include 'assets/css/color/color-1.php';  ?>
@@ -115,9 +139,16 @@ if($email == false){
                         <?php
                     }
                     ?>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="otp" placeholder="Enter code" required inputmode="numeric" pattern="\d{6}" aria-label="One Time Password" title="Please enter a numeric code">
-                    </div>
+                    <div class="form-group text-center">
+						<div class="otp-input">
+							<input type="tel" class="otp-box" id="otp1" name="otp1" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 1" oninput="moveFocus(this, 'otp2')" onkeydown="moveBack(this, event, 'otp1')" onkeypress="return isNumber(event)">
+							<input type="tel" class="otp-box" id="otp2" name="otp2" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 2" oninput="moveFocus(this, 'otp3')" onkeydown="moveBack(this, event, 'otp1')" onkeypress="return isNumber(event)">
+							<input type="tel" class="otp-box" id="otp3" name="otp3" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 3" oninput="moveFocus(this, 'otp4')" onkeydown="moveBack(this, event, 'otp2')" onkeypress="return isNumber(event)">
+							<input type="tel" class="otp-box" id="otp4" name="otp4" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 4" oninput="moveFocus(this, 'otp5')" onkeydown="moveBack(this, event, 'otp3')" onkeypress="return isNumber(event)">
+							<input type="tel" class="otp-box" id="otp5" name="otp5" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 5" oninput="moveFocus(this, 'otp6')" onkeydown="moveBack(this, event, 'otp4')" onkeypress="return isNumber(event)">
+							<input type="tel" class="otp-box" id="otp6" name="otp6" maxlength="1" required inputmode="numeric" pattern="[0-9]" aria-label="OTP Box 6" onkeydown="moveBack(this, event, 'otp5')" onkeypress="return isNumber(event)">
+						</div>
+                	</div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="check-reset-otp" value="Submit">
                     </div>
@@ -125,6 +156,38 @@ if($email == false){
             </div>
         </div>
     </div>
+
+	<script>
+    function moveFocus(current, nextId) {
+        // Move focus to the next field if the current one is filled
+        if (current.value.length === 1) {
+            var nextField = document.getElementById(nextId);
+            if (nextField) {
+                nextField.focus();
+            }
+        }
+    }
+
+    function moveBack(current, event, prevId) {
+        // If backspace is pressed and the current input is empty, move focus to the previous input
+        if (event.key === "Backspace" && current.value === "") {
+            var prevField = document.getElementById(prevId);
+            if (prevField) {
+                prevField.focus();
+            }
+        }
+    }
+</script>
+
+<script>
+	function isNumber(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode < 48 || charCode > 57) {
+        return false; // Allow only numbers (key codes for 0-9)
+    }
+    return true;
+}
+</script>
     
 </body>
 </html>
