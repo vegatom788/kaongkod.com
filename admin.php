@@ -41,7 +41,7 @@
     
 		<!-- SweetAlert JS -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		<script src="https://www.google.com/recaptcha/api.js?render=6LcP2YgqAAAAADeSXtHMjFqXMTffjg5X3olzBra1"></script>
 
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="styles/assets/css/typography.css">
@@ -133,7 +133,7 @@
 					<div class="heading-bx left">
 						<h2 class="title-head">Admin<span> Access</span></h2>
 					</div>  
-					<form class="contact-bx" method="POST">
+					<form class="contact-bx" method="POST" id="loginForm">
 						<div class="form-group">
 							<label for="username">Email</label>
 							<input name="username" id="username" type="email" class="form-control" required>
@@ -144,13 +144,13 @@
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
-							<div class="g-recaptcha" data-sitekey="6LdCD2cqAAAAAHSmYSbeVAzzNbA_7khE_ALMqqY5" style="transform: scale(0.52); transform-origin: 0 0; height: 28px; width: 10px;"></div>
+							<div class="link forget-pass text-left"><a href="forgot-password.php" style="color: #0866ff;">Forgot password?</a></div>
 							<a href="residents.php" class="ml-auto" style="color: #0866ff;">Resident Login</a>
 						</div>
 						<div class="form-group">
-							<button name="submit" type="submit" value="Submit" class="btn btn-block">Login</button>
+							<button name="g-recaptcha-response" type="hidden" value="token" class="btn btn-block">Login</button>
 						</div>
-						<div class="link forget-pass text-left"><a href="forgot-password.php" style="color: #0866ff;">Forgot password?</a></div>
+						
 						<br>
 							<center>
 								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
@@ -163,15 +163,15 @@
 			</div>
 		</div>
 		<?php
-		if (isset($_POST['submit'])) {
+		if (isset($_POST['g-recaptcha-response'])) {
 			if (!isset($_COOKIE['rlimited'])) {
 				$uname = $_POST['username'];
 				$pword = $_POST['password'];
-				$recaptchaResponse = $_POST['g-recaptcha-response'];
+				$captchaResponse = $_POST['g-recaptcha-response'];  // Get the reCAPTCHA response
 
-				// Verify the reCAPTCHA
-				$secretKey = '6LdCD2cqAAAAAFK0fCk9_gYtaSz_hWAlW66BzQ6y';
-				$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$recaptchaResponse}");
+				// Verify reCAPTCHA using the provided API verification code
+				$secretKey = '6LcP2YgqAAAAAHTk3mUot-UFAYd1-oOpL1DijVol';  // Replace with your actual secret key
+				$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$captchaResponse");
 				$responseKeys = json_decode($response, true);
 
 				if (intval($responseKeys["success"]) !== 1) {
@@ -179,7 +179,7 @@
 						Swal.fire({
 							icon: 'error',
 							title: 'Error!',
-							text: 'Please complete the CAPTCHA.',
+							text: 'reCAPTCHA verification failed. Please try again.',
 							customClass: { popup: 'my-custom-swal' }
 						});
 					</script>";
@@ -256,6 +256,28 @@
 				
 				// Change eye icon accordingly
 				togglePassword.textContent = type === 'password' ? '👁️' : '🔒';
+			});
+		</script>
+		<script>
+			grecaptcha.ready(function() {
+				// Trigger reCAPTCHA when the form is submitted
+				document.getElementById('loginForm').addEventListener('submit', function(event) {
+					event.preventDefault();  // Prevent form from submitting immediately
+
+					grecaptcha.execute('6LcP2YgqAAAAADeSXtHMjFqXMTffjg5X3olzBra1', {action: 'login'}).then(function(token) {
+						// Add the token to a hidden input field in the form
+						var hiddenInput = document.createElement('input');
+						hiddenInput.setAttribute('type', 'hidden');
+						hiddenInput.setAttribute('name', 'g-recaptcha-response');
+						hiddenInput.setAttribute('value', token);
+						
+						// Append the hidden input to the form
+						document.getElementById('loginForm').appendChild(hiddenInput);
+
+						// Now submit the form
+						document.getElementById('loginForm').submit();
+					});
+				});
 			});
 		</script>
 	</body>
