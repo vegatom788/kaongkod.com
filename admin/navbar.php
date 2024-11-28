@@ -151,7 +151,7 @@
 
 						<li id="bell">
 							<a href="monitoring-of-request.php">
-									<i class="icon-copy bi bi-bell"></i>
+									<i class="fa fa-bell-fill"></i>
 									<span class="heartbit">
 									<?php
 									$rows = $model->fetchRequests();
