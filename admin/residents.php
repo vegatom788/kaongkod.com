@@ -9,77 +9,77 @@
 	$model = new Model();
 	include('department.php');
 
-	if (isset($_POST["export-pdf"])) { 
-		require_once('../tcpdf/tcpdf.php');  
+	// if (isset($_POST["export-pdf"])) { 
+	// 	require_once('../tcpdf/tcpdf.php');  
 	
-		// Initialize TCPDF object
-		$obj_pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
-		$obj_pdf->SetCreator(PDF_CREATOR);  
-		$obj_pdf->SetTitle("BRGY. KAONGKOD - RESIDENTS");   
-		$obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
-		$obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
-		$obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
-		$obj_pdf->SetDefaultMonospacedFont('helvetica');  
-		$obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
-		$obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);  
-		$obj_pdf->setPrintHeader(false);  
-		$obj_pdf->setPrintFooter(false);  
-		$obj_pdf->SetAutoPageBreak(TRUE, 10);  
-		$obj_pdf->SetFont('helvetica', '', 12);  
-		$obj_pdf->AddPage();  
+	// 	// Initialize TCPDF object
+	// 	$obj_pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
+	// 	$obj_pdf->SetCreator(PDF_CREATOR);  
+	// 	$obj_pdf->SetTitle("BRGY. KAONGKOD - RESIDENTS");   
+	// 	$obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
+	// 	$obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
+	// 	$obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
+	// 	$obj_pdf->SetDefaultMonospacedFont('helvetica');  
+	// 	$obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
+	// 	$obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);  
+	// 	$obj_pdf->setPrintHeader(false);  
+	// 	$obj_pdf->setPrintFooter(false);  
+	// 	$obj_pdf->SetAutoPageBreak(TRUE, 10);  
+	// 	$obj_pdf->SetFont('helvetica', '', 12);  
+	// 	$obj_pdf->AddPage();  
 	
-		// Start content construction
-		$content = '';  
-		$content .= '
-		<div style="text-align: center;">
-			<img src="11header.jpg" height="115" width="300">
-			<h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
-		</div>
-		<p><strong>Name:</strong> ' . $name . '</p>
-		<p><strong>Number of Residents:</strong> ' . count($rows) . '</p>
-		<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; margin-top: 20px;">
-			<thead>
-				<tr>
-					<th><b>ID Number</b></th>
-					<th><b>Name</b></th>
-					<th><b>Gender</b></th>
-					<th><b>Civil Status</b></th>
-					<th><b>Contact</b></th>
-				</tr>
-			</thead>
-			<tbody>';
+	// 	// Start content construction
+	// 	$content = '';  
+	// 	$content .= '
+	// 	<div style="text-align: center;">
+	// 		<img src="11header.jpg" height="115" width="300">
+	// 		<h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
+	// 	</div>
+	// 	<p><strong>Name:</strong> ' . $name . '</p>
+	// 	<p><strong>Number of Residents:</strong> ' . count($rows) . '</p>
+	// 	<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; margin-top: 20px;">
+	// 		<thead>
+	// 			<tr>
+	// 				<th><b>ID Number</b></th>
+	// 				<th><b>Name</b></th>
+	// 				<th><b>Gender</b></th>
+	// 				<th><b>Civil Status</b></th>
+	// 				<th><b>Contact</b></th>
+	// 			</tr>
+	// 		</thead>
+	// 		<tbody>';
 	
-		// Loop through residents data and populate the table
-		$status = 1;
-		$rows = $model->displayResidents($status);
-		if (!empty($rows)) {
-			foreach ($rows as $row) {
-				$id_number = $row['id_number'];
-				$first_name = $row['fname'];
-				$middle_name = $row['mname'];
-				$last_name = $row['lname'];
-				$contact = $row['contact_number'];
-				$gender = $row['gender'];
-				$civil_status = $row['civil_status'];
+	// 	// Loop through residents data and populate the table
+	// 	$status = 1;
+	// 	$rows = $model->displayResidents($status);
+	// 	if (!empty($rows)) {
+	// 		foreach ($rows as $row) {
+	// 			$id_number = $row['id_number'];
+	// 			$first_name = $row['fname'];
+	// 			$middle_name = $row['mname'];
+	// 			$last_name = $row['lname'];
+	// 			$contact = $row['contact_number'];
+	// 			$gender = $row['gender'];
+	// 			$civil_status = $row['civil_status'];
 	
-				$content .= '<tr>
-					<td>' . $id_number . '</td>
-					<td>' . $first_name . ' ' . $middle_name . ' ' . $last_name . '</td>
-					<td>' . $gender . '</td>
-					<td>' . $civil_status . '</td>
-					<td>' . $contact . '</td>
-				</tr>';
-			}
-		}
+	// 			$content .= '<tr>
+	// 				<td>' . $id_number . '</td>
+	// 				<td>' . $first_name . ' ' . $middle_name . ' ' . $last_name . '</td>
+	// 				<td>' . $gender . '</td>
+	// 				<td>' . $civil_status . '</td>
+	// 				<td>' . $contact . '</td>
+	// 			</tr>';
+	// 		}
+	// 	}
 	
-		$content .= '</tbody></table>';  
-		$content = utf8_encode($content);
+	// 	$content .= '</tbody></table>';  
+	// 	$content = utf8_encode($content);
 	
-		// Output the PDF
-		$obj_pdf->writeHTML($content); 
-		ob_end_clean();
-		$obj_pdf->Output('Residents.pdf', 'I');  
-	}
+	// 	// Output the PDF
+	// 	$obj_pdf->writeHTML($content); 
+	// 	ob_end_clean();
+	// 	$obj_pdf->Output('Residents.pdf', 'I');  
+	// }
 	
 
 	if (empty($_SESSION['sess'])) {
