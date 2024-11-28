@@ -9,8 +9,10 @@
 	$model = new Model();
 	include('department.php');
 
-	if(isset($_POST["export-pdf"])) { 
+	if (isset($_POST["export-pdf"])) { 
 		require_once('../tcpdf/tcpdf.php');  
+	
+		// Initialize TCPDF object
 		$obj_pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
 		$obj_pdf->SetCreator(PDF_CREATOR);  
 		$obj_pdf->SetTitle("BRGY. KAONGKOD - RESIDENTS");   
@@ -24,60 +26,61 @@
 		$obj_pdf->setPrintFooter(false);  
 		$obj_pdf->SetAutoPageBreak(TRUE, 10);  
 		$obj_pdf->SetFont('helvetica', '', 12);  
-		$obj_pdf->AddPage(); 
-		//ob_start(); 
+		$obj_pdf->AddPage();  
+	
+		// Start content construction
 		$content = '';  
 		$content .= '
-		<div align="center">
+		<div style="text-align: center;">
 			<img src="11header.jpg" height="115" width="300">
 			<h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
 		</div>
-		<table border="1" cellspacing="0" cellpadding="5">
-        	<thead>
-        		<tr>
-        			<th><b>ID Number</b></th>
-        			<th><b>Name</b></th>
-        			<th><b>Gender</b></th>
-        			<th><b>Civil Status</b></th>
-        			<th><b>Contact</b></th>
-        		</tr>
-        	</thead>
-        	<tbody>';
-        $status = 1;
-        $rows = $model->displayResidents($status);
-        if (!empty($rows)) {
+		<p><strong>Name:</strong> ' . $name . '</p>
+		<p><strong>Number of Residents:</strong> ' . count($rows) . '</p>
+		<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; margin-top: 20px;">
+			<thead>
+				<tr>
+					<th><b>ID Number</b></th>
+					<th><b>Name</b></th>
+					<th><b>Gender</b></th>
+					<th><b>Civil Status</b></th>
+					<th><b>Contact</b></th>
+				</tr>
+			</thead>
+			<tbody>';
+	
+		// Loop through residents data and populate the table
+		$status = 1;
+		$rows = $model->displayResidents($status);
+		if (!empty($rows)) {
 			foreach ($rows as $row) {
-			    $id = $row['id'];
 				$id_number = $row['id_number'];
 				$first_name = $row['fname'];
 				$middle_name = $row['mname'];
 				$last_name = $row['lname'];
-				$email = $row['email'];
 				$contact = $row['contact_number'];
 				$gender = $row['gender'];
 				$civil_status = $row['civil_status'];
-				$address = $row['address'];
-				$address2 = $row['address2'];
-				$resident_since = $row['resident_since'];
-				$date_added = $row['date_registered'];
-				$verified = $row['verified'];
-				
+	
 				$content .= '<tr>
-			        <td>'.$id_number.'</td>
-			        <td>'.$first_name.' '.$middle_name.' '.$last_name.'</td>
-			        <td>'.$gender.'</td>
-			        <td>'.$civil_status.'</td>
-			        <td>'.$contact.'</td>
-		        </tr>';
+					<td>' . $id_number . '</td>
+					<td>' . $first_name . ' ' . $middle_name . ' ' . $last_name . '</td>
+					<td>' . $gender . '</td>
+					<td>' . $civil_status . '</td>
+					<td>' . $contact . '</td>
+				</tr>';
 			}
-        }
-        	
+		}
+	
 		$content .= '</tbody></table>';  
 		$content = utf8_encode($content);
+	
+		// Output the PDF
 		$obj_pdf->writeHTML($content); 
 		ob_end_clean();
 		$obj_pdf->Output('Residents.pdf', 'I');  
 	}
+	
 
 	if (empty($_SESSION['sess'])) {
 		echo "<script>window.open('../','_self');</script>";
