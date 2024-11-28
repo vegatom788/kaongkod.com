@@ -89,6 +89,66 @@
 	$digits = 7;
 	$digits_main = rand(pow(10, $digits-1), pow(10, $digits)-1);
 ?>
+<?php
+if (isset($_POST["export-pdf"])) { 
+    // Start content construction
+    $content = '';  
+    $content .= '
+    <div style="text-align: center;">
+        <img src="11header.jpg" height="115" width="300">
+        <h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
+    </div>
+    <p><strong>Name:</strong> ' . $name . '</p>
+    <p><strong>Number of Residents:</strong> ' . count($rows) . '</p>
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; margin-top: 20px;">
+        <thead>
+            <tr>
+                <th><b>ID Number</b></th>
+                <th><b>Name</b></th>
+                <th><b>Gender</b></th>
+                <th><b>Civil Status</b></th>
+                <th><b>Contact</b></th>
+            </tr>
+        </thead>
+        <tbody>';
+
+    // Loop through residents data and populate the table
+    $status = 1;
+    $rows = $model->displayResidents($status);
+    if (!empty($rows)) {
+        foreach ($rows as $row) {
+            $id_number = $row['id_number'];
+            $first_name = $row['fname'];
+            $middle_name = $row['mname'];
+            $last_name = $row['lname'];
+            $contact = $row['contact_number'];
+            $gender = $row['gender'];
+            $civil_status = $row['civil_status'];
+
+            $content .= '<tr>
+                <td>' . $id_number . '</td>
+                <td>' . $first_name . ' ' . $middle_name . ' ' . $last_name . '</td>
+                <td>' . $gender . '</td>
+                <td>' . $civil_status . '</td>
+                <td>' . $contact . '</td>
+            </tr>';
+        }
+    }
+
+    $content .= '</tbody></table>';  
+
+    // Output HTML content
+    echo $content;
+?>
+<script type="text/javascript">
+    // Trigger the print dialog once the content is rendered
+    window.onload = function() {
+        window.print();
+    }
+</script>
+<?php
+}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
