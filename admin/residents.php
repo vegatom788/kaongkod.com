@@ -9,103 +9,74 @@
 	$model = new Model();
 	include('department.php');
 
-	if (isset($_POST["export-pdf"])) { 
-		// Start content construction
+	if(isset($_POST["export-pdf"])) { 
+		require_once('../tcpdf/tcpdf.php');  
+		$obj_pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
+		$obj_pdf->SetCreator(PDF_CREATOR);  
+		$obj_pdf->SetTitle("BRGY. KAONGKOD - RESIDENTS");   
+		$obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
+		$obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
+		$obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
+		$obj_pdf->SetDefaultMonospacedFont('helvetica');  
+		$obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
+		$obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);  
+		$obj_pdf->setPrintHeader(false);  
+		$obj_pdf->setPrintFooter(false);  
+		$obj_pdf->SetAutoPageBreak(TRUE, 10);  
+		$obj_pdf->SetFont('helvetica', '', 12);  
+		$obj_pdf->AddPage(); 
+		//ob_start(); 
 		$content = '';  
 		$content .= '
-		<div style="text-align: center;">
+		<div align="center">
 			<img src="11header.jpg" height="115" width="300">
 			<h2 style="color: black;">BARANGAY KAONGKOD - RESIDENTS</h2>
 		</div>
-		<p><strong>Name:</strong> ' . $name . '</p>
-		<p><strong>Number of Residents:</strong> ' . count($rows) . '</p>
-		<table border="1" cellpadding="5" cellspacing="0" style="width: 100%; margin-top: 20px;">
-			<thead>
-				<tr>
-					<th><b>ID Number</b></th>
-					<th><b>Name</b></th>
-					<th><b>Gender</b></th>
-					<th><b>Civil Status</b></th>
-					<th><b>Contact</b></th>
-				</tr>
-			</thead>
-			<tbody>';
-	
-		// Loop through residents data and populate the table
-		$status = 1;
-		$rows = $model->displayResidents($status);
-		if (!empty($rows)) {
+		<table border="1" cellspacing="0" cellpadding="5">
+        	<thead>
+        		<tr>
+        			<th><b>ID Number</b></th>
+        			<th><b>Name</b></th>
+        			<th><b>Gender</b></th>
+        			<th><b>Civil Status</b></th>
+        			<th><b>Contact</b></th>
+        		</tr>
+        	</thead>
+        	<tbody>';
+        $status = 1;
+        $rows = $model->displayResidents($status);
+        if (!empty($rows)) {
 			foreach ($rows as $row) {
+			    $id = $row['id'];
 				$id_number = $row['id_number'];
 				$first_name = $row['fname'];
 				$middle_name = $row['mname'];
 				$last_name = $row['lname'];
+				$email = $row['email'];
 				$contact = $row['contact_number'];
 				$gender = $row['gender'];
 				$civil_status = $row['civil_status'];
-	
+				$address = $row['address'];
+				$address2 = $row['address2'];
+				$resident_since = $row['resident_since'];
+				$date_added = $row['date_registered'];
+				$verified = $row['verified'];
+				
 				$content .= '<tr>
-					<td>' . $id_number . '</td>
-					<td>' . $first_name . ' ' . $middle_name . ' ' . $last_name . '</td>
-					<td>' . $gender . '</td>
-					<td>' . $civil_status . '</td>
-					<td>' . $contact . '</td>
-				</tr>';
+			        <td>'.$id_number.'</td>
+			        <td>'.$first_name.' '.$middle_name.' '.$last_name.'</td>
+			        <td>'.$gender.'</td>
+			        <td>'.$civil_status.'</td>
+			        <td>'.$contact.'</td>
+		        </tr>';
 			}
-		}
-	
+        }
+        	
 		$content .= '</tbody></table>';  
-	
-		// Output HTML content
-		echo $content;
-	?>
-	
-	<!-- Add CSS for print formatting -->
-	<style>
-		/* Hide the body content not needed for printing */
-		body * {
-			visibility: hidden;
-		}
-	
-		/* Only show the print area */
-		.printable, .printable * {
-			visibility: visible;
-		}
-	
-		/* Print-specific styles */
-		@media print {
-			/* Hide unnecessary elements like sidebar, header, and nav */
-			header, nav, .sidebar {
-				display: none;
-			}
-	
-			/* Adjust printable area */
-			.printable {
-				width: 100%;
-				height: auto;
-			}
-		}
-	</style>
-	
-	<!-- Print-specific JavaScript -->
-	<script type="text/javascript">
-		// Wait until content is fully loaded
-		window.onload = function() {
-			// Hide everything except the printable content
-			document.body.style.visibility = 'hidden';
-			document.querySelector('.printable').style.visibility = 'visible';
-	
-			// Trigger the print dialog
-			window.print();
-	
-			// After printing, reset visibility
-			window.onafterprint = function() {
-				document.body.style.visibility = 'visible';
-			}
-		}
-	</script>
-	
-	<?php
+		$content = utf8_encode($content);
+		$obj_pdf->writeHTML($content); 
+		ob_end_clean();
+		$obj_pdf->Output('Residents.pdf', 'I');  
 	}
 
 	if (empty($_SESSION['sess'])) {
@@ -391,7 +362,7 @@
 								</div> -->
 								<div align="right">
 								    <form method="POST" target="_blank">
-    								    <button type="submit" name="export-pdf" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button>
+    								    <button type="submit" name="export-pdf1" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button>
     									<!-- <a href="import-residents" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;IMPORT RESIDENTS</a> -->
     								</form>
 								</div>
@@ -724,6 +695,31 @@
 				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
 			});
 		</script>
+		<script type="text/javascript">
+	// Function to print content
+	function printContent() {
+		// Store the content in the printable div
+		var content = document.getElementById('export-pdf1');
+		content.innerHTML = document.body.innerHTML;
+
+		// Hide all content except for the printable area
+		document.body.style.visibility = 'hidden';
+		content.style.visibility = 'visible';
+
+		// Trigger the print dialog
+		window.print();
+
+		// After printing, reset visibility
+		window.onafterprint = function() {
+			document.body.style.visibility = 'visible';
+		}
+	}
+
+	// Call the printContent function to trigger the print dialog
+	window.onload = function() {
+		printContent();
+	}
+</script>
 
 </body>
 </html>
