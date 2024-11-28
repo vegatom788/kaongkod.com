@@ -65,6 +65,8 @@
 
 		<!-- DataTables JS -->
 		<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+		<!-- SweetAlert2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
@@ -193,6 +195,8 @@
 				</style>
 				<div class="row">
 					<div class="col-lg-7 m-b30">
+						<!-- SweetAlert2 JS -->
+					<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 					<?php
 if (isset($_POST['post_msg'])) {
     $resident_id = $_SESSION['sess2']; 
@@ -311,7 +315,19 @@ if (isset($_POST['post_msg'])) {
 
 															setcookie('cancel_request_clearance', null, -1, '/'); 
 
-															echo "<script>window.open('clearance', '_self');</script>";
+															echo "<script>
+																Swal.fire({
+																	icon: 'success',
+																	title: 'Request Cancelled!',
+																	text: 'Your request has been successfully cancelled.',
+																	confirmButtonText: 'OK',
+																	customClass: {
+																	popup: 'my-swal-popup'
+																	}
+																}).then(function() {
+																	window.location.href = 'clearance'; // Redirect after alert is closed
+																});
+															</script>";
 														}
 													} else { ?>
 													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>

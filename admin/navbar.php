@@ -66,11 +66,93 @@
 						border-radius: 50%; /* Makes it a circle */
 						border: 2px solid white; /* Optional: white border for better visibility */
 					}
+					.heartbit {
+						display: inline-flex;
+						justify-content: center;
+						align-items: center;
+						width: 8px; /* Adjust size as needed */
+						height: 8px;
+						background-color: red;
+						color: white;
+						font-size: 6px;
+						font-weight: bold;
+						border-radius: 50%;
+						position: relative;
+						animation: heartbeat 2s ease-in-out infinite;
+						text-align: center;
+					}
+
+						@keyframes heartbeat {
+						0% {
+							transform: scale(1);
+						}
+						5% {
+							transform: scale(1.1);
+						}
+						10% {
+							transform: scale(1.2);
+						}
+						15% {
+							transform: scale(1.3);
+						}
+						20% {
+							transform: scale(1.4);
+						}
+						25% {
+							transform: scale(1.5);
+						}
+						30% {
+							transform: scale(1.6);
+						}
+						35% {
+							transform: scale(1.7);
+						}
+						40% {
+							transform: scale(1.8);
+						}
+						45% {
+							transform: scale(1.9);
+						}
+						50% {
+							transform: scale(2);
+						}
+						55% {
+							transform: scale(1.9);
+						}
+						60% {
+							transform: scale(1.8);
+						}
+						65% {
+							transform: scale(1.7);
+						}
+						70% {
+							transform: scale(1.6);
+						}
+						75% {
+							transform: scale(1.5);
+						}
+						80% {
+							transform: scale(1.4);
+						}
+						85% {
+							transform: scale(1.3);
+						}
+						90% {
+							transform: scale(1.2);
+						}
+						95% {
+							transform: scale(1.1);
+						}
+						100% {
+							transform: scale(1);
+						}
+						}
 					</style>
 
-						<li id="bell">
+<li id="bell">
 							<a href="monitoring-of-request.php">
 									<i class="fa fa-bell"></i>
+									<span class="heartbit">
 									<?php
 									$rows = $model->fetchRequests();
 									$notificationCount = 0;
@@ -89,8 +171,10 @@
 											echo '<span class="notification-badge">' . $notificationCount . '</span>';
 									}
 									?>
+									</span>
 							</a>
 						</li>
+
 
 					<li>
 						<a href="#" class="ttr-material-button ttr-submenu-toggle"><img src="../assets/images/<?php echo  $web_icon; ?>.png" style="height: 45px; width: 45px;border-radius: 50%;"></a>
