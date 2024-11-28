@@ -362,7 +362,7 @@
 								</div> -->
 								<div align="right">
 								    <form method="POST" target="_blank">
-    								    <button type="submit" name="export-pdf1" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button>
+    								    <button type="submit" name="export-pdf" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button>
     									<!-- <a href="import-residents" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;IMPORT RESIDENTS</a> -->
     								</form>
 								</div>
@@ -695,31 +695,7 @@
 				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
 			});
 		</script>
-		<script type="text/javascript">
-	// Function to print content
-	function printContent() {
-		// Store the content in the printable div
-		var content = document.getElementById('export-pdf1');
-		content.innerHTML = document.body.innerHTML;
-
-		// Hide all content except for the printable area
-		document.body.style.visibility = 'hidden';
-		content.style.visibility = 'visible';
-
-		// Trigger the print dialog
-		window.print();
-
-		// After printing, reset visibility
-		window.onafterprint = function() {
-			document.body.style.visibility = 'visible';
-		}
-	}
-
-	// Call the printContent function to trigger the print dialog
-	window.onload = function() {
-		printContent();
-	}
-</script>
+		
 
 </body>
 </html>
