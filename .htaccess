@@ -23,10 +23,10 @@ Header always set X-Frame-Options "DENY"
 
 # Content Security Policy (CSP)
 # This is an example; modify it based on your specific needs
-# Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
 
 # XSS Protection (X-XSS-Protection)
-# Header set X-XSS-Protection "1; mode=block"
+Header set X-XSS-Protection "1; mode=block"
 
 # Prevent Referrer Header leakage (Referrer-Policy)
-# Header set Referrer-Policy "no-referrer-when-downgrade"
+Header set Referrer-Policy "no-referrer-when-downgrade"
