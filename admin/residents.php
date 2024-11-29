@@ -361,8 +361,9 @@
 									<a href="archived-residents" class="btn red radius-xl"><i class="ti-agenda"></i><span>&nbsp;ARCHIVED RESIDENTS</span></a><br>
 								</div> -->
 								<div align="right">
-								    <form method="POST" target="_blank">
-    								    <button type="submit" name="export-pdf" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button>
+								    <form method="POST">
+										<button id="printButton" class="btn green radius-xl" style="background-color: <?php echo $primary_color; ?>" onclick="printTable()"><i class="ti-import"></i>&nbsp;&nbsp;PRINT</button>
+    								    <!-- <button type="submit" name="export-pdf" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;EXPORT TO PDF</button> -->
     									<!-- <a href="import-residents" class="btn blue radius-xl" style="background-color: <?php echo $primary_color; ?>"><i class="ti-import"></i>&nbsp;&nbsp;IMPORT RESIDENTS</a> -->
     								</form>
 								</div>
@@ -695,6 +696,70 @@
 				e.target.value = value.replace(/\D/g, '').substring(0, 11); // Remove non-digits and limit length to 11
 			});
 		</script>
+		<script>
+    // Print function that triggers the print dialog
+    function printTable() {
+        // Open a new window to print the table content
+        var printWindow = window.open('', '', 'height=800,width=1000');
+        
+        // Get the content of the table (excluding Action, Status, and Picture columns)
+        var table = document.getElementById('table');
+        
+        // Create a new table structure for printing without unwanted columns
+        var printTable = table.cloneNode(true);
+        
+        // Remove unwanted columns (Action, Status, and Picture)
+        var headers = printTable.querySelectorAll('th');
+        var rows = printTable.querySelectorAll('tr');
+        
+        // Identify the indexes of the columns to be removed (Action, Status, and Picture)
+        var removeColumns = [5, 6];  // Action (index 5), Status (index 4), Picture (index 1)
+        
+        // Loop through each header and remove unwanted columns
+        removeColumns.forEach(function(index) {
+            headers[index].style.display = 'none'; // Hide header
+            rows.forEach(function(row) {
+                var cell = row.cells[index];
+                if (cell) {
+                    cell.style.display = 'none'; // Hide cell content
+                }
+            });
+        });
+
+        // Also remove the picture from the "Name" field
+        var nameCells = printTable.querySelectorAll('td:nth-child(2)');  // "Name" field is the 2nd column
+        nameCells.forEach(function(cell) {
+            var img = cell.querySelector('img');
+            if (img) {
+                img.style.display = 'none'; // Hide the image in the Name field
+            }
+        });
+
+        // Write the content to the new window
+        printWindow.document.write('<html><head>');
+        // Add some styles to make the table look better in print
+        printWindow.document.write('<style>');
+        printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+        printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+        printWindow.document.write('table, th, td { border: 1px solid #000; }');
+        printWindow.document.write('th, td { padding: 8px; text-align: left; }');
+        printWindow.document.write('th { background-color: #f2f2f2; }');
+        printWindow.document.write('h2 { text-align: center; }');
+        printWindow.document.write('</style>');
+        printWindow.document.write('</head><body>');
+        
+        // Add a title or header for the printout
+        printWindow.document.write('<h2>Residents List</h2>');
+        
+        // Add the modified table content
+        printWindow.document.write(printTable.outerHTML);
+        
+        // Close the document and trigger the print dialog
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
 		
 
 </body>
