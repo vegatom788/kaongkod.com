@@ -23,7 +23,7 @@ Header always set X-Frame-Options "DENY"
 
 # Content Security Policy (CSP)
 # This is an example; modify it based on your specific needs
-Permissions-Policy: geolocation=(self "https://example.com"), microphone=()
+Permissions-Policy: geolocation=(self "https://kaongkod.com"), microphone=()
 
 # XSS Protection (X-XSS-Protection)
 Header set X-XSS-Protection "1; mode=block"
