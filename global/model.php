@@ -316,8 +316,8 @@
 				// Check if the max attempts have been reached
 				if ($_SESSION['lattempt'] > $maxAttempts) {
 					// User reached the max attempts
-					setcookie('rlimited', '5', time() + (60), "/");
-					setcookie('expiration_date_admin', time() + (60), time() + (60), "/");
+					setcookie('rlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true); 
+    				setcookie('expiration_date_admin', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true); 
 		
 					// Set lockout time
 					$_SESSION['lockout_time'] = time() + $cooldownTime;
@@ -380,8 +380,8 @@
 				$_SESSION['slattempt']++;
 		
 				if ($_SESSION['slattempt'] > $maxAttempts) {
-					setcookie('srlimited', '5', time() + 60, "/");
-					setcookie('expiration_date', time() + 60, time() + 60, "/");
+					setcookie('srlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
+    				setcookie('expiration_date', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
 					$_SESSION['lockout_time'] = time() + $cooldownTime;
 					unset($_SESSION['slattempt']);
 					return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
