@@ -198,20 +198,35 @@
 						<!-- SweetAlert2 JS -->
 					<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 					<?php
-					if (isset($_POST['post_msg'])) {
-						$resident_id = $_SESSION['sess2']; 
-						$request_type = 1;
-						$purpose = $_POST['message'];
-						$payment_method = $_POST['payment_method'];
-						$reference_number = $_POST['reference_number'];
-						
-						$model->addRequest($resident_id, $request_type, $purpose, $payment_method, $reference_number);
+						if (isset($_POST['post_msg'])) {
+							$resident_id = $_SESSION['sess2']; 
+							$request_type = 1;
+							$purpose = $_POST['message'];
+							$payment_method = $_POST['payment_method'];
+							$reference_number = $_POST['reference_number'];
 
-						setcookie('cancel_request_clearance', time() + (60 * 5), time() + (60 * 5), "/");
+							$model->addRequest($resident_id, $request_type, $purpose, $payment_method, $reference_number);
 
-						echo "<script>window.open('clearance', '_self')</script>";
-					}
-					?>
+							setcookie('cancel_request_clearance', time() + (60 * 5), time() + (60 * 5), "/", "", isset($_SERVER["HTTPS"]), true);
+
+							// Using SweetAlert to show the success message
+							echo "<script>
+									Swal.fire({
+										title: 'Success!',
+										text: 'Your request has been submitted successfully.',
+										icon: 'success',
+										confirmButtonText: 'Ok',
+										customClass: {
+													popup: 'my-swal-popup'
+										}
+									}).then((result) => {
+										if (result.isConfirmed) {
+											window.open('clearance', '_self');
+										}
+									});
+								</script>";
+						}
+						?>
 
 									<form class="contact-bx dzForm" method="post" style="background-color: #ffffff; border: 2px solid #ccc; padding: 30px; border-radius: 5px;">
 										<div class="dzFormMsg"></div>
@@ -313,7 +328,7 @@
 														if (isset($_POST['cancel'])) {
 															$model->updateRequestStatus(4, $_POST['cancel_hidden']);
 
-															setcookie('cancel_request_clearance', null, -1, '/'); 
+															setcookie('cancel_request_clearance', null, time() - 3600, '/', "", isset($_SERVER["HTTPS"]), true);  
 
 															echo "<script>
 																Swal.fire({
