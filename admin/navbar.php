@@ -74,7 +74,7 @@
 						height: 8px;
 						background-color: red;
 						color: white;
-						font-size: 6px;
+						font-size: 7px;
 						font-weight: bold;
 						border-radius: 50%;
 						position: relative;
