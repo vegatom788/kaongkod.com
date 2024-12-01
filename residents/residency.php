@@ -209,7 +209,7 @@
 
                 $model->addRequest($_SESSION['sess2'], 2, $purpose, $payment_method, $reference_number);
 
-                setcookie('cancel_request_residency', time() + (60 * 5), time() + (60 * 5), "/");
+                setcookie('cancel_request_clearance', time() + (60 * 5), time() + (60 * 5), "/", "", isset($_SERVER["HTTPS"]), true);
 
                 echo "<script>
 									Swal.fire({
@@ -326,7 +326,7 @@
 														if (isset($_POST['cancel'])) {
 															$model->updateRequestStatus(4, $_POST['cancel_hidden']);
 
-															setcookie('cancel_request_residency', null, -1, '/'); 
+															setcookie('cancel_request_clearance', null, time() - 3600, '/', "", isset($_SERVER["HTTPS"]), true);  
 
 															echo "<script>
 																Swal.fire({

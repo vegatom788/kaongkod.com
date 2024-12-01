@@ -183,7 +183,7 @@
 
                 $model->addRequest($resident_id, $request_type, $purpose, $payment_method, $reference_number);
 
-                setcookie('cancel_request_indigency', time() + (60 * 5), time() + (60 * 5), "/");
+                setcookie('cancel_request_clearance', time() + (60 * 5), time() + (60 * 5), "/", "", isset($_SERVER["HTTPS"]), true);
 
                 echo "<script>
 									Swal.fire({
@@ -300,7 +300,7 @@
 														if (isset($_POST['cancel'])) {
 															$model->updateRequestStatus(4, $_POST['cancel_hidden']);
 
-															setcookie('cancel_request_indigency', null, -1, '/'); 
+															setcookie('cancel_request_clearance', null, time() - 3600, '/', "", isset($_SERVER["HTTPS"]), true);  
 
 															echo "<script>
 																Swal.fire({
