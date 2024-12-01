@@ -279,8 +279,9 @@
         <div class="form-group">
             <label>Reference No. (for Gcash Payment only)</label>
             <div class="input-group">
-				<input type="text" id="reference-number" name="reference_number" class="form-control" placeholder="Enter gcash reference no." maxlength="13" required>
-			</div>
+                <input type="text" id="reference-number" name="reference_number" class="form-control" placeholder="Enter gcash reference no." maxlength="13">
+            </div>
+
 						</div>
 										</div>
 											<div class="col-lg-12">
