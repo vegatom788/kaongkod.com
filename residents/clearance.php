@@ -195,7 +195,7 @@
 				</style>
 				<div class="row">
 					<div class="col-lg-7 m-b30">
-						<!-- SweetAlert2 JS -->
+					<!-- SweetAlert2 JS -->
 					<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 					<?php
 						if (isset($_POST['post_msg'])) {
@@ -279,18 +279,8 @@
         <div class="form-group">
             <label>Reference No. (for Gcash Payment only)</label>
             <div class="input-group">
-				<input 
-					type="text" 
-					id="reference-number" 
-					name="reference_number" 
-					class="form-control" 
-					placeholder="Enter GCash reference no." 
-					maxlength="15" 
-					required 
-					oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
-					pattern="\d{1,15}">
-			</div>
-
+                <input type="text" id="reference-number" name="reference_number" class="form-control" placeholder="Enter gcash reference no." maxlength="20">
+            </div>
 						</div>
 										</div>
 											<div class="col-lg-12">
@@ -328,7 +318,7 @@
 														if (isset($_POST['cancel'])) {
 															$model->updateRequestStatus(4, $_POST['cancel_hidden']);
 
-															setcookie('cancel_request_clearance', null, time() - 3600, '/', "", isset($_SERVER["HTTPS"]), true);  
+															setcookie('cancel_request_clearance', null, time() - 3600, '/', "", isset($_SERVER["HTTPS"]), true); 
 
 															echo "<script>
 																Swal.fire({
