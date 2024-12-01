@@ -175,7 +175,7 @@
 													</div>
 												</div>
 											</div>
-											
+											<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 											<?php
 												try {
 													// Assuming you have a PDO connection established, create a Model instance
@@ -189,14 +189,35 @@
 														
 														// Call deleteResident method
 														if ($model->deleteArchivedAnnouncement($id)) {
-															echo "<script>alert('Announcement deleted successfully');</script>";
+															echo "<script>
+																Swal.fire({
+																	title: 'Error!',
+																	text: 'There was an issue deleting the resident',
+																	icon: 'error',
+																	confirmButtonText: 'OK',
+																	customClass: {
+																		popup: 'my-swal-popup'
+																	}
+																});
+															</script>";
 														} else {
-															echo "<script>alert('Announcement deleted successfully');</script>";
+															echo "<script>
+																Swal.fire({
+																	title: 'Deleted!',
+																	text: 'Announcement deleted successfully',
+																	icon: 'success',
+																	confirmButtonText: 'OK',
+																	customClass: {
+																		popup: 'my-swal-popup'
+																	}
+																}).then((result) => {
+																	if (result.isConfirmed) {
+																		window.location.href = 'archived-announcement'; // Redirect after success
+																	}
+																});
+															</script>";
 														}
 
-														// Redirect back to the same page after deletion
-														echo "<script>window.open('archived-announcement.php', '_self');</script>";
-														exit;
 													}
 												} catch (PDOException $e) {
 													// Handle PDO exception (connection or query error)
