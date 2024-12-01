@@ -39,8 +39,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- jQuery (needed for DataTables) -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<!-- SweetAlert2 CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 		<!-- DataTables JS -->
 		<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -171,8 +169,6 @@
 				</style>
 				<div class="row">
     <div class="col-lg-7 m-b30">
-		<!-- SweetAlert2 JS -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
         <?php
             if (isset($_POST['post_msg'])) {
                 $resident_id = $_SESSION['sess2'];
@@ -186,20 +182,17 @@
                 setcookie('cancel_request_indigency', time() + (60 * 5), time() + (60 * 5), "/");
 
                 echo "<script>
-									Swal.fire({
-										title: 'Success!',
-										text: 'Your request has been submitted successfully.',
-										icon: 'success',
-										confirmButtonText: 'Ok',
-										customClass: {
-													popup: 'my-swal-popup'
-										}
-									}).then((result) => {
-										if (result.isConfirmed) {
-											window.open('indigency', '_self');
-										}
-									});
-								</script>";
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your request has been submitted successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'indigency';
+                        }
+                    });
+                </script>";
             }
         ?>
 									<form class="contact-bx dzForm" method="post" style="background-color: #ffffff; border: 2px solid #ccc; padding: 30px; border-radius: 5px;">
@@ -311,19 +304,7 @@
 
 															setcookie('cancel_request_indigency', null, -1, '/'); 
 
-															echo "<script>
-																Swal.fire({
-																	icon: 'success',
-																	title: 'Request Cancelled!',
-																	text: 'Your request has been successfully cancelled.',
-																	confirmButtonText: 'OK',
-																	customClass: {
-																	popup: 'my-swal-popup'
-																	}
-																}).then(function() {
-																	window.location.href = 'indigency'; // Redirect after alert is closed
-																});
-															</script>";
+															echo "<script>window.open('indigency', '_self');</script>";
 														}
 													} else { ?>
 													<center><button name="post_msg" type="submit" class="btn button-md button-block">Submit Request</button></center>
