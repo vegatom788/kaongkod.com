@@ -694,7 +694,7 @@
 								<h3>How can we help? Let us know</h3>
 								<p>Our support got you covered on your concern or questions in mind.</p>
 							</div>
-								<a style="font-size: 20px;color: black;"><i class="fa fa-facebook" style="font-size: 25px;color: #333333;"></i> &nbsp;Barangay Kaongkod ></a><br>
+								<a style="font-size: 20px;color: black;"><i class="fa fa-facebook" style="font-size: 25px;color: #333333;"></i> &nbsp;Barangay Kaongkod</a><br>
 								<div style="height: 5px;"></div>
 
 								<a style="font-size: 20px;color: black;"><i class="fa fa-envelope" style="font-size: 20px;color: #333333;"></i> barangaykaongkod15@gmail.com</a><br>
