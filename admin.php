@@ -145,7 +145,7 @@
 						</div>
 						<div class="form-group form-forget">
 							<div class="link forget-pass text-left"><a href="forgot-password.php" style="color: #0866ff;">Forgot password?</a></div>
-							<a href="residents.php" class="ml-auto" style="color: #0866ff;">Resident Login</a>
+							<a href="residents" class="ml-auto" style="color: #0866ff;">Resident Login</a>
 						</div>
 						<div class="form-group">
 							<button name="g-recaptcha-response" type="hidden" value="token" class="btn btn-block">Login</button>
