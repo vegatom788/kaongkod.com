@@ -5,8 +5,8 @@ Options All -Indexes
 RewriteEngine On
 
 # Redirect non-existent .php URLs to their corresponding .php files
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteRule ^(.*)/$ $1.php [L]
 
 # Security Headers
 
