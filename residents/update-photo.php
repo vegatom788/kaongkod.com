@@ -113,39 +113,56 @@
 										</div>
 										</form>
 										<?php
-											if (isset($_POST['submit'])) {
+										if (isset($_POST['submit'])) {
 
-												$filename=$_FILES['image']['name'];
-													$file = basename($filename);
+											$filename = $_FILES['image']['name'];
+											$file = basename($filename);
+											$file_extension = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // Get file extension
 
-													if(strtolower(end(explode(".",$file))) =="mp4") {
-														echo "<script>alert('Invalid file type.');window.open('update-photo', '_self');</script>";
-													}
-													else {
-													if (!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE) {}
-													else {
+											// Check for allowed file extensions (png, jpg, jpeg)
+											if (!in_array($file_extension, ['png', 'jpg', 'jpeg'])) {
+												echo "<script>
+														Swal.fire({
+															title: 'Error!',
+															text: 'Invalid file type. Only PNG, JPG, and JPEG are allowed.',
+															icon: 'error',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'update-photo';
+															}
+														});
+													</script>";
+											} else {
+												if (!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE) {
+													// No file uploaded, do nothing
+												} else {
+													// Ensure the uploaded file is an image
+													$is_image = getimagesize($_FILES["image"]["tmp_name"]) ? true : false;
 
-														$is_image = getimagesize($_FILES["image"]["tmp_name"]) ? true : false;
+													if ($is_image) {
+														// Define the path to save the image
+														$path = '../assets/images/profile-pictures/';
+														$unique = time() . uniqid(rand());
+														$destination = $path . $unique . '.jpg'; // Save as JPG format
 
-														if ($is_image) {
-															$path = '../assets/images/profile-pictures/';
-															$unique = time().uniqid(rand());
-															$destination = $path . $unique . '.jpg';
-															$base = basename($_FILES["image"]["name"]);
-															$image = $_FILES["image"]["tmp_name"];
-															move_uploaded_file($image, $destination);
+														// Move the uploaded file to the destination
+														$image = $_FILES["image"]["tmp_name"];
+														move_uploaded_file($image, $destination);
 
-															$model->updateResidentPhoto($unique);
+														// Update the database or model with the new photo path (if necessary)
+														$model->updateResidentPhoto($unique);
 
-															echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
-														}
-														else {
-															echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
-														}
-
+														echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
+													} else {
+														echo "<script>alert('The uploaded file is not a valid image.');window.open('update-photo', '_self');</script>";
 													}
 												}
 											}
+										}
 										?>
 									</div>
 									<div class="col-lg-12">
@@ -188,6 +205,48 @@
 				}
 			}
 		</script>
+		<script>
+			function validateFileInput() {
+				var fileInput = document.querySelector('input[type="file"]');
+				var file = fileInput.files[0];
+				
+				// If there's no file selected, return true to allow submission
+				if (!file) {
+					return true;
+				}
+
+				var fileName = file.name;
+				var fileExtension = fileName.split('.').pop().toLowerCase();
+
+				// Check if the file extension is valid
+				if (['png', 'jpg', 'jpeg'].indexOf(fileExtension) === -1) {
+					// Show SweetAlert error
+					Swal.fire({
+						title: 'Error!',
+						text: 'Invalid file type. Only PNG, JPG, and JPEG are allowed.',
+						icon: 'error',
+						confirmButtonText: 'OK',
+						customClass: {
+							popup: 'my-swal-popup'
+						}
+					}).then((result) => {
+						if (result.isConfirmed) {
+							// Clear the file input field
+							fileInput.value = ''; 
+						}
+					});
+
+					return false; // Prevent form submission
+				}
+				return true; // Allow form submission
+			}
+
+			// Add the validation function to the form submission
+			document.querySelector('form').onsubmit = function() {
+				return validateFileInput();
+			};
+		</script>
+
 	</body>
 
 </html>
