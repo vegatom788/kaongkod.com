@@ -4,9 +4,11 @@ Options All -Indexes
 # Enable mod_rewrite engine
 RewriteEngine On
 
-# Redirect non-existent .php URLs to their corresponding .php files
+# Check if the requested URL doesn't already end with .php and if it's not an actual file
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.php$
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
 
 # Security Headers
 
