@@ -52,7 +52,7 @@
 					</button>
                     <div class="secondary-menu">
                         <div class="secondary-inner">
-                            <a href="residents.php" style="color: #fff;">LOGIN</a>
+                            <a href="residents" style="color: #fff;">LOGIN</a>
 						</div>
                     </div>
                     <style type="text/css">
@@ -203,7 +203,7 @@
 									 MUNICIPALITY OF MADRIDEJOS
 							</div>
 							<!-- LAYER NR. 4 -->
-							<a href="residents.php"><div class="tp-caption Newspaper-Button rev-btn " 
+							<a href="residents"><div class="tp-caption Newspaper-Button rev-btn " 
 								id="slide-200-layer-5" 
 								data-x="['center','center','center','center']" 
 								data-hoffset="['90','80','75','90']" 
@@ -361,7 +361,7 @@
 									WITH PAYMENT THROUGH GCASH
 							</div>
 							<!-- LAYER NR. 4 -->
-							<a href="residents.php"><div class="tp-caption Newspaper-Button rev-btn " 
+							<a href="residents"><div class="tp-caption Newspaper-Button rev-btn " 
 								id="slide-200-layer-5" 
 								data-x="['center','center','center','center']" 
 								data-hoffset="['90','80','75','90']" 
@@ -663,7 +663,7 @@
 											<li><?php echo $row['details']; ?></li>
 										</ul>
 										<div class="pricingtable-footer"> 
-											<a href="residents.php" class="btn radius-xl">Request Now</a>
+											<a href="residents" class="btn radius-xl">Request Now</a>
 										</div>
 									</div>
 								</div>
