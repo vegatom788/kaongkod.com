@@ -3,10 +3,7 @@ Options All -Indexes
 
 # Enable mod_rewrite engine
 RewriteEngine On
-
-# Redirect non-existent .php URLs to their corresponding .php files
-
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^(.*)$ $1.php [NC,L]
 
 # Security Headers
 
