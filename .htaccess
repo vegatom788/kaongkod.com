@@ -1,16 +1,10 @@
 # Disable directory listing (indexes)
 Options All -Indexes
 
-# Enable mod_rewrite engine
 RewriteEngine On
-
-# Ensure that existing .php files can be accessed without the .php extension
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^([^/]+)$ $1.php [L]
-
-# Redirect non-existent URLs to their corresponding .php files (if they don't already exist)
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)$ $1.php [NC,L]
+RewriteRule ^([^/]+)$ $1.php [L]
 
 
 # Security Headers
