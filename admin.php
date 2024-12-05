@@ -28,10 +28,10 @@ $current_url = $_SERVER['REQUEST_URI'];
 // Remove the ".php" extension if it exists
 $clean_url = rtrim($current_url, '.php');
 
-// Output the cleaned URL (for debugging purposes)
-echo $clean_url;
+// Optional: Redirect to the cleaned URL (without .php extension)
+header("Location: $clean_url");
+exit();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
