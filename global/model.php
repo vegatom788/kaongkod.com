@@ -275,13 +275,16 @@
 				$stmt->bind_result($id, $hashed_pass);
 				$stmt->store_result();
 		
+				// Check if username exists in the database
 				if ($stmt->num_rows > 0) {
+					// Username found, now check password
 					if ($stmt->fetch()) {
 						if (password_verify($pword, $hashed_pass)) {
+							// Successful login
 							$_SESSION['sess'] = $id;
 							return ['success' => true]; // Return success response
 						} else {
-							// Incorrect password
+							// Incorrect password, increment failed attempt counter
 							$attemptResponse = $this->handleLoginAttempts();
 							if ($attemptResponse && isset($attemptResponse['error'])) {
 								return $attemptResponse; // Return error response for max attempts
@@ -290,34 +293,40 @@
 						}
 					}
 				} else {
-					// Username not found
+					// Username not found in the database, increment failed attempt counter
+					$attemptResponse = $this->handleLoginAttempts();
+					if ($attemptResponse && isset($attemptResponse['error'])) {
+						return $attemptResponse; // Return error response for max attempts
+					}
 					return ['error' => 'The specified email address was not found in our records.']; // Return error response
 				}
+		
 				$stmt->close();
 			}
 			$this->conn->close();
 		}
+		
 		private function handleLoginAttempts() {
 			// Define the maximum number of attempts and cooldown time in seconds
 			$maxAttempts = 3;
 			$cooldownTime = 300; // 5 minutes
-		
+			
 			// Check if the cooldown period has expired
 			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
-				return ['error' => 'You are temporarily locked out. Please try again later.', 'sweetalert' => true];
+				return ['error' => 'You are temporarily locked out. Please try again later.'];
 			}
 		
 			// If no attempts have been made yet
 			if (empty($_SESSION['lattempt'])) {
 				$_SESSION['lattempt'] = 1;
 			} else {
-				$_SESSION['lattempt']++;
-		
+				$_SESSION['lattempt']++; // Increment on incorrect email or incorrect password
+				
 				// Check if the max attempts have been reached
 				if ($_SESSION['lattempt'] > $maxAttempts) {
 					// User reached the max attempts
 					setcookie('rlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true); 
-    				setcookie('expiration_date_admin', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true); 
+					setcookie('expiration_date_admin', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true); 
 		
 					// Set lockout time
 					$_SESSION['lockout_time'] = time() + $cooldownTime;
@@ -325,12 +334,13 @@
 					// Clear the login attempts session variable
 					unset($_SESSION['lattempt']);
 		
-					return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
+					return ['error' => 'You have reached the maximum login attempts. Please try again later.'];
 				}
 			}
 		
 			return null; // No error
 		}
+		
 
 		public function residentSignIn($sid, $sid1, $pw) {
 			$query = "SELECT id, password, status, verified FROM residents WHERE email = ? OR contact_number = ?";
