@@ -288,7 +288,7 @@
 							if ($attemptResponse && isset($attemptResponse['error'])) {
 								return $attemptResponse; // Return error response for max attempts
 							}
-							return ['error' => 'The password entered is incorrect. Please check your credentials and try again.']; // Return error response
+							return ['error' => 'Incorrect email or password. Please try again.']; // Return error response
 						}
 					}
 				} else {
@@ -297,7 +297,7 @@
 					if ($attemptResponse && isset($attemptResponse['error'])) {
 						return $attemptResponse; // Return error response for max attempts
 					}
-					return ['error' => 'The specified email address was not found in our records.']; // Return error response
+					return ['error' => 'Incorrect email or password. Please try again.']; // Return error response
 				}
 				$stmt->close();
 			}
