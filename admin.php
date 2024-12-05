@@ -153,7 +153,7 @@
 						
 						<br>
 							<center>
-								Back to <a href="index.php" style="color: #0866ff;">Homepage</a>
+								Back to <a href="index" style="color: #0866ff;">Homepage</a>
 							</center>
 					</form>
 				</div>
