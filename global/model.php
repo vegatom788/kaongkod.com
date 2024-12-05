@@ -340,7 +340,10 @@
 				$stmt->bind_result($id, $hashed_pass, $fetched_status, $verified);
 				$stmt->store_result();
 		
-				if ($stmt->num_rows > 0) {
+				// If no rows were found for the email or contact number
+				if ($stmt->num_rows == 0) {
+					return $this->handleFailedLogin(true);  // Passing 'true' to indicate an invalid email/phone
+				} else {
 					if ($stmt->fetch()) {
 						if (password_verify($pw, $hashed_pass)) {
 							return $this->handleSuccessfulSignIn($id, $fetched_status, $verified);
@@ -348,8 +351,6 @@
 							return $this->handleFailedLogin();
 						}
 					}
-				} else {
-					return ['error' => 'The specified email address was not found in our records.'];
 				}
 				$stmt->close();
 			}
@@ -366,26 +367,31 @@
 			}
 		}
 		
-		private function handleFailedLogin() {
+		private function handleFailedLogin($isInvalidInput = false) {
 			$maxAttempts = 3;
 			$cooldownTime = 300; // 5 minutes
+		
+			// If the user typed incorrect credentials or non-existent email/phone
+			if ($isInvalidInput) {
+				// Increment the login attempts
+				if (empty($_SESSION['slattempt'])) {
+					$_SESSION['slattempt'] = 1;
+				} else {
+					$_SESSION['slattempt']++;
+				}
+			}
 		
 			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
 				return ['error' => 'You are temporarily locked out. Please try again later.', 'sweetalert' => true];
 			}
 		
-			if (empty($_SESSION['slattempt'])) {
-				$_SESSION['slattempt'] = 1;
-			} else {
-				$_SESSION['slattempt']++;
-		
-				if ($_SESSION['slattempt'] > $maxAttempts) {
-					setcookie('srlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
-    				setcookie('expiration_date', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
-					$_SESSION['lockout_time'] = time() + $cooldownTime;
-					unset($_SESSION['slattempt']);
-					return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
-				}
+			// Check if the max attempts have been reached
+			if ($_SESSION['slattempt'] > $maxAttempts) {
+				setcookie('srlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
+				setcookie('expiration_date', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
+				$_SESSION['lockout_time'] = time() + $cooldownTime;
+				unset($_SESSION['slattempt']);
+				return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
 			}
 		
 			return ['error' => 'The password entered is incorrect. Please check your credentials and try again.'];
