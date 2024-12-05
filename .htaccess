@@ -7,6 +7,7 @@ RewriteEngine On
 # Redirect non-existent .php URLs to their corresponding .php files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^admin$ admin.php [L]
 
 # Security Headers
 
