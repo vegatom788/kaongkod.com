@@ -21,6 +21,17 @@
 		echo "<script>window.open('admin/index.php','_self');</script>";
 	}
 ?>
+<?php
+$oldName = 'example.php';
+$newName = 'example'; // without .php extension
+
+if (rename($oldName, $newName)) {
+    echo "File renamed successfully.";
+} else {
+    echo "Error renaming file.";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
