@@ -49,7 +49,7 @@
 					?>
 
 					<li id="checkmark-circle" style="position: relative;">
-						<a href="residents.php">
+						<a href="residents">
 							<i class="fa fa-check-circle"></i>
 							<?php if ($hasUnverified): ?>
 								<span class="notification-dot"></span>
@@ -150,7 +150,7 @@
 					</style>
 
 						<li id="bell">
-							<a href="monitoring-of-request.php">
+							<a href="monitoring-of-request">
 									<i class="fa fa-bell"></i>
 									<span class="heartbit">
 									<?php
