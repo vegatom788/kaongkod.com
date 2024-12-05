@@ -18,7 +18,7 @@
     }
 
 	if (isset($_SESSION['sess'])) {
-		echo "<script>window.open('admin/index.php','_self');</script>";
+		echo "<script>window.open('admin/index','_self');</script>";
 	}
 ?>
 <!DOCTYPE html>
@@ -189,7 +189,7 @@
 
 					// Check for success or error in the response
 					if (isset($response['success']) && $response['success']) {
-						echo "<script>window.open('admin/index.php', '_self');</script>";
+						echo "<script>window.open('admin/index', '_self');</script>";
 						exit();
 					} elseif (isset($response['error'])) {
 						echo "<script>
