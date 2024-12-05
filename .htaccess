@@ -4,9 +4,12 @@ Options All -Indexes
 # Enable mod_rewrite engine
 RewriteEngine On
 
-# Check if the requested URL doesn't already end with .php and if it's not an actual file
+# Remove .php extension from URLs
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^([^/]+)$ $1.php [L]
+
+# Redirect non-existent URLs to their corresponding .php files
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !\.php$
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 
