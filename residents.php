@@ -334,14 +334,14 @@
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
-							<div class="link forget-pass text-left"><a href="forgot-password1.php" style="color: #0866ff;">Forgot password?</a></div>
+							<div class="link forget-pass text-left"><a href="forgot-password1" style="color: #0866ff;">Forgot password?</a></div>
 							<a href="admin" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
 						</div>
 						<div class="form-group">
 							<button name="g-recaptcha-response" type="hidden" value="token" class="btn btn-block">Login</button>
 						</div>
 							
-							Account not verified yet? <a href="registration.php" style="color: #0866ff;">Click here</a>
+							Account not verified yet? <a href="registration" style="color: #0866ff;">Click here</a>
 						<br>
 						<br>
 							<center>

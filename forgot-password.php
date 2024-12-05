@@ -110,7 +110,7 @@
                     </div>
                     <div>
                         <center>
-                            <a href="admin.php" style="color: #0866ff;">Back</a>
+                            <a href="admin" style="color: #0866ff;">Back</a>
                         </center>
                     </div>
                 </form>

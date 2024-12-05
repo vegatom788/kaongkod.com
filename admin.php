@@ -144,7 +144,7 @@
 							<span class="eye-icon" id="togglePassword">👁️</span>
 						</div>
 						<div class="form-group form-forget">
-							<div class="link forget-pass text-left"><a href="forgot-password.php" style="color: #0866ff;">Forgot password?</a></div>
+							<div class="link forget-pass text-left"><a href="forgot-password" style="color: #0866ff;">Forgot password?</a></div>
 							<a href="residents" class="ml-auto" style="color: #0866ff;">Resident Login</a>
 						</div>
 						<div class="form-group">

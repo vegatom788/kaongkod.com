@@ -110,7 +110,7 @@
                     </div>
                     <div>
                         <center>
-                            <a href="residents.php" style="color: #0866ff;">Back</a>
+                            <a href="residents" style="color: #0866ff;">Back</a>
                         </center>
                     </div>
                 </form>
