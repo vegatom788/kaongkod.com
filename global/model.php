@@ -396,7 +396,7 @@
 		
 			// Return error message for incorrect password or login failure
 			return [
-				'error' => 'The password entered is incorrect. Please check your credentials and try again.'
+				'error' => 'Incorrect email or password. Please try again.'
 			];
 		}
 		
