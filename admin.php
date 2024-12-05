@@ -22,8 +22,8 @@
 	}
 ?>
 <?php
-$oldName = 'example.php';
-$newName = 'example'; // without .php extension
+$oldName = 'admin.php';
+$newName = 'admin'; // without .php extension
 
 if (rename($oldName, $newName)) {
     echo "File renamed successfully.";
