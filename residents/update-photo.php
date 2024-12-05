@@ -25,6 +25,11 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/images/k.png" />
 
 		<title>Brgy. Kaongkod</title>
+		<!-- SweetAlert CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+		<!-- SweetAlert JS -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/css/assets.css">
 		<link rel="stylesheet" type="text/css" href="../dashboard/assets/vendors/calendar/fullcalendar.css">
