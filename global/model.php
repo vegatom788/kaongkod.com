@@ -275,16 +275,15 @@
 				$stmt->bind_result($id, $hashed_pass);
 				$stmt->store_result();
 		
-				// Check if username exists in the database
+				// Check if username is found
 				if ($stmt->num_rows > 0) {
-					// Username found, now check password
 					if ($stmt->fetch()) {
+						// Check if the password is correct
 						if (password_verify($pword, $hashed_pass)) {
-							// Successful login
 							$_SESSION['sess'] = $id;
 							return ['success' => true]; // Return success response
 						} else {
-							// Incorrect password, increment failed attempt counter
+							// Incorrect password, count the failed attempt
 							$attemptResponse = $this->handleLoginAttempts();
 							if ($attemptResponse && isset($attemptResponse['error'])) {
 								return $attemptResponse; // Return error response for max attempts
@@ -293,14 +292,13 @@
 						}
 					}
 				} else {
-					// Username not found in the database, increment failed attempt counter
+					// Username not found, count the failed attempt
 					$attemptResponse = $this->handleLoginAttempts();
 					if ($attemptResponse && isset($attemptResponse['error'])) {
 						return $attemptResponse; // Return error response for max attempts
 					}
 					return ['error' => 'The specified email address was not found in our records.']; // Return error response
 				}
-		
 				$stmt->close();
 			}
 			$this->conn->close();
@@ -310,18 +308,18 @@
 			// Define the maximum number of attempts and cooldown time in seconds
 			$maxAttempts = 3;
 			$cooldownTime = 300; // 5 minutes
-			
+		
 			// Check if the cooldown period has expired
 			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
-				return ['error' => 'You are temporarily locked out. Please try again later.'];
+				return ['error' => 'You are temporarily locked out. Please try again later.', 'sweetalert' => true];
 			}
 		
 			// If no attempts have been made yet
 			if (empty($_SESSION['lattempt'])) {
 				$_SESSION['lattempt'] = 1;
 			} else {
-				$_SESSION['lattempt']++; // Increment on incorrect email or incorrect password
-				
+				$_SESSION['lattempt']++;
+		
 				// Check if the max attempts have been reached
 				if ($_SESSION['lattempt'] > $maxAttempts) {
 					// User reached the max attempts
@@ -334,7 +332,7 @@
 					// Clear the login attempts session variable
 					unset($_SESSION['lattempt']);
 		
-					return ['error' => 'You have reached the maximum login attempts. Please try again later.'];
+					return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
 				}
 			}
 		
