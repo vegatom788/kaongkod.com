@@ -357,6 +357,49 @@
 			$this->conn->close();
 		}
 		
+		private function handleFailedLogin($isInvalidInput = false) {
+			$maxAttempts = 3; // Max attempts allowed before lockout
+			$cooldownTime = 300; // 5 minutes (in seconds)
+		
+			// If the user typed incorrect credentials or a non-existent email/phone
+			if ($isInvalidInput) {
+				// Increment the login attempts for invalid credentials
+				if (empty($_SESSION['slattempt'])) {
+					$_SESSION['slattempt'] = 1;
+				} else {
+					$_SESSION['slattempt']++;
+				}
+			}
+		
+			// Check if the user is currently locked out
+			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
+				return [
+					'error' => 'You are temporarily locked out. Please try again later.',
+					'sweetalert' => true
+				];
+			}
+		
+			// If the max attempts have been exceeded, apply the lockout
+			if ($_SESSION['slattempt'] > $maxAttempts) {
+				$_SESSION['lockout_time'] = time() + $cooldownTime;  // Set lockout time (5 minutes)
+				unset($_SESSION['slattempt']); // Reset the attempts count
+		
+				// Optionally, use cookies if you want to persist lockout status beyond the session
+				setcookie('srlimited', '1', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
+				setcookie('expiration_date', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
+		
+				return [
+					'error' => 'You have reached the maximum login attempts.',
+					'sweetalert' => true
+				];
+			}
+		
+			// Return error message for incorrect password or login failure
+			return [
+				'error' => 'The password entered is incorrect. Please check your credentials and try again.'
+			];
+		}
+		
 		private function handleSuccessfulSignIn($id, $status, $verified) {
 			if ($status == 1) {
 				$_SESSION['sess2'] = $id;
@@ -367,35 +410,6 @@
 			}
 		}
 		
-		private function handleFailedLogin($isInvalidInput = false) {
-			$maxAttempts = 3;
-			$cooldownTime = 300; // 5 minutes
-		
-			// If the user typed incorrect credentials or non-existent email/phone
-			if ($isInvalidInput) {
-				// Increment the login attempts
-				if (empty($_SESSION['slattempt'])) {
-					$_SESSION['slattempt'] = 1;
-				} else {
-					$_SESSION['slattempt']++;
-				}
-			}
-		
-			if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
-				return ['error' => 'You are temporarily locked out. Please try again later.', 'sweetalert' => true];
-			}
-		
-			// Check if the max attempts have been reached
-			if ($_SESSION['slattempt'] > $maxAttempts) {
-				setcookie('srlimited', '5', time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
-				setcookie('expiration_date', time() + 60, time() + 60, "/", "", isset($_SERVER["HTTPS"]), true);
-				$_SESSION['lockout_time'] = time() + $cooldownTime;
-				unset($_SESSION['slattempt']);
-				return ['error' => 'You have reached the maximum login attempts.', 'sweetalert' => true];
-			}
-		
-			return ['error' => 'The password entered is incorrect. Please check your credentials and try again.'];
-		}
 		
 
 		public function addResident($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact) {
