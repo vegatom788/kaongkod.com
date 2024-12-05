@@ -335,7 +335,7 @@
 						</div>
 						<div class="form-group form-forget">
 							<div class="link forget-pass text-left"><a href="forgot-password1.php" style="color: #0866ff;">Forgot password?</a></div>
-							<a href="admin.php" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
+							<a href="admin" class="ml-auto" style="color: #0866ff;">Administrator Login</a>
 						</div>
 						<div class="form-group">
 							<button name="g-recaptcha-response" type="hidden" value="token" class="btn btn-block">Login</button>
