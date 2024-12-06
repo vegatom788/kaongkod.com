@@ -2,6 +2,6 @@
 
 	session_start();
 	unset($_SESSION['sess']);
-	echo "<script>window.open('../admin.php', '_self');</script>";
+	echo "<script>window.open('../admin', '_self');</script>";
 
 ?>
