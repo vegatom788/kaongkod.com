@@ -160,8 +160,21 @@
 
 														// Update the database or model with the new photo path (if necessary)
 														$model->updateResidentPhoto($unique);
-
-														echo "<script>alert('Profile picture has been updated');window.open('update-photo', '_self');</script>";
+														echo "<script>
+														Swal.fire({
+															title: 'Success!',
+															text: 'Profile picture has been updated.',
+															icon: 'success',
+															confirmButtonText: 'OK',
+															customClass: {
+																popup: 'my-swal-popup'
+															}
+														}).then((result) => {
+															if (result.isConfirmed) {
+																window.location.href = 'update-photo';
+															}
+														});
+													</script>";
 													} else {
 														echo "<script>alert('The uploaded file is not a valid image.');window.open('update-photo', '_self');</script>";
 													}
