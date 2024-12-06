@@ -560,14 +560,17 @@
 
 			// Check if the file type is in the allowed list
 			if (!allowedTypes.includes(file.type)) {
+				// Use SweetAlert2 to show a custom alert
 				Swal.fire({
 				title: 'Invalid file type!',
 				text: 'Only PNG, JPG, and JPEG files are allowed.',
 				icon: 'error',
 				confirmButtonText: 'OK',
 				customClass: {
-																popup: 'my-swal-popup'
-															}
+							popup: 'my-swal-popup'
+							}
+				});
+
 				input.value = '';  // Reset the input field
 			} else {
 				// Proceed with your logic for the valid file
