@@ -550,35 +550,42 @@
 			});
 		</script>
 		<script>
-  function validateImage(input, type) {
-    const file = input.files[0];
+		function validateImage(input, type) {
+			const file = input.files[0];
 
-    // Check if a file is selected
-    if (file) {
-      // Allowed image types
-      const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+			// Check if a file is selected
+			if (file) {
+			// Allowed image types
+			const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
-      // Check if the file type is in the allowed list
-      if (!allowedTypes.includes(file.type)) {
-        alert('Only PNG, JPG, and JPEG files are allowed.');
-        input.value = '';  // Reset the input field
-      } else {
-        // Proceed with your logic for the valid file
-        readURL(input, type);
-      }
-    }
-  }
+			// Check if the file type is in the allowed list
+			if (!allowedTypes.includes(file.type)) {
+				Swal.fire({
+				title: 'Invalid file type!',
+				text: 'Only PNG, JPG, and JPEG files are allowed.',
+				icon: 'error',
+				confirmButtonText: 'OK',
+				customClass: {
+																popup: 'my-swal-popup'
+															}
+				input.value = '';  // Reset the input field
+			} else {
+				// Proceed with your logic for the valid file
+				readURL(input, type);
+			}
+			}
+		}
 
-  function readURL(input, type) {
-    // Your existing function to handle the file reading/display
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      // You can use this to display the image or do further processing
-      console.log('File selected:', e.target.result); 
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-</script>
+		function readURL(input, type) {
+			// Your existing function to handle the file reading/display
+			const reader = new FileReader();
+			reader.onload = function(e) {
+			// You can use this to display the image or do further processing
+			console.log('File selected:', e.target.result); 
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+		</script>
 	</body>
 
 </html>
