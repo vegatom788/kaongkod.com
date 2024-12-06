@@ -365,8 +365,10 @@
 															</center>
 														</div>
 														<div class="form-group col-12">
-															<center><label class="col-form-label"><b>Image</b></label><br>
-															<input type="file" name="image" accept="image/*" onchange="readURL(this, '')" style="border: 0px; padding: 0px;" required></center>
+														<center>
+															<label class="col-form-label"><b>Image</b></label><br>
+															<input type="file" name="image" accept=".png, .jpg, .jpeg" onchange="validateImage(this)" style="border: 0px; padding: 0px;" required>
+														</center>
 														</div>
 														<div class="form-group col-12">
 															<label class="col-form-label"><b>Details</b></label>
@@ -513,6 +515,45 @@
 			$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();
 			});
+		</script>
+		<script>
+		function validateImage(input) {
+			const file = input.files[0];
+
+			// Check if a file is selected
+			if (file) {
+			// Allowed image types
+			const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+			// Check if the file type is in the allowed list
+			if (!allowedTypes.includes(file.type)) {
+				// Use SweetAlert2 to show a custom alert
+				Swal.fire({
+				title: 'Invalid file type!',
+				text: 'Only PNG, JPG, and JPEG files are allowed.',
+				icon: 'error',
+				confirmButtonText: 'OK',
+				customClass: {
+							popup: 'my-swal-popup'
+							}
+				});
+
+				input.value = '';  // Reset the input field
+			} else {
+				// Proceed with your logic for the valid file
+				readURL(input);
+			}
+			}
+		}
+
+		function readURL(input) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+			// Logic to display or process the image
+			console.log('File selected:', e.target.result); 
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
 		</script>
 	</body>
 
