@@ -99,7 +99,7 @@ if($_SESSION['info'] == false){
                 <?php
             }
             ?>
-                <form action="residents.php" method="POST">
+                <form action="residents" method="POST">
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="login-now" value="Login Now">
                     </div>
