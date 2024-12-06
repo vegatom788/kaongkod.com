@@ -152,6 +152,11 @@ if($email == false){
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="check-reset-otp" value="Submit">
                     </div>
+					<div>
+                        <center>
+                            <a href="forgot-password1" style="color: #0866ff;">Back</a>
+                        </center>
+                    </div>
                 </form>
             </div>
         </div>

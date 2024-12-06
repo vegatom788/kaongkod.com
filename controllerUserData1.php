@@ -147,21 +147,26 @@ if(isset($_POST['signup'])){
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $check_email = "SELECT * FROM residents WHERE email='$email'";
         $run_sql = mysqli_query($con, $check_email);
+        
         if(mysqli_num_rows($run_sql) > 0){
             $code = rand(999999, 111111);
-            $insert_code = "UPDATE residents SET code = $code WHERE email = '$email'";
-            $run_query =  mysqli_query($con, $insert_code);
+            $expiry_time = date("Y-m-d H:i:s", strtotime("+1 minute")); // Set expiration time to 1 minute from now
+            
+            // Update the reset code and expiration time
+            $insert_code = "UPDATE residents SET code = $code, code_expiry = '$expiry_time' WHERE email = '$email'";
+            $run_query = mysqli_query($con, $insert_code);
+            
             if ($run_query) {
-                $reset_link = "https://kaongkod.com/reset-code1.php";
+                $reset_link = "http://localhost/capstone2/reset-code1.php";
                 $subject = "Password Reset Code";
                 $message = "
                 <p>Hello,</p>
-                <p>We received a request to reset your password. Please use the following code to reset your password:</p>
+                <p>We received a request to reset your password. Please use the following code to reset your password:</p> <p><strong>The code expires in 1 minute.</strong></p>
                 <p><b>Your password reset code is: $code</b></p>
                 <p>Alternatively, you can <a href='$reset_link'>click here</a> to reset your password directly.</p>
                 <p>If you did not request a password reset, please ignore this email.</p>
-            ";
-                
+                ";
+                    
                 if (sendEmail($email, $subject, $message)) {
                     $info = "We've sent a password reset OTP to your email - $email";
                     $_SESSION['info'] = $info;
@@ -171,17 +176,18 @@ if(isset($_POST['signup'])){
                 } else {
                     $errors['otp-error'] = "Failed while sending code!";
                 }
-            }else{
+            } else {
                 $errors['db-error'] = "Something went wrong!";
             }
-        }else{
+        } else {
             $errors['email'] = "This email address does not exist!";
         }
     }
 
     //if user click check reset otp button
     if (isset($_POST['check-reset-otp'])) {
-        $_SESSION['info'] = "";
+        $_SESSION['info'] = "";  // Reset any session info
+    
         // Concatenate OTP values into a single string
         $otp_code = mysqli_real_escape_string($con, $_POST['otp1'] . $_POST['otp2'] . $_POST['otp3'] . $_POST['otp4'] . $_POST['otp5'] . $_POST['otp6']);
         
@@ -204,18 +210,29 @@ if(isset($_POST['signup'])){
         if (mysqli_num_rows($code_res) > 0) {
             // Fetch the user data
             $fetch_data = mysqli_fetch_assoc($code_res);
-            $email = $fetch_data['email']; // Assuming 'email' is the column for the user's email
+            $email = $fetch_data['email'];  // Assuming 'email' is the column for the user's email
+            $code_expiry = $fetch_data['code_expiry'];  // Retrieve the expiration time from the database
             
-            // Store the email in session and redirect
-            $_SESSION['email'] = $email;
-            $_SESSION['info'] = "Password must be at least 8 characters long, include at least one uppercase letter, and one number.";
-            header('Location: new-password1.php');
-            exit();
+            // Get the current time
+            $current_time = date("Y-m-d H:i:s");
+            
+            // Check if the code has expired
+            if (strtotime($current_time) > strtotime($code_expiry)) {
+                // The code has expired
+                $errors['otp-error'] = "Your code has expired. Please request a new one.";
+            } else {
+                // OTP is valid and has not expired
+                // Store the email in session and redirect to password reset page
+                $_SESSION['email'] = $email;
+                $_SESSION['info'] = "Please create a new password that you don't use on any other site.";
+                header('Location: new-password1.php');
+                exit();
+            }
         } else {
             // OTP did not match
-            $errors['otp-error'] = "You've entered incorrect code!";
+            $errors['otp-error'] = "You've entered an incorrect code!";
         }
-    
+        
         // Close the prepared statement
         mysqli_stmt_close($stmt);
     }
