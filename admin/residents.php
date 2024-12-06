@@ -511,119 +511,113 @@
 								<!-- SweetAlert2 JS -->
 								<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 								<?php
-									$category = 0;
-									$status = 1;
-									if (isset($_POST['add_resident'])) {
-										$r_id = $_POST['r_id'];
-										$fname = $_POST['fname'];
-										$mname = isset($_POST['mname']) ? $_POST['mname'] : "N/A";
-										$lname = $_POST['lname'];
-										$time = strtotime($_POST['bdate']);
-										$bdate = date('Y-m-d', $time);
-										$gender = $_POST['gender'];
-										$civil_status = $_POST['civil_status'];
-										$resident_status = $_POST['resident_status'];
-										$address1 = $_POST['address1'];
-										$address2 = $_POST['address2'];
-										$address3 = $_POST['address3'];
-										$bplace = $_POST['bplace'];
-										$occupation = $_POST['occupation'];
-										$ext = $_POST['ext'];
-										$res_since = $_POST['res_since'];
-										$date = date("Y-m-d H:i:s");
-										$contact = isset($_POST['contact']) ? $_POST['contact'] : "N/A";
+								ini_set('display_errors', 0); // Disable error display on the browser
+								error_reporting(E_ALL); // Report all errors
+								ini_set('log_errors', 1); // Enable error logging
+								ini_set('error_log', '/path/to/your/error.log'); // Change this to the correct path for your error log file
 
+								$category = 0;
+								$status = 1;
 
-										$email = $_POST['email'];
-										$digits_hash = password_hash($digits_main, PASSWORD_DEFAULT);
+								if (isset($_POST['add_resident'])) {
+									$r_id = $_POST['r_id'];
+									$fname = $_POST['fname'];
+									$mname = isset($_POST['mname']) ? $_POST['mname'] : "N/A";
+									$lname = $_POST['lname'];
+									$time = strtotime($_POST['bdate']);
+									$bdate = date('Y-m-d', $time);
+									$gender = $_POST['gender'];
+									$civil_status = $_POST['civil_status'];
+									$resident_status = $_POST['resident_status'];
+									$address1 = $_POST['address1'];
+									$address2 = $_POST['address2'];
+									$address3 = $_POST['address3'];
+									$bplace = $_POST['bplace'];
+									$occupation = $_POST['occupation'];
+									$ext = $_POST['ext'];
+									$res_since = $_POST['res_since'];
+									$date = date("Y-m-d H:i:s");
+									$contact = isset($_POST['contact']) ? $_POST['contact'] : "N/A";
+									$email = $_POST['email'];
+									$digits_hash = password_hash($digits_main, PASSWORD_DEFAULT);
 
-										if ($email == "") {
+									if ($email == "") {
+										$result = $model->addResident($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact);
 
-											$result = $model->addResident($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact);
-
-											if ($checker == 0 && $result == true) {
-												$model->updateIdCounter();
-												$model->updateIdCounter();
-											}
-
-											else if ($checker == 1 && $result == true) {
-												$model->updateIdCounter();
-											}
-	                                        
-	                                        echo "<script>alert('Resident has been added!');window.open('residents', '_self')</script>";
-
+										if ($checker == 0 && $result == true) {
+											$model->updateIdCounter();
+											$model->updateIdCounter();
+										} else if ($checker == 1 && $result == true) {
+											$model->updateIdCounter();
 										}
-										else {
 
-											$result = $model->addResident2($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact, $email, $digits_hash);
+										echo "<script>alert('Resident has been added!');window.open('residents', '_self')</script>";
 
-											if ($checker == 0 && $result == true) {
-												$model->updateIdCounter();
-												$model->updateIdCounter();
-											}
+									} else {
+										$result = $model->addResident2($r_id, $ext, $address3, $bplace, $occupation, $fname, $mname, $lname, $bdate, $gender, $civil_status, $address1, $address2, $res_since, $date, $resident_status, $contact, $email, $digits_hash);
 
-											else if ($checker == 1 && $result == true) {
-												$model->updateIdCounter();
-											}
-	                                        
-	                                        require 'vendor/autoload.php';
-
-											$mail = new PHPMailer(true);
-												
-											$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-											$mail->isSMTP();
-											$mail->Host = 'smtp.gmail.com';
-											$mail->SMTPAuth = true;
-											$mail->Username = 'azraelgriffin.riego@gmail.com';
-											$mail->Password = 'ecavbuyseyfggbcm';
-											$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-											$mail->Port = 465;
-
-	                                        $mail->setFrom("azraelgriffin.riego@gmail.com", 'Barangay Kaongkod');
-											$mail->addAddress($email);
-
-											$mail->isHTML(true);
-											$mail->Subject = 'Welcome to Brgy. Kaongkod Portal - Account Verification';
-											$mail->Body = "Good day $fname!<br><br>
-											Before you can use your account, you need to verify it first before you can use your E-Barangay System account to access our platform.<br><br>
-											<h2> ACCOUNT CREDENTIALS </h2><br>
-											<h3>Email: $email<br></h3>
-											<h3>Default password: $digits_main </h3><br>
-											
-											Note – This is a system autogenerated password. For security purposes, do not share this to anyone and please update your password as soon as you login to the system. <br><br>
-											Best Regards, <br>
-											Barangay Kaongkod";
-											
-											if ($mail->send()) {
-												echo "<script>
-														Swal.fire({
-															title: 'Resident has been added!',
-															text: 'Password has been sent to email',
-															icon: 'success',
-															confirmButtonText: 'OK',
-															customClass: {
-																popup: 'my-swal-popup'
-															}
-														}).then((result) => {
-															if (result.isConfirmed) {
-																window.location.href = 'residents';
-															}
-														});
-													</script>";
-											} 
-
-											else {
-												echo $mail->ErrorInfo;
-											}
-
-
-	                                        
-											
-
+										if ($checker == 0 && $result == true) {
+											$model->updateIdCounter();
+											$model->updateIdCounter();
+										} else if ($checker == 1 && $result == true) {
+											$model->updateIdCounter();
 										}
+
+										require 'vendor/autoload.php';
+
+										$mail = new PHPMailer(true);
+
+										// Disable SMTP Debugging
+										$mail->SMTPDebug = SMTP::DEBUG_OFF;
+										$mail->isSMTP();
+										$mail->Host = 'smtp.gmail.com';
+										$mail->SMTPAuth = true;
+										$mail->Username = 'azraelgriffin.riego@gmail.com';
+										$mail->Password = 'ecavbuyseyfggbcm'; // Secure password handling (use environment variables in production)
+										$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+										$mail->Port = 465;
+
+										$mail->setFrom("azraelgriffin.riego@gmail.com", 'Barangay Kaongkod');
+										$mail->addAddress($email);
+
+										$mail->isHTML(true);
+										$mail->Subject = 'Welcome to Brgy. Kaongkod Portal - Account Verification';
+										$mail->Body = "Good day $fname!<br><br>
+										Before you can use your account, you need to verify it first before you can use your E-Barangay System account to access our platform.<br><br>
+										<h2> ACCOUNT CREDENTIALS </h2><br>
+										<h3>Email: $email<br></h3>
+										<h3>Default password: $digits_main </h3><br>
 										
-									}
+										Note – This is a system autogenerated password. For security purposes, do not share this to anyone and please update your password as soon as you login to the system. <br><br>
+										Best Regards, <br>
+										Barangay Kaongkod";
 
+										// Send the email and handle success or failure
+										if ($mail->send()) {
+											echo "<script>
+												Swal.fire({
+													title: 'Resident has been added!',
+													text: 'Password has been sent to email',
+													icon: 'success',
+													confirmButtonText: 'OK',
+													customClass: {
+														popup: 'my-swal-popup'
+													}
+												}).then((result) => {
+													if (result.isConfirmed) {
+														window.location.href = 'residents';
+													}
+												});
+											</script>";
+										} else {
+											// Log the error instead of displaying it
+											error_log("Mailer Error: " . $mail->ErrorInfo);
+
+											// Show a user-friendly message
+											echo "<script>alert('There was an error sending the email. Please try again later.');</script>";
+										}
+									}
+								}
 								?>
 					</div>
 				</div>
