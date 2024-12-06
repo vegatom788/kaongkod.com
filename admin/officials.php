@@ -172,7 +172,7 @@
 														<br>Barangay Captain
 														<br>
 														<label class="col-form-label"><b>Photo</b></label>
-														<input class="form-control" type="file" name="image-head" accept="image/*" style="border: 0px; padding: 0px;" onchange="readURL(this, 'head')">
+														<input class="form-control" type="file" name="image-head" accept=".png, .jpg, .jpeg" style="border: 0px; padding: 0px;" onchange="validateImage(this, 'head')">
 													</div>
 												</div>
 											</div>
@@ -549,6 +549,36 @@
 				$('[data-toggle="tooltip"]').tooltip();
 			});
 		</script>
+		<script>
+  function validateImage(input, type) {
+    const file = input.files[0];
+
+    // Check if a file is selected
+    if (file) {
+      // Allowed image types
+      const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+      // Check if the file type is in the allowed list
+      if (!allowedTypes.includes(file.type)) {
+        alert('Only PNG, JPG, and JPEG files are allowed.');
+        input.value = '';  // Reset the input field
+      } else {
+        // Proceed with your logic for the valid file
+        readURL(input, type);
+      }
+    }
+  }
+
+  function readURL(input, type) {
+    // Your existing function to handle the file reading/display
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      // You can use this to display the image or do further processing
+      console.log('File selected:', e.target.result); 
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+</script>
 	</body>
 
 </html>
