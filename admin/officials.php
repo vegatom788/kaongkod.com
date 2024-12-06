@@ -486,7 +486,7 @@
 
 															<div style="padding: 5px;"></div>
 															<label class="col-form-label"><b>Photo</b></label>
-															<input class="form-control" type="file" name="image" accept="image/*" onchange="readURL(this, '')" style="border: 0px; padding: 0px;" required>
+															<input class="form-control" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="validateImage(this)" style="border: 0px; padding: 0px;" required>
 														
 														</div>
 														
@@ -585,6 +585,43 @@
 			reader.onload = function(e) {
 			// You can use this to display the image or do further processing
 			console.log('File selected:', e.target.result); 
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+		</script>
+		<script>
+		function validateImage(input) {
+			const file = input.files[0];
+
+			// Check if a file is selected
+			if (file) {
+			// Allowed image types
+			const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+			// Check if the file type is in the allowed list
+			if (!allowedTypes.includes(file.type)) {
+				// Use SweetAlert2 to show a custom alert
+				Swal.fire({
+				title: 'Invalid file type!',
+				text: 'Only PNG, JPG, and JPEG files are allowed.',
+				icon: 'error',
+				confirmButtonText: 'OK'
+				});
+
+				// Reset the input field to allow the user to choose again
+				input.value = '';
+			} else {
+				// Proceed with your logic for the valid file
+				readURL(input);
+			}
+			}
+		}
+
+		function readURL(input) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+			// Logic to display or process the image
+			console.log('File selected:', e.target.result);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
