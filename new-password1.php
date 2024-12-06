@@ -108,7 +108,7 @@ if($email == false){
     <div class="container">
         <div class="row">
             <div class="col-10 col-md-4 offset-md-4 form" style="max-width: 350px; margin: 0 auto;">
-                <form action="new-password1.php" method="POST" autocomplete="off">
+                <form action="new-password1" method="POST" autocomplete="off">
                     <h2 class="text-center">New Password</h2>
                     <?php 
                     if(isset($_SESSION['info'])){
